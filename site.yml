@@ -91,6 +91,14 @@
   roles:
     - roq-kraken-futures
 
+- hosts: roq_kucoin
+  roles:
+    - roq-kucoin
+
+- hosts: roq_kucoin_futures
+  roles:
+    - roq-kucoin-futures
+
 - hosts: trading
   roles:
     - prometheus

@@ -153,3 +153,21 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_kucoin' in groups %}
+
+  - job_name: 'roq-kucoin'
+    metrics_path: '/metrics/roq-kucoin'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_kucoin_futures' in groups %}
+
+  - job_name: 'roq-kucoin-futures'
+    metrics_path: '/metrics/roq-kucoin-futures'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
