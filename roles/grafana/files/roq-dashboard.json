@@ -9,6 +9,12 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
@@ -84,7 +90,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_celsius)",
@@ -149,7 +155,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_hertz) / 1000 / 1000 / 1000",
@@ -214,7 +220,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "irate(node_intr_total[1m])",
@@ -279,7 +285,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "node_memory_Active_bytes / node_memory_MemTotal_bytes",
@@ -343,7 +349,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "node_edac_uncorrectable_errors_total",
@@ -407,7 +413,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(node_filesystem_device_error)",
@@ -471,7 +477,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -538,7 +544,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_crit_celsius)",
@@ -602,7 +608,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_max_hertz) / 1000 / 1000 / 1000",
@@ -667,7 +673,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "irate(node_context_switches_total[1m])",
@@ -731,7 +737,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "node_memory_MemTotal_bytes",
@@ -796,7 +802,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "node_memory_Dirty_bytes",
@@ -861,7 +867,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(irate(node_disk_written_bytes_total[1m]))",
@@ -955,7 +961,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"clickhouse-server.service\",state=\"active\"})",
@@ -1036,7 +1042,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
@@ -1115,7 +1121,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
@@ -1492,7 +1498,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"redis-server.service\",state=\"active\"})",
@@ -1573,7 +1579,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
@@ -1652,7 +1658,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(roq_export{source=\"redis\", name=\"messages\"})",
@@ -2028,7 +2034,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -2108,7 +2114,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -2206,7 +2212,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"binance\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -2289,7 +2295,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -2373,7 +2379,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"binance\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -2453,7 +2459,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"binance\"}",
@@ -2531,7 +2537,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"binance\"})",
@@ -2871,7 +2877,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -2952,7 +2958,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
@@ -3033,7 +3039,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3131,7 +3137,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3215,7 +3221,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3299,7 +3305,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3380,7 +3386,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3459,7 +3465,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3803,7 +3809,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3885,7 +3891,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -3967,7 +3973,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -4065,7 +4071,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -4146,7 +4152,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -4227,7 +4233,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -4305,7 +4311,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitmex\"}",
@@ -4381,7 +4387,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitmex\"})",
@@ -4719,7 +4725,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -4799,7 +4805,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
@@ -4877,7 +4883,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -4975,7 +4981,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5058,7 +5064,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -5141,7 +5147,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -5221,7 +5227,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitstamp\"}",
@@ -5299,7 +5305,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitstamp\"})",
@@ -5639,7 +5645,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -5720,7 +5726,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
@@ -5801,7 +5807,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -5899,7 +5905,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5980,7 +5986,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -6061,7 +6067,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -6139,7 +6145,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"coinbase-pro\"}",
@@ -6215,7 +6221,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
@@ -6553,7 +6559,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -6633,7 +6639,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
@@ -6712,7 +6718,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -6810,7 +6816,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -6891,7 +6897,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -6972,7 +6978,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -7050,7 +7056,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"deribit\"}",
@@ -7126,7 +7132,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"deribit\"})",
@@ -7462,7 +7468,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -7542,7 +7548,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
@@ -7623,7 +7629,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -7721,7 +7727,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -7804,7 +7810,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -7887,7 +7893,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -7967,7 +7973,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"ftx\"}",
@@ -8045,7 +8051,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"ftx\"})",
@@ -8385,7 +8391,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -8466,7 +8472,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
@@ -8547,7 +8553,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -8645,7 +8651,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -8726,7 +8732,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -8807,7 +8813,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -8885,7 +8891,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"gemini\"}",
@@ -8961,7 +8967,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"gemini\"})",
@@ -9297,7 +9303,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -9377,7 +9383,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
@@ -9456,7 +9462,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -9554,7 +9560,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -9637,7 +9643,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -9720,7 +9726,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -9800,7 +9806,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"hitbtc\"}",
@@ -9878,7 +9884,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"hitbtc\"})",
@@ -10218,7 +10224,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -10299,7 +10305,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
@@ -10380,7 +10386,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -10478,7 +10484,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -10562,7 +10568,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -10646,7 +10652,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -10727,7 +10733,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -10806,7 +10812,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11150,7 +11156,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11232,7 +11238,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11314,7 +11320,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11412,7 +11418,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11496,7 +11502,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11580,7 +11586,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11661,7 +11667,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -11740,7 +11746,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -12084,7 +12090,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -12166,7 +12172,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -12248,7 +12254,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -12276,7 +12282,7 @@
       },
       "id": 197,
       "panels": [],
-      "title": "Kraken (Costa Rica)",
+      "title": "Kraken (Ireland)",
       "type": "row"
     },
     {
@@ -12346,7 +12352,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -12429,7 +12435,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
@@ -12512,7 +12518,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
@@ -12592,7 +12598,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"kraken\"}",
@@ -12670,7 +12676,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"kraken\"})",
@@ -12995,7 +13001,7 @@
         "x": 19,
         "y": 74
       },
-      "id": 210,
+      "id": 343,
       "links": [],
       "options": {
         "displayMode": "basic",
@@ -13010,7 +13016,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -13091,7 +13097,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
@@ -13172,7 +13178,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13200,7 +13206,7 @@
       },
       "id": 268,
       "panels": [],
-      "title": "Kraken Futures (Costa Rica)",
+      "title": "Kraken Futures (Ireland)",
       "type": "row"
     },
     {
@@ -13270,7 +13276,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13354,7 +13360,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13438,7 +13444,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13519,7 +13525,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13598,7 +13604,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -13942,7 +13948,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -14024,7 +14030,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -14106,7 +14112,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.3",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
           "exemplar": true,
@@ -14131,6 +14137,1874 @@
         "w": 24,
         "x": 0,
         "y": 83
+      },
+      "id": 320,
+      "panels": [],
+      "title": "KuCoin (South Korea)",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 84
+      },
+      "id": 323,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "READY"
+                },
+                "1": {
+                  "text": "NOT READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 84
+      },
+      "id": 327,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "READY"
+                },
+                "1": {
+                  "text": "NOT READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 84
+      },
+      "id": 329,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 84
+      },
+      "id": 331,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "roq_exceptions{source=\"kucoin\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 84
+      },
+      "id": 335,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(roq_events_count{source=\"kucoin\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 84
+      },
+      "id": 337,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"kucoin\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 84
+      },
+      "id": 339,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 84
+      },
+      "id": 341,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"kucoin\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kucoin\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 84
+      },
+      "id": 210,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max by (connection) (roq_counter{source=\"kucoin\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnects",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 86
+      },
+      "id": 325,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "time() - roq_process{source=\"kucoin\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "rgb(31, 120, 193)",
+            "mode": "fixed"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 86
+      },
+      "id": 333,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(roq_clients{source=\"kucoin\", event=\"connect\"}) - max(roq_clients{source=\"kucoin\", event=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 88
+      },
+      "id": 322,
+      "panels": [],
+      "title": "KuCoin Futures (South Korea)",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 89
+      },
+      "id": 324,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin-futures\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "READY"
+                },
+                "1": {
+                  "text": "NOT READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 89
+      },
+      "id": 328,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "READY"
+                },
+                "1": {
+                  "text": "NOT READY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 4,
+        "y": 89
+      },
+      "id": 330,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(absent(roq_updated{source=\"kucoin-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Order Manager",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 89
+      },
+      "id": 332,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "roq_exceptions{source=\"kucoin-futures\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 8,
+        "y": 89
+      },
+      "id": 336,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(roq_events_count{source=\"kucoin-futures\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 89
+      },
+      "id": 338,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"kucoin-futures\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 89
+      },
+      "id": 340,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 89
+      },
+      "id": 342,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"kucoin-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kucoin-futures\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 89
+      },
+      "id": 344,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max by (connection) (roq_counter{source=\"kucoin-futures\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disconnects",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 91
+      },
+      "id": 326,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "time() - roq_process{source=\"kucoin-futures\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "rgb(31, 120, 193)",
+            "mode": "fixed"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 6,
+        "y": 91
+      },
+      "id": 334,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(roq_clients{source=\"kucoin-futures\", event=\"connect\"}) - max(roq_clients{source=\"kucoin-futures\", event=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Clients",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 93
       },
       "id": 63,
       "panels": [],
@@ -14197,7 +16071,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 84
+        "y": 94
       },
       "id": 65,
       "options": {
@@ -14287,7 +16161,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 84
+        "y": 94
       },
       "id": 40,
       "options": {
@@ -14377,7 +16251,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 89
+        "y": 99
       },
       "id": 39,
       "options": {
@@ -14467,7 +16341,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 89
+        "y": 99
       },
       "id": 64,
       "options": {
@@ -14504,7 +16378,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 94
+        "y": 104
       },
       "id": 56,
       "panels": [],
@@ -14570,7 +16444,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 95
+        "y": 105
       },
       "id": 94,
       "options": {
@@ -14659,7 +16533,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 100
+        "y": 110
       },
       "id": 111,
       "options": {
@@ -14766,7 +16640,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 106
+        "y": 116
       },
       "id": 112,
       "options": {
@@ -14873,7 +16747,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 106
+        "y": 116
       },
       "id": 113,
       "options": {
@@ -14980,7 +16854,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 106
+        "y": 116
       },
       "id": 114,
       "options": {
@@ -15069,7 +16943,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 112
+        "y": 122
       },
       "id": 110,
       "options": {
@@ -15158,7 +17032,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 117
+        "y": 127
       },
       "id": 38,
       "options": {
@@ -15267,7 +17141,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 123
+        "y": 133
       },
       "id": 91,
       "options": {
@@ -15375,7 +17249,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 123
+        "y": 133
       },
       "id": 92,
       "options": {
@@ -15482,7 +17356,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 123
+        "y": 133
       },
       "id": 43,
       "options": {
@@ -15572,7 +17446,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 129
+        "y": 139
       },
       "id": 54,
       "options": {
@@ -15679,7 +17553,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 135
+        "y": 145
       },
       "id": 66,
       "options": {
@@ -15786,7 +17660,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 135
+        "y": 145
       },
       "id": 67,
       "options": {
@@ -15893,7 +17767,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 135
+        "y": 145
       },
       "id": 105,
       "options": {
@@ -15930,7 +17804,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 141
+        "y": 151
       },
       "id": 104,
       "panels": [],
@@ -15997,7 +17871,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 142
+        "y": 152
       },
       "id": 98,
       "options": {
@@ -16088,7 +17962,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 147
+        "y": 157
       },
       "id": 102,
       "options": {
@@ -16179,7 +18053,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 152
+        "y": 162
       },
       "id": 99,
       "options": {
@@ -16270,7 +18144,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 157
+        "y": 167
       },
       "id": 100,
       "options": {
@@ -16361,7 +18235,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 162
+        "y": 172
       },
       "id": 101,
       "options": {
@@ -16421,5 +18295,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 16
+  "version": 17
 }
