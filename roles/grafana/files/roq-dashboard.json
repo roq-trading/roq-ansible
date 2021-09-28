@@ -2142,7 +2142,7 @@
       },
       "id": 212,
       "panels": [],
-      "title": "Binance (Japan)",
+      "title": "Binance (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -3067,7 +3067,7 @@
       },
       "id": 253,
       "panels": [],
-      "title": "Binance Futures (Japan)",
+      "title": "Binance Futures (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -4001,7 +4001,7 @@
       },
       "id": 134,
       "panels": [],
-      "title": "BitMEX (Ireland)",
+      "title": "BitMEX (Ireland, AWS)",
       "type": "row"
     },
     {
@@ -4911,7 +4911,7 @@
       },
       "id": 148,
       "panels": [],
-      "title": "BitStamp (Germany)",
+      "title": "BitStamp (Germany ?)",
       "type": "row"
     },
     {
@@ -5835,7 +5835,7 @@
       },
       "id": 4,
       "panels": [],
-      "title": "Coinbase PRO (USA, VA)",
+      "title": "Coinbase PRO (USA, AWS)",
       "type": "row"
     },
     {
@@ -6746,7 +6746,7 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Deribit (UK)",
+      "title": "Deribit (UK, Equinix LD4)",
       "type": "row"
     },
     {
@@ -7657,7 +7657,7 @@
       },
       "id": 150,
       "panels": [],
-      "title": "FTX (Singapore)",
+      "title": "FTX (Japan, AWS)",
       "type": "row"
     },
     {
@@ -8581,7 +8581,7 @@
       },
       "id": 116,
       "panels": [],
-      "title": "Gemini (USA, NJ)",
+      "title": "Gemini (USA, Equinix NY5)",
       "type": "row"
     },
     {
@@ -9490,7 +9490,7 @@
       },
       "id": 176,
       "panels": [],
-      "title": "HitBTC (Germany)",
+      "title": "HitBTC (UK, Equinix LD4)",
       "type": "row"
     },
     {
@@ -10414,7 +10414,7 @@
       },
       "id": 270,
       "panels": [],
-      "title": "Huobi (Singapore)",
+      "title": "Huobi (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -11348,7 +11348,7 @@
       },
       "id": 302,
       "panels": [],
-      "title": "Huobi Futures (Singapore)",
+      "title": "Huobi Futures (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -12282,7 +12282,7 @@
       },
       "id": 197,
       "panels": [],
-      "title": "Kraken (Ireland)",
+      "title": "Kraken (Costa Rica ?)",
       "type": "row"
     },
     {
@@ -13206,7 +13206,7 @@
       },
       "id": 268,
       "panels": [],
-      "title": "Kraken Futures (Ireland)",
+      "title": "Kraken Futures (Ireland, AWS)",
       "type": "row"
     },
     {
@@ -14140,7 +14140,7 @@
       },
       "id": 320,
       "panels": [],
-      "title": "KuCoin (South Korea)",
+      "title": "KuCoin (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -15074,7 +15074,7 @@
       },
       "id": 322,
       "panels": [],
-      "title": "KuCoin Futures (South Korea)",
+      "title": "KuCoin Futures (Japan, AWS ?)",
       "type": "row"
     },
     {
@@ -18295,5 +18295,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 17
+  "version": 18
 }
