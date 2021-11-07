@@ -983,6 +983,87 @@
       "fieldConfig": {
         "defaults": {
           "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 6
+      },
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
             "fixedColor": "rgb(31, 120, 193)",
             "mode": "fixed"
           },
@@ -1339,87 +1420,6 @@
       "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "UP"
-                },
-                "1": {
-                  "text": "DOWN"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.1
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 8
-      },
-      "id": 6,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Adapter",
-      "type": "stat"
-    },
-    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -1512,6 +1512,87 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Service",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 11
+      },
+      "id": 229,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
       "type": "stat"
     },
     {
@@ -1875,87 +1956,6 @@
       "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "UP"
-                },
-                "1": {
-                  "text": "DOWN"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.1
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 0,
-        "y": 13
-      },
-      "id": 229,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.3",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Adapter",
-      "type": "stat"
-    },
-    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -2238,7 +2238,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -2258,15 +2257,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -2276,13 +2275,13 @@
         "x": 2,
         "y": 19
       },
-      "id": 214,
+      "id": 219,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -2298,7 +2297,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"binance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2307,7 +2306,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -2830,6 +2829,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -2849,15 +2849,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2867,13 +2867,13 @@
         "x": 0,
         "y": 21
       },
-      "id": 219,
+      "id": 214,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -2889,7 +2889,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"binance\"}",
+          "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2898,7 +2898,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -3090,7 +3090,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -3110,15 +3109,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -3128,13 +3127,13 @@
         "x": 2,
         "y": 24
       },
-      "id": 258,
+      "id": 257,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -3151,7 +3150,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"binance-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"binance-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -3160,7 +3159,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -3688,6 +3687,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -3707,15 +3707,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -3725,13 +3725,13 @@
         "x": 0,
         "y": 26
       },
-      "id": 257,
+      "id": 258,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -3748,7 +3748,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"binance-futures\"}",
+          "expr": "time() - roq_process{source=\"binance-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -3757,7 +3757,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -3946,7 +3946,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -3966,15 +3965,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -3984,13 +3983,13 @@
         "x": 2,
         "y": 29
       },
-      "id": 136,
+      "id": 141,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -4006,14 +4005,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"bitmex\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -4533,6 +4532,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -4552,15 +4552,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -4570,13 +4570,13 @@
         "x": 0,
         "y": 31
       },
-      "id": 141,
+      "id": 136,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -4592,14 +4592,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"bitmex\"}",
+          "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -4789,7 +4789,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -4809,15 +4808,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -4827,13 +4826,13 @@
         "x": 2,
         "y": 34
       },
-      "id": 152,
+      "id": 169,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -4849,7 +4848,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"bitstamp\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -4858,7 +4857,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -5381,6 +5380,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -5400,15 +5400,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -5418,13 +5418,13 @@
         "x": 0,
         "y": 36
       },
-      "id": 169,
+      "id": 152,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -5440,7 +5440,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"bitstamp\"}",
+          "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -5449,7 +5449,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -5638,7 +5638,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -5658,15 +5657,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -5676,13 +5675,13 @@
         "x": 2,
         "y": 39
       },
-      "id": 74,
+      "id": 20,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -5698,14 +5697,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -6225,6 +6224,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -6244,15 +6244,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -6262,13 +6262,13 @@
         "x": 0,
         "y": 41
       },
-      "id": 20,
+      "id": 74,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -6284,14 +6284,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
+          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -6480,7 +6480,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -6500,15 +6499,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -6518,13 +6517,13 @@
         "x": 2,
         "y": 44
       },
-      "id": 75,
+      "id": 21,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -6540,16 +6539,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"deribit\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -7067,6 +7064,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7086,15 +7084,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -7104,13 +7102,13 @@
         "x": 0,
         "y": 46
       },
-      "id": 21,
+      "id": 75,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7126,14 +7124,16 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"deribit\"}",
+          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -7324,7 +7324,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7344,15 +7343,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -7362,13 +7361,13 @@
         "x": 2,
         "y": 49
       },
-      "id": 154,
+      "id": 159,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7384,7 +7383,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"ftx\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -7393,7 +7392,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -7916,6 +7915,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7935,15 +7935,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -7953,13 +7953,13 @@
         "x": 0,
         "y": 51
       },
-      "id": 159,
+      "id": 154,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7975,7 +7975,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"ftx\"}",
+          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -7984,7 +7984,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -8173,7 +8173,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -8193,15 +8192,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -8211,13 +8210,13 @@
         "x": 2,
         "y": 54
       },
-      "id": 121,
+      "id": 120,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8233,14 +8232,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"gemini\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -8758,6 +8757,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -8777,15 +8777,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -8795,13 +8795,13 @@
         "x": 0,
         "y": 56
       },
-      "id": 120,
+      "id": 121,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8817,14 +8817,14 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"gemini\"}",
+          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -9015,7 +9015,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -9035,15 +9034,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -9053,13 +9052,13 @@
         "x": 2,
         "y": 59
       },
-      "id": 178,
+      "id": 183,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9075,7 +9074,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"hitbtc\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9084,7 +9083,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -9607,6 +9606,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -9626,15 +9626,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -9644,13 +9644,13 @@
         "x": 0,
         "y": 61
       },
-      "id": 183,
+      "id": 178,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9666,7 +9666,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"hitbtc\"}",
+          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9675,7 +9675,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -9867,7 +9867,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -9887,15 +9886,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -9905,13 +9904,13 @@
         "x": 2,
         "y": 64
       },
-      "id": 282,
+      "id": 287,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9928,7 +9927,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"huobi\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"huobi\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9937,7 +9936,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -10465,6 +10464,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -10484,15 +10484,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -10502,13 +10502,13 @@
         "x": 0,
         "y": 66
       },
-      "id": 287,
+      "id": 282,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -10525,7 +10525,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"huobi\"}",
+          "expr": "time() - roq_process{source=\"huobi\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -10534,7 +10534,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -10726,7 +10726,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -10746,15 +10745,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -10764,13 +10763,13 @@
         "x": 2,
         "y": 69
       },
-      "id": 304,
+      "id": 307,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -10787,7 +10786,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"huobi-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"huobi-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -10796,7 +10795,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -11324,6 +11323,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -11343,15 +11343,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -11361,13 +11361,13 @@
         "x": 0,
         "y": 71
       },
-      "id": 307,
+      "id": 304,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -11384,7 +11384,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"huobi-futures\"}",
+          "expr": "time() - roq_process{source=\"huobi-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -11393,7 +11393,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -11584,7 +11584,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -11604,15 +11603,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -11622,13 +11621,13 @@
         "x": 2,
         "y": 74
       },
-      "id": 199,
+      "id": 205,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -11644,7 +11643,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kraken\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -11653,7 +11652,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -12176,6 +12175,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -12195,15 +12195,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -12213,13 +12213,13 @@
         "x": 0,
         "y": 76
       },
-      "id": 205,
+      "id": 199,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -12235,7 +12235,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"kraken\"}",
+          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12244,7 +12244,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -12436,7 +12436,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -12456,15 +12455,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -12474,13 +12473,13 @@
         "x": 2,
         "y": 79
       },
-      "id": 272,
+      "id": 275,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -12497,7 +12496,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kraken-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kraken-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12506,7 +12505,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -13034,6 +13033,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13053,15 +13053,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -13071,13 +13071,13 @@
         "x": 0,
         "y": 81
       },
-      "id": 275,
+      "id": 272,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13094,7 +13094,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kraken-futures\"}",
+          "expr": "time() - roq_process{source=\"kraken-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13103,7 +13103,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -13295,7 +13295,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13315,15 +13314,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -13333,13 +13332,13 @@
         "x": 2,
         "y": 84
       },
-      "id": 325,
+      "id": 331,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13356,7 +13355,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kucoin\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kucoin\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13365,7 +13364,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -13893,6 +13892,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13912,15 +13912,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -13930,13 +13930,13 @@
         "x": 0,
         "y": 86
       },
-      "id": 331,
+      "id": 325,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13953,7 +13953,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kucoin\"}",
+          "expr": "time() - roq_process{source=\"kucoin\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13962,7 +13962,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -14154,7 +14154,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -14174,15 +14173,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -14192,13 +14191,13 @@
         "x": 2,
         "y": 89
       },
-      "id": 326,
+      "id": 332,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14215,7 +14214,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kucoin-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kucoin-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14224,7 +14223,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -14752,6 +14751,7 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -14771,15 +14771,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -14789,13 +14789,13 @@
         "x": 0,
         "y": 91
       },
-      "id": 332,
+      "id": 326,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14812,7 +14812,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kucoin-futures\"}",
+          "expr": "time() - roq_process{source=\"kucoin-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14821,7 +14821,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -17177,7 +17177,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
+  "refresh": "5s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": [],
