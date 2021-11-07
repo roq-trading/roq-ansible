@@ -20,9 +20,11 @@
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
@@ -90,7 +92,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_celsius)",
@@ -155,7 +157,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_hertz) / 1000 / 1000 / 1000",
@@ -220,7 +222,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "irate(node_intr_total[1m])",
@@ -285,7 +287,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "node_memory_Active_bytes / node_memory_MemTotal_bytes",
@@ -349,7 +351,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "node_edac_uncorrectable_errors_total",
@@ -413,7 +415,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(node_filesystem_device_error)",
@@ -477,7 +479,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -544,7 +546,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_crit_celsius)",
@@ -608,7 +610,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_max_hertz) / 1000 / 1000 / 1000",
@@ -673,7 +675,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "irate(node_context_switches_total[1m])",
@@ -737,7 +739,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "node_memory_MemTotal_bytes",
@@ -802,7 +804,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "node_memory_Dirty_bytes",
@@ -867,7 +869,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(irate(node_disk_written_bytes_total[1m]))",
@@ -961,7 +963,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"clickhouse-server.service\",state=\"active\"})",
@@ -973,87 +975,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Service",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "UP"
-                },
-                "1": {
-                  "text": "DOWN"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.1
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 6
-      },
-      "id": 6,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Adapter",
       "type": "stat"
     },
     {
@@ -1099,7 +1020,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 6
       },
       "id": 235,
@@ -1121,7 +1042,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
@@ -1196,7 +1117,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 7,
         "y": 6
       },
       "id": 239,
@@ -1289,7 +1210,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 10,
         "y": 6
       },
       "id": 251,
@@ -1383,7 +1304,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 13,
         "y": 6
       },
       "id": 233,
@@ -1416,6 +1337,87 @@
       "title": "Export (bytes)",
       "transparent": true,
       "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-clickhouse.service\",state=\"active\"}[10s])) or vector(0)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
+      "type": "stat"
     },
     {
       "collapsed": false,
@@ -1498,7 +1500,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"redis-server.service\",state=\"active\"})",
@@ -1510,87 +1512,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Service",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "UP"
-                },
-                "1": {
-                  "text": "DOWN"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.1
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 11
-      },
-      "id": 229,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Adapter",
       "type": "stat"
     },
     {
@@ -1636,7 +1557,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 11
       },
       "id": 247,
@@ -1658,7 +1579,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(roq_export{source=\"redis\", name=\"messages\"})",
@@ -1733,7 +1654,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 7,
         "y": 11
       },
       "id": 248,
@@ -1826,7 +1747,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 10,
         "y": 11
       },
       "id": 249,
@@ -1919,7 +1840,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 13,
         "y": 11
       },
       "id": 250,
@@ -1952,6 +1873,87 @@
       "title": "Export (bytes)",
       "transparent": true,
       "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 13
+      },
+      "id": 229,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.3",
+      "targets": [
+        {
+          "expr": "absent(rate(node_systemd_unit_state{name=\"roq-redis.service\",state=\"active\"}[10s])) or vector(0)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Adapter",
+      "type": "stat"
     },
     {
       "collapsed": false,
@@ -2034,7 +2036,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -2092,7 +2094,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 16
       },
       "id": 318,
@@ -2114,7 +2116,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -2212,7 +2214,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"binance\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -2236,173 +2238,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 19
-      },
-      "id": 294,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"binance\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 19
-      },
-      "id": 217,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"binance\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -2422,31 +2258,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 19
       },
-      "id": 219,
+      "id": 214,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -2459,10 +2295,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"binance\"}",
+          "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2471,7 +2307,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -2515,7 +2351,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 19
       },
       "id": 221,
@@ -2537,7 +2373,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"binance\"})",
@@ -2613,7 +2449,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 19
       },
       "id": 222,
@@ -2703,7 +2539,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 19
       },
       "id": 223,
@@ -2788,6 +2624,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 19
+      },
+      "id": 351,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"binance\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"binance\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -2795,7 +2724,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 19
       },
       "id": 224,
@@ -2859,7 +2788,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 19
       },
       "id": 225,
@@ -2877,7 +2806,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -2901,7 +2830,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -2921,15 +2849,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -2939,13 +2867,13 @@
         "x": 0,
         "y": 21
       },
-      "id": 214,
+      "id": 219,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -2958,10 +2886,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"binance\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2970,7 +2898,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -3017,7 +2945,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 21
       },
       "id": 261,
@@ -3039,7 +2967,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -3137,7 +3065,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -3162,174 +3090,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 24
-      },
-      "id": 215,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"binance-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 24
-      },
-      "id": 256,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"binance-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -3349,31 +3110,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 24
       },
-      "id": 257,
+      "id": 258,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -3386,11 +3147,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"binance-futures\"}",
+          "expr": "time() - roq_process{source=\"binance-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -3399,7 +3160,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -3443,7 +3204,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 24
       },
       "id": 262,
@@ -3465,7 +3226,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -3542,7 +3303,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 24
       },
       "id": 263,
@@ -3633,7 +3394,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 24
       },
       "id": 264,
@@ -3719,6 +3480,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 24
+      },
+      "id": 349,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"binance-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -3726,7 +3580,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 24
       },
       "id": 265,
@@ -3791,7 +3645,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 24
       },
       "id": 266,
@@ -3809,7 +3663,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -3834,7 +3688,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -3854,15 +3707,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -3872,13 +3725,13 @@
         "x": 0,
         "y": 26
       },
-      "id": 258,
+      "id": 257,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -3891,11 +3744,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"binance-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"binance-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -3904,7 +3757,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -3951,7 +3804,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 26
       },
       "id": 142,
@@ -3973,7 +3826,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -4071,7 +3924,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -4093,168 +3946,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 29
-      },
-      "id": 137,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 29
-      },
-      "id": 139,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -4274,31 +3966,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 29
       },
-      "id": 141,
+      "id": 136,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -4311,17 +4003,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"bitmex\"}",
+          "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -4365,7 +4057,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 29
       },
       "id": 146,
@@ -4387,7 +4079,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitmex\"})",
@@ -4461,7 +4153,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 29
       },
       "id": 143,
@@ -4551,7 +4243,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 29
       },
       "id": 189,
@@ -4636,6 +4328,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 29
+      },
+      "id": 350,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"bitmex\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"bitmex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -4643,7 +4428,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 29
       },
       "id": 144,
@@ -4707,7 +4492,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 29
       },
       "id": 145,
@@ -4725,7 +4510,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -4748,7 +4533,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -4768,15 +4552,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -4786,13 +4570,13 @@
         "x": 0,
         "y": 31
       },
-      "id": 136,
+      "id": 141,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -4805,17 +4589,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"bitmex\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -4861,7 +4645,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 31
       },
       "id": 22,
@@ -4883,7 +4667,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -4981,7 +4765,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5005,172 +4789,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 34
-      },
-      "id": 165,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 34
-      },
-      "id": 167,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -5190,31 +4809,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 34
       },
-      "id": 169,
+      "id": 152,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -5227,10 +4846,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"bitstamp\"}",
+          "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -5239,7 +4858,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -5283,7 +4902,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 34
       },
       "id": 171,
@@ -5305,7 +4924,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitstamp\"})",
@@ -5381,7 +5000,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 34
       },
       "id": 172,
@@ -5471,7 +5090,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 34
       },
       "id": 190,
@@ -5556,6 +5175,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 34
+      },
+      "id": 348,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"bitstamp\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"bitstamp\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -5563,7 +5275,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 34
       },
       "id": 173,
@@ -5627,7 +5339,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 34
       },
       "id": 174,
@@ -5645,7 +5357,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -5669,7 +5381,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -5689,15 +5400,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -5707,13 +5418,13 @@
         "x": 0,
         "y": 36
       },
-      "id": 152,
+      "id": 169,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -5726,10 +5437,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"bitstamp\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -5738,7 +5449,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -5785,7 +5496,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 36
       },
       "id": 160,
@@ -5807,7 +5518,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -5905,7 +5616,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5927,168 +5638,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 39
-      },
-      "id": 32,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 39
-      },
-      "id": 33,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -6108,31 +5658,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 39
       },
-      "id": 20,
+      "id": 74,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -6145,17 +5695,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
+          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -6199,7 +5749,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 39
       },
       "id": 95,
@@ -6221,7 +5771,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
@@ -6295,7 +5845,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 39
       },
       "id": 108,
@@ -6385,7 +5935,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 39
       },
       "id": 191,
@@ -6470,6 +6020,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 39
+      },
+      "id": 347,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"coinbase-pro\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -6477,7 +6120,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 39
       },
       "id": 70,
@@ -6541,7 +6184,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 39
       },
       "id": 132,
@@ -6559,7 +6202,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -6582,7 +6225,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -6602,15 +6244,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -6620,13 +6262,13 @@
         "x": 0,
         "y": 41
       },
-      "id": 74,
+      "id": 20,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -6639,17 +6281,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"coinbase-pro\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -6696,7 +6338,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 41
       },
       "id": 124,
@@ -6718,7 +6360,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -6816,7 +6458,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -6838,168 +6480,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 44
-      },
-      "id": 34,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 44
-      },
-      "id": 35,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7019,31 +6500,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 44
       },
-      "id": 21,
+      "id": 75,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7056,17 +6537,19 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"deribit\"}",
+          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
           "instant": true,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -7110,7 +6593,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 44
       },
       "id": 109,
@@ -7132,7 +6615,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"deribit\"})",
@@ -7206,7 +6689,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 44
       },
       "id": 96,
@@ -7294,7 +6777,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 44
       },
       "id": 192,
@@ -7379,6 +6862,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 44
+      },
+      "id": 346,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"deribit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -7386,7 +6962,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 44
       },
       "id": 71,
@@ -7450,7 +7026,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 44
       },
       "id": 131,
@@ -7468,7 +7044,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -7491,7 +7067,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7511,15 +7086,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -7529,13 +7104,13 @@
         "x": 0,
         "y": 46
       },
-      "id": 75,
+      "id": 21,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7548,19 +7123,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"deribit\"}",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -7607,7 +7180,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 46
       },
       "id": 184,
@@ -7629,7 +7202,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -7727,7 +7300,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -7751,172 +7324,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 49
-      },
-      "id": 155,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 49
-      },
-      "id": 157,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -7936,31 +7344,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 49
       },
-      "id": 159,
+      "id": 154,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7973,10 +7381,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"ftx\"}",
+          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -7985,7 +7393,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -8029,7 +7437,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 49
       },
       "id": 161,
@@ -8051,7 +7459,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"ftx\"})",
@@ -8127,7 +7535,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 49
       },
       "id": 162,
@@ -8217,7 +7625,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 49
       },
       "id": 193,
@@ -8302,6 +7710,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 49
+      },
+      "id": 345,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"ftx\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -8309,7 +7810,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 49
       },
       "id": 163,
@@ -8373,7 +7874,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 49
       },
       "id": 164,
@@ -8391,7 +7892,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -8415,7 +7916,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -8435,15 +7935,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -8453,13 +7953,13 @@
         "x": 0,
         "y": 51
       },
-      "id": 154,
+      "id": 159,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8472,10 +7972,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"ftx\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -8484,7 +7984,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -8531,7 +8031,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 51
       },
       "id": 297,
@@ -8553,7 +8053,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -8651,7 +8151,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -8673,168 +8173,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 54
-      },
-      "id": 118,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 54
-      },
-      "id": 119,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -8854,31 +8193,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 54
       },
-      "id": 120,
+      "id": 121,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8891,17 +8230,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"gemini\"}",
+          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -8945,7 +8284,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 54
       },
       "id": 125,
@@ -8967,7 +8306,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"gemini\"})",
@@ -9041,7 +8380,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 54
       },
       "id": 126,
@@ -9129,7 +8468,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 54
       },
       "id": 194,
@@ -9214,6 +8553,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 54
+      },
+      "id": 352,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"gemini\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -9221,7 +8653,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 54
       },
       "id": 127,
@@ -9285,7 +8717,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 54
       },
       "id": 130,
@@ -9303,7 +8735,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -9326,7 +8758,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -9346,15 +8777,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -9364,13 +8795,13 @@
         "x": 0,
         "y": 56
       },
-      "id": 121,
+      "id": 120,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9383,17 +8814,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"gemini\"}",
           "instant": true,
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -9440,7 +8871,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 56
       },
       "id": 300,
@@ -9462,7 +8893,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -9560,7 +8991,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -9584,172 +9015,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 59
-      },
-      "id": 179,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 59
-      },
-      "id": 181,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -9769,31 +9035,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 59
       },
-      "id": 183,
+      "id": 178,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9806,10 +9072,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"hitbtc\"}",
+          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9818,7 +9084,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -9862,7 +9128,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 59
       },
       "id": 185,
@@ -9884,7 +9150,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"hitbtc\"})",
@@ -9960,7 +9226,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 59
       },
       "id": 186,
@@ -10050,7 +9316,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 59
       },
       "id": 195,
@@ -10135,6 +9401,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 59
+      },
+      "id": 353,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"hitbtc\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -10142,7 +9501,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 59
       },
       "id": 187,
@@ -10206,7 +9565,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 59
       },
       "id": 188,
@@ -10224,7 +9583,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -10248,7 +9607,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -10268,15 +9626,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -10286,13 +9644,13 @@
         "x": 0,
         "y": 61
       },
-      "id": 178,
+      "id": 183,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -10305,10 +9663,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"hitbtc\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -10317,7 +9675,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -10364,7 +9722,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 61
       },
       "id": 204,
@@ -10386,7 +9744,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -10484,7 +9842,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -10509,174 +9867,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 64
-      },
-      "id": 283,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"huobi\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 64
-      },
-      "id": 285,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"huobi\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -10696,31 +9887,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 64
       },
-      "id": 287,
+      "id": 282,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -10733,11 +9924,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"huobi\"}",
+          "expr": "time() - roq_process{source=\"huobi\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -10746,7 +9937,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -10790,7 +9981,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 64
       },
       "id": 289,
@@ -10812,7 +10003,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -10889,7 +10080,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 64
       },
       "id": 290,
@@ -10980,7 +10171,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 64
       },
       "id": 291,
@@ -11066,6 +10257,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 64
+      },
+      "id": 354,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"huobi\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"huobi\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -11073,7 +10357,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 64
       },
       "id": 292,
@@ -11138,7 +10422,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 64
       },
       "id": 293,
@@ -11156,7 +10440,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -11181,7 +10465,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -11201,15 +10484,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -11219,13 +10502,13 @@
         "x": 0,
         "y": 66
       },
-      "id": 282,
+      "id": 287,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -11238,11 +10521,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"huobi\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"huobi\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -11251,7 +10534,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -11298,7 +10581,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 66
       },
       "id": 288,
@@ -11320,7 +10603,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -11418,7 +10701,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -11443,174 +10726,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 69
-      },
-      "id": 305,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"huobi-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 69
-      },
-      "id": 306,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"huobi-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -11630,31 +10746,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 69
       },
-      "id": 307,
+      "id": 304,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -11667,11 +10783,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"huobi-futures\"}",
+          "expr": "time() - roq_process{source=\"huobi-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -11680,7 +10796,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -11724,7 +10840,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 69
       },
       "id": 309,
@@ -11746,7 +10862,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -11823,7 +10939,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 69
       },
       "id": 310,
@@ -11914,7 +11030,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 69
       },
       "id": 311,
@@ -12000,6 +11116,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 69
+      },
+      "id": 355,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"huobi-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"huobi-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -12007,7 +11216,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 69
       },
       "id": 312,
@@ -12072,7 +11281,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 69
       },
       "id": 313,
@@ -12090,7 +11299,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -12115,7 +11324,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -12135,15 +11343,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -12153,13 +11361,13 @@
         "x": 0,
         "y": 71
       },
-      "id": 304,
+      "id": 307,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -12172,11 +11380,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"huobi-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"huobi-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12185,7 +11393,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -12232,7 +11440,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 71
       },
       "id": 308,
@@ -12254,7 +11462,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -12352,7 +11560,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -12376,172 +11584,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 74
-      },
-      "id": 200,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 74
-      },
-      "id": 202,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -12561,31 +11604,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 74
       },
-      "id": 205,
+      "id": 199,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -12598,10 +11641,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "roq_exceptions{source=\"kraken\"}",
+          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12610,7 +11653,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -12654,7 +11697,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 74
       },
       "id": 206,
@@ -12676,7 +11719,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"kraken\"})",
@@ -12752,7 +11795,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 74
       },
       "id": 207,
@@ -12842,7 +11885,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 74
       },
       "id": 208,
@@ -12927,6 +11970,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 74
+      },
+      "id": 356,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kraken\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -12934,7 +12070,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 74
       },
       "id": 209,
@@ -12998,7 +12134,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 74
       },
       "id": 343,
@@ -13016,7 +12152,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -13040,7 +12176,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13060,15 +12195,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -13078,13 +12213,13 @@
         "x": 0,
         "y": 76
       },
-      "id": 199,
+      "id": 205,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13097,10 +12232,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
-          "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kraken\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13109,7 +12244,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -13156,7 +12291,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 76
       },
       "id": 298,
@@ -13178,7 +12313,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -13276,7 +12411,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -13301,174 +12436,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 79
-      },
-      "id": 273,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kraken-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 79
-      },
-      "id": 274,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kraken-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13488,31 +12456,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 79
       },
-      "id": 275,
+      "id": 272,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13525,11 +12493,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kraken-futures\"}",
+          "expr": "time() - roq_process{source=\"kraken-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13538,7 +12506,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -13582,7 +12550,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 79
       },
       "id": 276,
@@ -13604,7 +12572,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -13681,7 +12649,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 79
       },
       "id": 277,
@@ -13772,7 +12740,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 79
       },
       "id": 278,
@@ -13858,6 +12826,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 79
+      },
+      "id": 357,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"kraken-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kraken-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -13865,7 +12926,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 79
       },
       "id": 279,
@@ -13930,7 +12991,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 79
       },
       "id": 280,
@@ -13948,7 +13009,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -13973,7 +13034,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -13993,15 +13053,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -14011,13 +13071,13 @@
         "x": 0,
         "y": 81
       },
-      "id": 272,
+      "id": 275,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14030,11 +13090,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kraken-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kraken-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14043,7 +13103,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -14090,7 +13150,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 81
       },
       "id": 299,
@@ -14112,7 +13172,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -14210,7 +13270,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -14235,174 +13295,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 84
-      },
-      "id": 327,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kucoin\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 84
-      },
-      "id": 329,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kucoin\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -14422,31 +13315,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 84
       },
-      "id": 331,
+      "id": 325,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14459,11 +13352,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kucoin\"}",
+          "expr": "time() - roq_process{source=\"kucoin\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14472,7 +13365,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -14516,7 +13409,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 84
       },
       "id": 335,
@@ -14538,7 +13431,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -14615,7 +13508,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 84
       },
       "id": 337,
@@ -14706,7 +13599,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 84
       },
       "id": 339,
@@ -14792,6 +13685,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 84
+      },
+      "id": 358,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kucoin\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -14799,7 +13785,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 84
       },
       "id": 341,
@@ -14864,7 +13850,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 84
       },
       "id": 210,
@@ -14882,7 +13868,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -14907,7 +13893,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -14927,15 +13912,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -14945,13 +13930,13 @@
         "x": 0,
         "y": 86
       },
-      "id": 325,
+      "id": 331,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14964,11 +13949,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kucoin\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kucoin\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14977,7 +13962,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -15024,7 +14009,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 86
       },
       "id": 333,
@@ -15046,7 +14031,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -15144,7 +14129,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -15169,174 +14154,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 2,
-        "y": 89
-      },
-      "id": 328,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kucoin-futures\",connection=\"market_data\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Market Data",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "READY"
-                },
-                "1": {
-                  "text": "NOT READY"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 4,
-        "y": 89
-      },
-      "id": 330,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "max(absent(roq_updated{source=\"kucoin-futures\",connection=\"order_manager\",state=\"ready\"}) OR vector(0))",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Order Manager",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
+          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -15356,31 +14174,31 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 1
+                "value": 0
               },
               {
                 "color": "#d44a3a",
-                "value": 5
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "s"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 89
       },
-      "id": 332,
+      "id": 326,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
+        "colorMode": "none",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -15393,11 +14211,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "roq_exceptions{source=\"kucoin-futures\"}",
+          "expr": "time() - roq_process{source=\"kucoin-futures\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -15406,7 +14224,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Exceptions",
+      "title": "Uptime",
       "transparent": true,
       "type": "stat"
     },
@@ -15450,7 +14268,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 8,
+        "x": 4,
         "y": 89
       },
       "id": 336,
@@ -15472,7 +14290,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -15549,7 +14367,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 10,
+        "x": 6,
         "y": 89
       },
       "id": 338,
@@ -15640,7 +14458,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 13,
+        "x": 9,
         "y": 89
       },
       "id": 340,
@@ -15726,6 +14544,99 @@
               }
             ]
           },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 12,
+        "y": 89
+      },
+      "id": 359,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kucoin-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "ms"
         },
         "overrides": []
@@ -15733,7 +14644,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 16,
+        "x": 15,
         "y": 89
       },
       "id": 342,
@@ -15798,7 +14709,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 19,
+        "x": 18,
         "y": 89
       },
       "id": 344,
@@ -15816,7 +14727,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -15841,7 +14752,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 0,
           "mappings": [
             {
               "options": {
@@ -15861,15 +14771,15 @@
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
+                "value": 1
               },
               {
                 "color": "#d44a3a",
-                "value": 1
+                "value": 5
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -15879,13 +14789,13 @@
         "x": 0,
         "y": 91
       },
-      "id": 326,
+      "id": 332,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
+        "colorMode": "background",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -15898,11 +14808,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "time() - roq_process{source=\"kucoin-futures\",name=\"start_time\"}",
+          "expr": "roq_exceptions{source=\"kucoin-futures\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -15911,7 +14821,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Uptime",
+      "title": "Exceptions",
       "transparent": true,
       "type": "stat"
     },
@@ -15958,7 +14868,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 6,
+        "x": 2,
         "y": 91
       },
       "id": 334,
@@ -15980,7 +14890,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -18268,7 +17178,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -18295,5 +17205,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 18
+  "version": 19
 }
