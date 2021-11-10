@@ -2311,25 +2311,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2343,41 +2362,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 19
       },
-      "id": 221,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 360,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"binance\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"binance\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"binance\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -2385,9 +2399,101 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 19
+      },
+      "id": 223,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"binance\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -2448,7 +2554,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 19
       },
       "id": 222,
@@ -2538,99 +2644,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 19
-      },
-      "id": 223,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"binance\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 19
       },
       "id": 351,
@@ -2723,7 +2737,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 19
       },
       "id": 224,
@@ -2752,7 +2766,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -2787,7 +2801,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 19
       },
       "id": 225,
@@ -2817,7 +2831,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -2905,40 +2919,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2948,13 +2959,13 @@
         "x": 2,
         "y": 21
       },
-      "id": 261,
+      "id": 221,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -2970,8 +2981,8 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"binance\", event=\"connect\"}) - max(roq_clients{source=\"binance\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"binance\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2980,7 +2991,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -3164,25 +3175,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -3196,42 +3226,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 24
       },
-      "id": 262,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 361,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"binance-futures\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"binance-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"binance-futures\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -3239,9 +3263,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 24
+      },
+      "id": 264,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -3302,7 +3419,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 24
       },
       "id": 263,
@@ -3393,100 +3510,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 24
-      },
-      "id": 264,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance-futures\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 24
       },
       "id": 349,
@@ -3579,7 +3603,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 24
       },
       "id": 265,
@@ -3609,7 +3633,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -3644,7 +3668,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 24
       },
       "id": 266,
@@ -3675,7 +3699,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -3764,40 +3788,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -3807,13 +3828,13 @@
         "x": 2,
         "y": 26
       },
-      "id": 142,
+      "id": 262,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -3830,7 +3851,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"binance-futures\", event=\"connect\"}) - max(roq_clients{source=\"binance-futures\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"binance-futures\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -3839,7 +3861,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -4017,25 +4039,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -4049,49 +4090,138 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 29
       },
-      "id": 146,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 362,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"bitmex\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"bitmex\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"bitmex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 29
+      },
+      "id": 189,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"bitmex\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitmex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -4152,7 +4282,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 29
       },
       "id": 143,
@@ -4242,99 +4372,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 29
-      },
-      "id": 189,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"bitmex\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitmex\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 29
       },
       "id": 350,
@@ -4427,7 +4465,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 29
       },
       "id": 144,
@@ -4456,7 +4494,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -4491,7 +4529,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 29
       },
       "id": 145,
@@ -4520,7 +4558,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -4606,6 +4644,7 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -4614,31 +4653,28 @@
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -4648,7 +4684,7 @@
         "x": 2,
         "y": 31
       },
-      "id": 22,
+      "id": 146,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
@@ -4670,17 +4706,15 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"bitmex\", event=\"connect\"}) - max(roq_clients{source=\"bitmex\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"bitmex\"})",
+          "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -4862,25 +4896,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -4894,41 +4947,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 34
       },
-      "id": 171,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 363,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"bitstamp\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"bitstamp\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"bitstamp\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -4936,9 +4984,101 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 34
+      },
+      "id": 190,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"bitstamp\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitstamp\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -4999,7 +5139,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 34
       },
       "id": 172,
@@ -5089,99 +5229,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 34
-      },
-      "id": 190,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"bitstamp\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitstamp\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 34
       },
       "id": 348,
@@ -5274,7 +5322,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 34
       },
       "id": 173,
@@ -5303,7 +5351,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -5338,7 +5386,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 34
       },
       "id": 174,
@@ -5368,7 +5416,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -5456,40 +5504,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -5499,13 +5544,13 @@
         "x": 2,
         "y": 36
       },
-      "id": 160,
+      "id": 171,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -5521,8 +5566,8 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"bitstamp\", event=\"connect\"}) - max(roq_clients{source=\"bitstamp\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"bitstamp\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -5531,7 +5576,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -5709,25 +5754,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -5741,49 +5805,138 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 39
       },
-      "id": 95,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 364,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"coinbase-pro\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"coinbase-pro\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 39
+      },
+      "id": 191,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -5844,7 +5997,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 39
       },
       "id": 108,
@@ -5934,99 +6087,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 39
-      },
-      "id": 191,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 39
       },
       "id": 347,
@@ -6119,7 +6180,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 39
       },
       "id": 70,
@@ -6148,7 +6209,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -6183,7 +6244,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 39
       },
       "id": 132,
@@ -6212,7 +6273,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -6298,40 +6359,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -6341,13 +6399,13 @@
         "x": 2,
         "y": 41
       },
-      "id": 124,
+      "id": 95,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -6363,17 +6421,15 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"coinbase-pro\", event=\"connect\"}) - max(roq_clients{source=\"coinbase-pro\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
+          "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -6551,25 +6607,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -6583,49 +6658,138 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 44
       },
-      "id": 109,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 365,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"deribit\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"deribit\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"deribit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 44
+      },
+      "id": 192,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -6686,7 +6850,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 44
       },
       "id": 96,
@@ -6774,99 +6938,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 44
-      },
-      "id": 192,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 44
       },
       "id": 346,
@@ -6959,7 +7031,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 44
       },
       "id": 71,
@@ -6988,7 +7060,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -7023,7 +7095,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 44
       },
       "id": 131,
@@ -7052,7 +7124,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -7140,40 +7212,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -7183,13 +7252,13 @@
         "x": 2,
         "y": 46
       },
-      "id": 184,
+      "id": 109,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -7205,17 +7274,15 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"deribit\", event=\"connect\"}) - max(roq_clients{source=\"deribit\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"deribit\"})",
+          "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -7397,25 +7464,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -7429,41 +7515,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 49
       },
-      "id": 161,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 366,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"ftx\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"ftx\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"ftx\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -7471,9 +7552,101 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 49
+      },
+      "id": 193,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -7534,7 +7707,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 49
       },
       "id": 162,
@@ -7624,99 +7797,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 49
-      },
-      "id": 193,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 49
       },
       "id": 345,
@@ -7809,7 +7890,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 49
       },
       "id": 163,
@@ -7838,7 +7919,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -7873,7 +7954,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 49
       },
       "id": 164,
@@ -7903,7 +7984,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -7991,40 +8072,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -8034,13 +8112,13 @@
         "x": 2,
         "y": 51
       },
-      "id": 297,
+      "id": 161,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8056,8 +8134,8 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"ftx\", event=\"connect\"}) - max(roq_clients{source=\"ftx\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"ftx\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -8066,7 +8144,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -8244,25 +8322,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -8276,49 +8373,138 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 54
       },
-      "id": 125,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 367,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"gemini\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"gemini\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"gemini\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 54
+      },
+      "id": 194,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -8379,7 +8565,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 54
       },
       "id": 126,
@@ -8467,99 +8653,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 54
-      },
-      "id": 194,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 54
       },
       "id": 352,
@@ -8652,7 +8746,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 54
       },
       "id": 127,
@@ -8681,7 +8775,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -8716,7 +8810,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 54
       },
       "id": 130,
@@ -8745,7 +8839,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -8831,40 +8925,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -8874,13 +8965,13 @@
         "x": 2,
         "y": 56
       },
-      "id": 300,
+      "id": 125,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -8896,17 +8987,15 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"gemini\", event=\"connect\"}) - max(roq_clients{source=\"gemini\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"gemini\"})",
+          "format": "time_series",
           "instant": true,
-          "interval": "",
-          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -9088,25 +9177,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -9120,41 +9228,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 59
       },
-      "id": 185,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 368,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"hitbtc\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"hitbtc\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"hitbtc\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -9162,9 +9265,101 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 59
+      },
+      "id": 195,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -9225,7 +9420,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 59
       },
       "id": 186,
@@ -9315,99 +9510,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 59
-      },
-      "id": 195,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 59
       },
       "id": 353,
@@ -9500,7 +9603,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 59
       },
       "id": 187,
@@ -9529,7 +9632,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -9564,7 +9667,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 59
       },
       "id": 188,
@@ -9594,7 +9697,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -9682,40 +9785,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -9725,13 +9825,13 @@
         "x": 2,
         "y": 61
       },
-      "id": 204,
+      "id": 185,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -9747,8 +9847,8 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"hitbtc\", event=\"connect\"}) - max(roq_clients{source=\"hitbtc\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"hitbtc\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -9757,7 +9857,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -9941,25 +10041,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -9973,42 +10092,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 64
       },
-      "id": 289,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 369,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"huobi\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"huobi\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"huobi\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -10016,9 +10129,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 64
+      },
+      "id": 291,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"huobi\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -10079,7 +10285,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 64
       },
       "id": 290,
@@ -10170,100 +10376,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 64
-      },
-      "id": 291,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"huobi\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 64
       },
       "id": 354,
@@ -10356,7 +10469,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 64
       },
       "id": 292,
@@ -10386,7 +10499,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -10421,7 +10534,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 64
       },
       "id": 293,
@@ -10452,7 +10565,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -10541,40 +10654,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -10584,13 +10694,13 @@
         "x": 2,
         "y": 66
       },
-      "id": 288,
+      "id": 289,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -10607,7 +10717,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"huobi\", event=\"connect\"}) - max(roq_clients{source=\"huobi\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"huobi\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -10616,7 +10727,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -10800,25 +10911,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -10832,42 +10962,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 69
       },
-      "id": 309,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 370,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"huobi-futures\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"huobi-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"huobi-futures\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -10875,9 +10999,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 69
+      },
+      "id": 311,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"huobi-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -10938,7 +11155,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 69
       },
       "id": 310,
@@ -11029,100 +11246,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 69
-      },
-      "id": 311,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"huobi-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi-futures\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 69
       },
       "id": 355,
@@ -11215,7 +11339,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 69
       },
       "id": 312,
@@ -11245,7 +11369,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -11280,7 +11404,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 69
       },
       "id": 313,
@@ -11311,7 +11435,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -11400,40 +11524,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -11443,13 +11564,13 @@
         "x": 2,
         "y": 71
       },
-      "id": 308,
+      "id": 309,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -11466,7 +11587,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"huobi-futures\", event=\"connect\"}) - max(roq_clients{source=\"huobi-futures\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"huobi-futures\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -11475,7 +11597,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -11657,25 +11779,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -11689,41 +11830,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 74
       },
-      "id": 206,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 371,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "sum(roq_events_count{source=\"kraken\"})",
-          "format": "time_series",
-          "instant": true,
+          "exemplar": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kraken\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kraken\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -11731,9 +11867,101 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 74
+      },
+      "id": 208,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -11794,7 +12022,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 74
       },
       "id": 207,
@@ -11884,99 +12112,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 74
-      },
-      "id": 208,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 74
       },
       "id": 356,
@@ -12069,7 +12205,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 74
       },
       "id": 209,
@@ -12098,7 +12234,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -12133,7 +12269,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 74
       },
       "id": 343,
@@ -12163,7 +12299,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -12251,40 +12387,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -12294,13 +12427,13 @@
         "x": 2,
         "y": 76
       },
-      "id": 298,
+      "id": 206,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -12316,8 +12449,8 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "max(roq_clients{source=\"kraken\", event=\"connect\"}) - max(roq_clients{source=\"kraken\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"kraken\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -12326,7 +12459,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -12510,25 +12643,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -12542,42 +12694,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 79
       },
-      "id": 276,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 372,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"kraken-futures\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kraken-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kraken-futures\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -12585,9 +12731,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 79
+      },
+      "id": 278,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kraken-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -12648,7 +12887,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 79
       },
       "id": 277,
@@ -12739,100 +12978,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 79
-      },
-      "id": 278,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kraken-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken-futures\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 79
       },
       "id": 357,
@@ -12925,7 +13071,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 79
       },
       "id": 279,
@@ -12955,7 +13101,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -12990,7 +13136,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 79
       },
       "id": 280,
@@ -13021,7 +13167,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -13110,40 +13256,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -13153,13 +13296,13 @@
         "x": 2,
         "y": 81
       },
-      "id": 299,
+      "id": 276,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -13176,7 +13319,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"kraken-futures\", event=\"connect\"}) - max(roq_clients{source=\"kraken-futures\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"kraken-futures\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -13185,7 +13329,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -13369,25 +13513,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -13401,42 +13564,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 84
       },
-      "id": 335,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 373,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"kucoin\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kucoin\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kucoin\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -13444,9 +13601,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 84
+      },
+      "id": 339,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -13507,7 +13757,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 84
       },
       "id": 337,
@@ -13598,100 +13848,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 84
-      },
-      "id": 339,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 84
       },
       "id": 358,
@@ -13784,7 +13941,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 84
       },
       "id": 341,
@@ -13814,7 +13971,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -13849,7 +14006,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 84
       },
       "id": 210,
@@ -13880,7 +14037,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -13969,40 +14126,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -14012,13 +14166,13 @@
         "x": 2,
         "y": 86
       },
-      "id": 333,
+      "id": 335,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14035,7 +14189,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"kucoin\", event=\"connect\"}) - max(roq_clients{source=\"kucoin\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"kucoin\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14044,7 +14199,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -14228,25 +14383,44 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          ],
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -14260,42 +14434,36 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "µs"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 2,
+        "h": 4,
+        "w": 3,
         "x": 4,
         "y": 89
       },
-      "id": 336,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 374,
       "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
+        "legend": {
           "calcs": [
-            "lastNotNull"
+            "mean",
+            "max"
           ],
-          "fields": "",
-          "values": false
+          "displayMode": "hidden",
+          "placement": "right"
         },
-        "text": {},
-        "textMode": "auto"
+        "tooltip": {
+          "mode": "single"
+        }
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "8.0.3",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(roq_events_count{source=\"kucoin-futures\"})",
-          "format": "time_series",
-          "instant": true,
+          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kucoin-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kucoin-futures\"}[1m]) / 1000",
+          "instant": false,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -14303,9 +14471,102 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Events (total)",
+      "title": "IPC (latency)",
       "transparent": true,
-      "type": "stat"
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 89
+      },
+      "id": 340,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "datasource": null,
@@ -14366,7 +14627,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 6,
+        "x": 10,
         "y": 89
       },
       "id": 338,
@@ -14457,100 +14718,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 9,
-        "y": 89
-      },
-      "id": 340,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "hidden",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.0.3",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin-futures\"}[1m]) / 1000",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Processing (latency)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "µs"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 3,
-        "x": 12,
+        "x": 13,
         "y": 89
       },
       "id": 359,
@@ -14643,7 +14811,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 15,
+        "x": 16,
         "y": 89
       },
       "id": 342,
@@ -14673,7 +14841,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "External (latency)",
+      "title": "Ping (latency)",
       "transparent": true,
       "type": "timeseries"
     },
@@ -14708,7 +14876,7 @@
       "gridPos": {
         "h": 4,
         "w": 3,
-        "x": 18,
+        "x": 19,
         "y": 89
       },
       "id": 344,
@@ -14739,7 +14907,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Disconnects",
+      "title": "Disconnects (total)",
       "transparent": true,
       "type": "bargauge"
     },
@@ -14828,40 +14996,37 @@
     {
       "cacheTimeout": null,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "text": ""
+                "match": "null",
+                "result": {
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -14871,13 +15036,13 @@
         "x": 2,
         "y": 91
       },
-      "id": 334,
+      "id": 336,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -14894,7 +15059,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(roq_clients{source=\"kucoin-futures\", event=\"connect\"}) - max(roq_clients{source=\"kucoin-futures\", event=\"disconnect\"})",
+          "expr": "sum(roq_events_count{source=\"kucoin-futures\"})",
+          "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -14903,7 +15069,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Clients",
+      "title": "Events (total)",
       "transparent": true,
       "type": "stat"
     },
@@ -17177,7 +17343,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "30s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": [],
@@ -17185,7 +17351,7 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -17205,5 +17371,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 19
+  "version": 20
 }
