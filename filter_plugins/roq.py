@@ -10,7 +10,7 @@ def format_realpath(value):
     # note! realpath will follow symlinks, e.g. /var => /private/var on OSX
     return normpath(value).replace('//', '/')
 
-def _format_toml_simple(value):
+def format_toml_simple(value):
     if isinstance(value, Mapping):
         assert False, "mapping not allowed"
     elif isinstance(value, bool):
@@ -28,7 +28,7 @@ def _format_toml_simple(value):
 def _format_toml_mapping(value):
     assert isinstance(value, Mapping), "not a mapping"
     return "\n".join(
-        "{} = {}".format(k, _format_toml_simple(v)) for k, v in value.items()
+        "{} = {}".format(k, format_toml_simple(v)) for k, v in value.items()
     )
 
 
@@ -38,7 +38,7 @@ def format_toml_symbols(symbols):
 
     if isinstance(symbols, Mapping):
         return "\n[symbols]\n{}".format(_format_toml_mapping(_helper(symbols)))
-    return "\nsymbols = {}".format(_format_toml_simple(symbols))
+    return "\nsymbols = {}".format(format_toml_simple(symbols))
 
 
 def format_toml_accounts(accounts):
@@ -68,6 +68,7 @@ class FilterModule(object):
     def filters(self):
         return dict(
             roq_realpath=format_realpath,
+            roq_toml_simple=format_toml_simple,
             roq_toml_symbols=format_toml_symbols,
             roq_toml_accounts=format_toml_accounts,
             roq_toml_users=format_toml_users,

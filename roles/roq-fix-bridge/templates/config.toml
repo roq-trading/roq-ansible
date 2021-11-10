@@ -1,0 +1,37 @@
+# config file for roq-{{ config.flags.name }}
+
+[symbols]
+{% for item in config.symbols %}
+{% if item is mapping %}
+{% for (name, value) in item.items() %}
+
+  [symbols.{{ name }}]
+    regex={{ value | roq_toml_simple }}
+{% endfor %}
+{% else %}
+
+  regex={{ item | roq_toml_simple }}
+{% endif %}
+{% endfor %}
+{%- if config.users is defined %}
+
+[users]
+{% for (name, dict) in config.users.items() %}
+
+  [users.{{ name }}]
+{% for (key, value) in dict.items() %}
+    {{ key }}="{{ value }}"
+{% endfor %}
+{% endfor %}
+{%- endif %}
+{%- if config.statistics is defined %}
+
+[statistics]
+{% for (name, dict) in config.statistics.items() %}
+
+  [statistics.{{ name }}]
+{% for (key, value) in dict.items() %}
+    {{ key }}="{{ value }}"
+{% endfor %}
+{% endfor %}
+{%- endif %}

@@ -5,11 +5,16 @@ roq_fix_bridge_defaults:
   docker:
     use: "{{ roq_use_docker }}"
     name: "roqtrading/roq-fix-bridge"
-  name: "fix-bridge"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
   logging:
     verbosity: 0
   flags:
     name: "fix-bridge"
     config_file: "{{ directory_config.usr_local_etc }}/roq-fix-bridge/config.toml"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-fix-bridge.sock"
     client_listen_address: "{{ directory_config.run }}/roq/roq-fix-bridge.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-fix-bridge.sock"
+  symbols:
+    - ".*"
+  users: {}

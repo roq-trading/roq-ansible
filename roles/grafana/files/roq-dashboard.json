@@ -2390,7 +2390,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"binance\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"binance\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"binance\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"binance\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -2482,7 +2482,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"binance\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"binance\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"binance\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -2665,7 +2666,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"binance\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"binance\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"binance\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"binance\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -2757,7 +2758,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"binance\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"binance\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"binance\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"binance\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -3254,7 +3256,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"binance-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"binance-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"binance-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"binance-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -3347,7 +3349,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"binance-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"binance-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"binance-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -3531,7 +3533,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"binance-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"binance-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"binance-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"binance-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -3624,7 +3626,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"binance-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"binance-futures\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"binance-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"binance-futures\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -4118,7 +4120,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"bitmex\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"bitmex\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"bitmex\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"bitmex\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -4210,7 +4212,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"bitmex\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitmex\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"bitmex\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"bitmex\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -4393,7 +4396,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"bitmex\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"bitmex\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"bitmex\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"bitmex\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -4485,7 +4488,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"bitmex\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"bitmex\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"bitmex\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"bitmex\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -4975,7 +4979,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"bitstamp\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"bitstamp\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"bitstamp\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"bitstamp\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -5067,7 +5071,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"bitstamp\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"bitstamp\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"bitstamp\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"bitstamp\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -5250,7 +5255,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"bitstamp\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"bitstamp\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"bitstamp\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"bitstamp\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -5342,7 +5347,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"bitstamp\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"bitstamp\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"bitstamp\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"bitstamp\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -5833,7 +5839,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"coinbase-pro\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"coinbase-pro\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"coinbase-pro\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"coinbase-pro\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -5925,7 +5931,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"coinbase-pro\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"coinbase-pro\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -6108,7 +6115,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"coinbase-pro\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"coinbase-pro\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"coinbase-pro\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"coinbase-pro\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -6200,7 +6207,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"coinbase-pro\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"coinbase-pro\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -6686,7 +6694,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"deribit\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"deribit\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"deribit\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"deribit\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -6778,7 +6786,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"deribit\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"deribit\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -6959,7 +6968,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"deribit\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"deribit\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"deribit\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"deribit\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7051,7 +7060,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"deribit\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"deribit\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"deribit\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7543,7 +7553,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"ftx\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"ftx\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"ftx\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"ftx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7635,7 +7645,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"ftx\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"ftx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7818,7 +7829,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"ftx\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"ftx\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"ftx\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"ftx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -7910,7 +7921,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"ftx\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"ftx\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"ftx\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"ftx\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -8401,7 +8413,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"gemini\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"gemini\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"gemini\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"gemini\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -8493,7 +8505,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"gemini\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"gemini\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -8674,7 +8687,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"gemini\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"gemini\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"gemini\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"gemini\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -8766,7 +8779,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"gemini\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"gemini\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"gemini\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9256,7 +9270,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"hitbtc\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"hitbtc\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"hitbtc\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"hitbtc\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9348,7 +9362,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"hitbtc\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"hitbtc\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9531,7 +9546,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"hitbtc\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"hitbtc\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"hitbtc\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"hitbtc\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -9623,7 +9638,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"hitbtc\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"hitbtc\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"hitbtc\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"hitbtc\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10120,7 +10136,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"huobi\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"huobi\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"huobi\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"huobi\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10213,7 +10229,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"huobi\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"huobi\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"huobi\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10397,7 +10413,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"huobi\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"huobi\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"huobi\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"huobi\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10490,7 +10506,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"huobi\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"huobi\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"huobi\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"huobi\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -10990,7 +11006,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"huobi-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"huobi-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"huobi-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"huobi-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11083,7 +11099,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"huobi-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"huobi-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"huobi-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"huobi-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11267,7 +11283,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"huobi-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"huobi-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"huobi-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"huobi-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11360,7 +11376,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"huobi-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"huobi-futures\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"huobi-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"huobi-futures\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11858,7 +11874,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kraken\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kraken\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"kraken\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"kraken\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -11950,7 +11966,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"kraken\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"kraken\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12133,7 +12150,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"kraken\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kraken\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"kraken\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"kraken\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12225,7 +12242,8 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "irate(roq_latency_sum{source=\"kraken\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kraken\"}[1m]) / 1000000",
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"kraken\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"kraken\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12722,7 +12740,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kraken-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kraken-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"kraken-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"kraken-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12815,7 +12833,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kraken-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kraken-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"kraken-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"kraken-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -12999,7 +13017,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"kraken-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kraken-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"kraken-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"kraken-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -13092,7 +13110,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"kraken-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kraken-futures\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"kraken-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"kraken-futures\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -13592,7 +13610,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kucoin\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kucoin\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"kucoin\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"kucoin\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -13685,7 +13703,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"kucoin\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"kucoin\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -13869,7 +13887,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kucoin\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"kucoin\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -13962,7 +13980,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"kucoin\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kucoin\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"kucoin\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"kucoin\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -14462,7 +14480,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_inter_process_latency_sum{receiver=\"kucoin-futures\"}[1m]) / on(receiver, sender) irate(roq_inter_process_latency_count{receiver=\"kucoin-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"kucoin-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"kucoin-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -14555,7 +14573,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_profile_count{source=\"kucoin-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"kucoin-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"kucoin-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -14739,7 +14757,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin-futures\"}[1m]) / on (source, connection, function) irate(roq_market_data_latency_count{source=\"kucoin-futures\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"kucoin-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"kucoin-futures\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -14832,7 +14850,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"kucoin-futures\", function=\"ping\"}[1m]) / on(source, connection, function) irate(roq_latency_count{source=\"kucoin-futures\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"kucoin-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"kucoin-futures\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -17343,7 +17361,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": [],
@@ -17351,7 +17369,7 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -17371,5 +17389,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 20
+  "version": 21
 }
