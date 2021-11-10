@@ -17361,7 +17361,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "30s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": [],
@@ -17369,7 +17369,7 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -17389,5 +17389,5 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 21
+  "version": 22
 }
