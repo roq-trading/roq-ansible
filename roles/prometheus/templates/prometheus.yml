@@ -36,6 +36,15 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_fix_bridge' in groups %}
+
+  - job_name: 'roq-fix-bridge'
+    metrics_path: '/metrics/roq-fix-bridge'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
 {% if 'roq_binance' in groups %}
 
   - job_name: 'roq-binance'
