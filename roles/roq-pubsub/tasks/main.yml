@@ -1,0 +1,24 @@
+---
+
+- name: combine user configuration with defaults
+  set_fact:
+    roq_pubsub_config: >
+        {{ roq_pubsub_defaults | combine(roq_pubsub | default({}), recursive=True) }}
+    cacheable: true
+  tags:
+    - always
+
+- block:
+
+  - name: shorter variable name for config
+    set_fact:
+      config: "{{ roq_pubsub_config }}"
+
+  - name: install
+    include_role:
+      name: common
+      tasks_from: gateway
+
+  when: "'roq_pubsub' in group_names"
+  tags:
+    - roq-pubsub

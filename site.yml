@@ -47,6 +47,10 @@
   roles:
     - roq-fix-bridge
 
+- hosts: roq_pubsub
+  roles:
+    - roq-pubsub
+
 - hosts: roq_binance
   roles:
     - roq-binance

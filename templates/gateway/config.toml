@@ -2,12 +2,16 @@
 
 # symbols to subscribe from exchange
 {{ config.symbols | roq_toml_symbols }}
+{%- if config.accounts is defined %}
 
 # exchange accounts
 {{ config.accounts | roq_toml_accounts }}
+{%- endif %}
+{%- if config.users is defined %}
 
 # clients (trading strategies)
 {{ config.users | roq_toml_users }}
+{%- endif %}
 {%- if config.market_data is defined %}
 
 # gemini, only

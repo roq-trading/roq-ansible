@@ -20,14 +20,14 @@ UMask=0000
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ directory_config.opt }}/conda/bin/roq-fix-bridge \
   --flagfile "{{ directory_config.usr_local_etc }}/roq-fix-bridge/flags.cfg" \
+{% if 'roq_ftx' in groups %}
+  "{{ directory_config.run }}/roq/roq-ftx.sock" \
+{% endif %}
 {% if 'roq_bitmex' in groups %}
   "{{ directory_config.run }}/roq/roq-bitmex.sock" \
 {% endif %}
 {% if 'roq_deribit' in groups %}
-  "{{ directory_config.run }}/roq/roq-deribit.sock" \
-{% endif %}
-{% if 'roq_ftx' in groups %}
-  "{{ directory_config.run }}/roq/roq-ftx.sock"
+  "{{ directory_config.run }}/roq/roq-deribit.sock"
 {% endif %}
 {% endif %}
 
