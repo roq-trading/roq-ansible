@@ -91,8 +91,15 @@
 
   - name: define list of systemd units
     set_fact:
-      systemd_units:
+      systemd_services:
       - 'roq-fix-bridge.service'
+      - 'roq-fix-bridge-stop.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'roq-fix-bridge.timer'
+      - 'roq-fix-bridge-stop.timer'
 
   - name: create systemd units
     template:
@@ -101,14 +108,27 @@
       owner: root
       group: root
       mode: 0644
-    with_items: "{{ systemd_units }}"
+    with_items: "{{ systemd_services + systemd_timers }}"
 
-  - name: enable systemd units
+  - name: disable systemd services
     systemd:
       name: "{{ item }}"
       enabled: false
       daemon_reload: true
-    with_items: "{{ systemd_units }}"
+    with_items: "{{ systemd_services }}"
+
+  - name: enable systemd timers
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_timers }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
 
   when: become_user is defined and 'roq_fix_bridge' in group_names
   become: true
