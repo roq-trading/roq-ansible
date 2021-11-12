@@ -47,6 +47,10 @@
   roles:
     - roq-fix-bridge
 
+- hosts: roq_json_bridge
+  roles:
+    - roq-json-bridge
+
 - hosts: roq_pubsub
   roles:
     - roq-pubsub

@@ -1,0 +1,35 @@
+[Unit]
+Description=roq-{{ config.flags.name }}
+After=network-online.target
+
+[Service]
+{% if config.docker.use %}
+TimeoutStartSec=0
+ExecStart=/usr/bin/docker run --rm --name %n -i \
+  --network roq-network \
+  --volume {{ directory_config.var_lib }}/roq/data:/var/lib/roq/data \
+  --volume {{ directory_config.usr_local_etc }}/roq-fix-bridge:/usr/local/etc/roq-fix-bridge \
+  --env ROQ_v={{ config.logging.verbosity }} \
+  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  --flagfile "/usr/local/etc/roq-fix-bridge/flags.cfg"
+{% else %}
+User={{ roq_user }}
+Group={{ roq_user }}
+UMask=0000
+# Restart=on-abnormal
+Environment="ROQ_v={{ config.logging.verbosity }}"
+ExecStart={{ directory_config.opt }}/conda/bin/roq-fix-bridge \
+  --flagfile "{{ directory_config.usr_local_etc }}/roq-fix-bridge/flags.cfg" \
+{% if 'roq_ftx' in groups %}
+  "{{ directory_config.run }}/roq/roq-ftx.sock" \
+{% endif %}
+{% if 'roq_bitmex' in groups %}
+  "{{ directory_config.run }}/roq/roq-bitmex.sock" \
+{% endif %}
+{% if 'roq_deribit' in groups %}
+  "{{ directory_config.run }}/roq/roq-deribit.sock"
+{% endif %}
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

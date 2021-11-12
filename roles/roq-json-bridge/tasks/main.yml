@@ -1,0 +1,136 @@
+---
+
+- name: combine user configuration with defaults
+  set_fact:
+    roq_json_bridge_config: >
+        {{ roq_json_bridge_defaults | combine(roq_json_bridge | default({}), recursive=True) }}
+    cacheable: true
+  tags:
+    - always
+
+- name: configuration (debug)
+  debug:
+    var: config
+    verbosity: 1
+  tags:
+    - always
+
+- name: shorter variable name for config
+  set_fact:
+    config: "{{ roq_json_bridge_config }}"
+  tags:
+    - roq-json-bridge
+
+- block:
+
+  - name: create required directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0755
+    with_items:
+      - "{{ directory_config.var_lib }}/roq"
+      - "{{ directory_config.var_lib }}/roq/data"
+      - "{{ directory_config.usr_local_etc }}/roq-json-bridge"
+
+  - name: create config
+    template:
+      src: "templates/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq-json-bridge/{{ item }}"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0644
+    with_items:
+      - "flags.cfg"
+      - "config.toml"
+
+  - name: create shell script
+    template:
+      src: "templates/roq-json-bridge"
+      dest: "{{ directory_config.usr_local_bin }}/roq-json-bridge"
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0755
+
+  - name: check previous version
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-json-bridge | sed -n "s/^roq-json-bridge\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    register: previous_version
+    changed_when: false
+
+  - name: install conda package
+    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
+      roq-json-bridge{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
+    changed_when: false
+
+  - name: check current version
+    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-json-bridge | sed -n "s/^roq-json-bridge\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    register: current_version
+    changed_when: "current_version.stdout != previous_version.stdout"
+
+  when: "'roq_json_bridge' in group_names"
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - roq-json-bridge
+
+##############
+### SERVER ###
+##############
+
+- block:
+
+  - name: docker pull images
+    docker_image:
+      name: "{{ docker_registry_prefix | default('') }}{{ config.docker.name }}"
+      tag: "{{ config.version }}"
+      source: pull
+      force_source: true
+      force_tag: true
+    when: config.docker.use
+
+  - name: define list of systemd units
+    set_fact:
+      systemd_services:
+      - 'roq-json-bridge.service'
+      - 'roq-json-bridge-stop.service'
+
+  - name: define list of systemd timers
+    set_fact:
+      systemd_timers:
+      - 'roq-json-bridge.timer'
+      - 'roq-json-bridge-stop.timer'
+
+  - name: create systemd units
+    template:
+      src: "templates/{{ item }}"
+      dest: "/etc/systemd/system/{{ item }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_items: "{{ systemd_services + systemd_timers }}"
+
+  - name: disable systemd services
+    systemd:
+      name: "{{ item }}"
+      enabled: false
+      daemon_reload: true
+    with_items: "{{ systemd_services }}"
+
+  - name: enable systemd timers
+    systemd:
+      name: "{{ item }}"
+      enabled: true
+      daemon_reload: true
+    with_items: "{{ systemd_timers }}"
+
+  - name: start systemd timers
+    systemd:
+      name: "{{ item }}"
+      state: started
+    with_items: "{{ systemd_timers }}"
+
+  when: become_user is defined and 'roq_json_bridge' in group_names
+  become: true
+  tags:
+    - roq-json-bridge

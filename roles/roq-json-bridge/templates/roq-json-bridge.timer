@@ -1,0 +1,8 @@
+[Unit]
+Description=roq-{{ config.flags.name }} timer
+
+[Timer]
+OnCalendar={{ config.service.start }}
+
+[Install]
+WantedBy=multi-user.target

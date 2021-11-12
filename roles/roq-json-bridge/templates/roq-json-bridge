@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-fix-bridge/flags.cfg"}"
+
+"{{ directory_config.opt }}/conda/bin/roq-fix-bridge" "$ARGS"
