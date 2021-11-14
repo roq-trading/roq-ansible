@@ -2,6 +2,6 @@
 
 set -e
 
-ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-fix-bridge/flags.cfg"}"
+ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-json-bridge/flags.cfg"}"
 
-"{{ directory_config.opt }}/conda/bin/roq-fix-bridge" "$ARGS"
+"{{ directory_config.opt }}/conda/bin/roq-json-bridge" "$ARGS"

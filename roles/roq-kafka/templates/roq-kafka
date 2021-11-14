@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-kafka/flags.cfg"}"
-
-"{{ (directory_config.opt + '/conda/bin') | roq_realpath }}/roq-kafka" "{{ (directory_config.var_lib + '/roq/data') | roq_realpath }}" "$ARGS"

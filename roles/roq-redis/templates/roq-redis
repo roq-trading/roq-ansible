@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-ARGS="${@:-"--flagfile={{ (directory_config.usr_local_etc + '/roq-redis/flags.cfg') | roq_realpath }}"}"
-
-"{{ (directory_config.opt + '/conda/bin/roq-redis') | roq_realpath }}" "{{ (directory_config.var_lib + '/roq') | roq_realpath }}" "$ARGS"

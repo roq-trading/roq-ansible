@@ -33,27 +33,17 @@
   roles:
     - redis
 
-- hosts: roq_redis
+- hosts: roq_pubsub
   roles:
-    - roq-redis
-
-# TODO: kafka
-
-- hosts: roq_kafka
-  roles:
-    - roq-kafka
-
-- hosts: roq_fix_bridge
-  roles:
-    - roq-fix-bridge
+    - roq-pubsub
 
 - hosts: roq_json_bridge
   roles:
     - roq-json-bridge
 
-- hosts: roq_pubsub
+- hosts: roq_fix_bridge
   roles:
-    - roq-pubsub
+    - roq-fix-bridge
 
 - hosts: roq_binance
   roles:
