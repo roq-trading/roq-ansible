@@ -1,0 +1,10 @@
+[Unit]
+Description=roq-license-manager stop
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/echo ''
+
+[Install]
+WantedBy=multi-user.target
