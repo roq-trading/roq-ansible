@@ -1,8 +1,0 @@
-[Unit]
-Description=roq-license-manager stop timer
-
-[Timer]
-OnCalendar={{ config.service.stop }}
-
-[Install]
-WantedBy=multi-user.target

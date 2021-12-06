@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-ARGS="${@:-"--flagfile={{ directory_config.usr_local_etc }}/roq-license-manager/flags.cfg"}"
-
-"{{ directory_config.opt }}/conda/bin/roq-license-manager" "$ARGS"

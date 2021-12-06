@@ -33,10 +33,6 @@
   roles:
     - redis
 
-- hosts: roq_license_manager
-  roles:
-    - roq-license-manager
-
 - hosts: roq_pubsub
   roles:
     - roq-pubsub

@@ -16,6 +16,8 @@ roq_bitmex_defaults:
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-bitmex.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitmex.sock"
+    auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
+    auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://testnet.bitmex.com"
     ws_uri: "wss://testnet.bitmex.com/realtime"
   symbols:

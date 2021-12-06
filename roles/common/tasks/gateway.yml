@@ -6,7 +6,7 @@
 
 - block:
 
-  - name: create directories
+  - name: create public directories
     file:
       path: "{{ item }}"
       state: directory
@@ -15,8 +15,19 @@
       mode: 0755
     with_items:
       - "{{ directory_config.var_lib }}/roq"
+      - "{{ directory_config.var_lib }}/roq/cache"
       - "{{ directory_config.var_lib }}/roq/data"
-      - "{{ directory_config.usr_local_etc }}//roq-{{ config.flags.name }}"
+
+  - name: create locked-down directories
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: "{{ roq_user }}"
+      # group: "{{ roq_user }}"
+      mode: 0700
+    with_items:
+      - "{{ directory_config.usr_local_etc }}/roq"
+      - "{{ directory_config.usr_local_etc }}/roq-{{ config.flags.name }}"
 
   - name: create config and flagfile
     template:
