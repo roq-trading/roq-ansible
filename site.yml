@@ -97,6 +97,10 @@
   roles:
     - roq-kucoin-futures
 
+- hosts: roq_okex
+  roles:
+    - roq-okex
+
 - hosts: trading
   roles:
     - prometheus
