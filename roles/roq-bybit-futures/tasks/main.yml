@@ -1,0 +1,24 @@
+---
+
+- name: combine user configuration with defaults
+  set_fact:
+    roq_bybit_futures_config: >
+        {{ roq_bybit_futures_defaults | combine(roq_bybit_futures | default({}), recursive=True) }}
+    cacheable: true
+  tags:
+    - always
+
+- block:
+
+  - name: shorter variable name for config
+    set_fact:
+      config: "{{ roq_bybit_futures_config }}"
+
+  - name: install
+    include_role:
+      name: common
+      tasks_from: gateway
+
+  when: "'roq_bybit_futures' in group_names"
+  tags:
+    - roq-bybit-futures
