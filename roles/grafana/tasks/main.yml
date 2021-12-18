@@ -76,54 +76,6 @@
       enabled: true
       daemon_reload: true
     when: grafana_service.changed
-
-  - name: create shell script
-    template:
-      src: "templates/{{ item }}"
-      dest: "{{ directory_config.usr_local_bin }}/{{ item }}"
-      owner: "{{ roq_user }}"
-      mode: 0755
-    with_items:
-      - "grafana-backup"
-
-  - name: define list of systemd services
-    set_fact:
-      systemd_services:
-      - 'grafana-backup.service'
-
-  - name: define list of systemd timers
-    set_fact:
-      systemd_timers:
-      - 'grafana-backup.timer'
-
-  - name: define list of systemd units
-    set_fact:
-      systemd_units:
-      - '{{ systemd_services }} + {{ systemd_timers }}'
-
-  - name: create systemd units
-    template:
-      src: "templates/{{ item }}"
-      dest: "/etc/systemd/system/{{ item }}"
-      owner: root
-      group: root
-      mode: 0644
-    with_items: "{{ systemd_units }}"
-
-  - name: disable systemd services
-    systemd:
-      name: "{{ item }}"
-      enabled: false
-      daemon_reload: true
-    with_items: "{{ systemd_services }}"
-
-  - name: enable and start systemd timers
-    systemd:
-      name: "{{ item }}"
-      enabled: true
-      state: started
-      daemon_reload: true
-    with_items: "{{ systemd_timers }}"
   
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
