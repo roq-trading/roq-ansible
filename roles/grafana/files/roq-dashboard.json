@@ -87,7 +87,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_celsius)",
@@ -147,7 +147,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_hertz) / 1000 / 1000 / 1000",
@@ -207,7 +207,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "irate(node_intr_total[1m])",
@@ -267,7 +267,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "node_memory_Active_bytes / node_memory_MemTotal_bytes",
@@ -326,7 +326,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "node_edac_uncorrectable_errors_total",
@@ -385,7 +385,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(node_filesystem_device_error)",
@@ -446,7 +446,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -508,7 +508,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_crit_celsius)",
@@ -567,7 +567,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_max_hertz) / 1000 / 1000 / 1000",
@@ -627,7 +627,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "irate(node_context_switches_total[1m])",
@@ -686,7 +686,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "node_memory_MemTotal_bytes",
@@ -746,7 +746,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "node_memory_Dirty_bytes",
@@ -806,7 +806,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(irate(node_disk_written_bytes_total[1m]))",
@@ -894,7 +894,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"clickhouse-server.service\",state=\"active\"})",
@@ -967,7 +967,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1317,7 +1317,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1394,7 +1394,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
@@ -1485,7 +1485,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1561,7 +1561,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1906,7 +1906,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -1980,7 +1980,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2073,7 +2073,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2147,7 +2147,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2657,7 +2657,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2734,7 +2734,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2811,7 +2811,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2903,7 +2903,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -2977,7 +2977,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -3487,7 +3487,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -3564,7 +3564,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -3641,7 +3641,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -3733,7 +3733,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"binance\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -3808,7 +3808,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"binance\"}",
@@ -4316,7 +4316,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -4392,7 +4392,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
@@ -4465,7 +4465,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -4558,7 +4558,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -4634,7 +4634,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -5144,7 +5144,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -5221,7 +5221,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -5295,7 +5295,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -5388,7 +5388,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5461,7 +5461,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitmex\"}",
@@ -5967,7 +5967,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -6042,7 +6042,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
@@ -6113,7 +6113,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitmex\"})",
@@ -6203,7 +6203,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -6278,7 +6278,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitstamp\"}",
@@ -6786,7 +6786,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -6862,7 +6862,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
@@ -6935,7 +6935,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitstamp\"})",
@@ -6957,6 +6957,1746 @@
         "w": 24,
         "x": 0,
         "y": 45
+      },
+      "id": 421,
+      "panels": [],
+      "title": "Bybit",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 46
+      },
+      "id": 422,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max(absent(roq_updated{source=\"bybit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 46
+      },
+      "id": 424,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "roq_exceptions{source=\"bybit\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 4,
+        "y": 46
+      },
+      "id": 426,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"bybit\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"bybit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPC (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 46
+      },
+      "id": 427,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"bybit\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"bybit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 46
+      },
+      "id": 428,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"bybit\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 46
+      },
+      "id": 429,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"bybit\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"bybit\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 46
+      },
+      "id": 430,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"bybit\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"bybit\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 46
+      },
+      "id": 431,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max by (connection) (roq_counter{source=\"bybit\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Disconnects (total)",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 48
+      },
+      "id": 423,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "time() - roq_process{source=\"bybit\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 48
+      },
+      "id": 425,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "sum(roq_events_count{source=\"bybit\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 50
+      },
+      "id": 433,
+      "panels": [],
+      "title": "Bybit Futures",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 51
+      },
+      "id": 434,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max(absent(roq_updated{source=\"bybit-futures\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 51
+      },
+      "id": 436,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "roq_exceptions{source=\"bybit-futures\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 4,
+        "y": 51
+      },
+      "id": 438,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"bybit-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"bybit-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPC (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 51
+      },
+      "id": 439,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"bybit-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"bybit-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 51
+      },
+      "id": 440,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"bybit-futures\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 51
+      },
+      "id": 441,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"bybit-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"bybit-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 51
+      },
+      "id": 442,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"bybit-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"bybit-futures\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 51
+      },
+      "id": 443,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max by (connection) (roq_counter{source=\"bybit-futures\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Disconnects (total)",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 53
+      },
+      "id": 435,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "time() - roq_process{source=\"bybit-futures\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 53
+      },
+      "id": 437,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "sum(roq_events_count{source=\"bybit-futures\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 55
       },
       "id": 4,
       "panels": [],
@@ -7007,7 +8747,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 46
+        "y": 56
       },
       "id": 7,
       "links": [],
@@ -7027,7 +8767,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -7080,7 +8820,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 46
+        "y": 56
       },
       "id": 20,
       "links": [],
@@ -7100,7 +8840,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"coinbase-pro\"}",
@@ -7171,7 +8911,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 46
+        "y": 56
       },
       "id": 364,
       "options": {
@@ -7261,7 +9001,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 46
+        "y": 56
       },
       "id": 191,
       "options": {
@@ -7351,7 +9091,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 46
+        "y": 56
       },
       "id": 108,
       "options": {
@@ -7438,7 +9178,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 46
+        "y": 56
       },
       "id": 347,
       "options": {
@@ -7528,7 +9268,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 46
+        "y": 56
       },
       "id": 70,
       "options": {
@@ -7589,7 +9329,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 46
+        "y": 56
       },
       "id": 132,
       "links": [],
@@ -7606,7 +9346,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -7661,7 +9401,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 48
+        "y": 58
       },
       "id": 74,
       "links": [],
@@ -7681,7 +9421,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
@@ -7732,7 +9472,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 48
+        "y": 58
       },
       "id": 95,
       "links": [],
@@ -7752,7 +9492,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
@@ -7771,7 +9511,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 60
       },
       "id": 11,
       "panels": [],
@@ -7822,7 +9562,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 51
+        "y": 61
       },
       "id": 2,
       "links": [],
@@ -7842,7 +9582,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -7895,7 +9635,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 51
+        "y": 61
       },
       "id": 21,
       "links": [],
@@ -7915,7 +9655,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"deribit\"}",
@@ -7986,7 +9726,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 51
+        "y": 61
       },
       "id": 365,
       "options": {
@@ -8076,7 +9816,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 51
+        "y": 61
       },
       "id": 192,
       "options": {
@@ -8166,7 +9906,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 51
+        "y": 61
       },
       "id": 96,
       "options": {
@@ -8251,7 +9991,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 51
+        "y": 61
       },
       "id": 346,
       "options": {
@@ -8341,7 +10081,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 51
+        "y": 61
       },
       "id": 71,
       "options": {
@@ -8402,7 +10142,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 51
+        "y": 61
       },
       "id": 131,
       "links": [],
@@ -8419,7 +10159,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -8474,7 +10214,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 53
+        "y": 63
       },
       "id": 75,
       "links": [],
@@ -8494,7 +10234,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
@@ -8547,7 +10287,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 53
+        "y": 63
       },
       "id": 109,
       "links": [],
@@ -8567,7 +10307,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"deribit\"})",
@@ -8586,7 +10326,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 65
       },
       "id": 150,
       "panels": [],
@@ -8637,7 +10377,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 56
+        "y": 66
       },
       "id": 153,
       "links": [],
@@ -8657,7 +10397,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -8712,7 +10452,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 56
+        "y": 66
       },
       "id": 159,
       "links": [],
@@ -8732,7 +10472,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"ftx\"}",
@@ -8805,7 +10545,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 56
+        "y": 66
       },
       "id": 366,
       "options": {
@@ -8895,7 +10635,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 56
+        "y": 66
       },
       "id": 193,
       "options": {
@@ -8985,7 +10725,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 56
+        "y": 66
       },
       "id": 162,
       "options": {
@@ -9072,7 +10812,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 56
+        "y": 66
       },
       "id": 345,
       "options": {
@@ -9162,7 +10902,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 56
+        "y": 66
       },
       "id": 163,
       "options": {
@@ -9223,7 +10963,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 56
+        "y": 66
       },
       "id": 164,
       "links": [],
@@ -9240,7 +10980,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -9296,7 +11036,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 58
+        "y": 68
       },
       "id": 154,
       "links": [],
@@ -9316,7 +11056,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
@@ -9369,7 +11109,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 58
+        "y": 68
       },
       "id": 161,
       "links": [],
@@ -9389,7 +11129,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"ftx\"})",
@@ -9410,7 +11150,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 70
       },
       "id": 116,
       "panels": [],
@@ -9461,7 +11201,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 61
+        "y": 71
       },
       "id": 117,
       "links": [],
@@ -9481,7 +11221,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -9534,7 +11274,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 61
+        "y": 71
       },
       "id": 120,
       "links": [],
@@ -9554,7 +11294,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"gemini\"}",
@@ -9625,7 +11365,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 61
+        "y": 71
       },
       "id": 367,
       "options": {
@@ -9715,7 +11455,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 61
+        "y": 71
       },
       "id": 194,
       "options": {
@@ -9805,7 +11545,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 61
+        "y": 71
       },
       "id": 126,
       "options": {
@@ -9890,7 +11630,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 61
+        "y": 71
       },
       "id": 352,
       "options": {
@@ -9980,7 +11720,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 61
+        "y": 71
       },
       "id": 127,
       "options": {
@@ -10041,7 +11781,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 61
+        "y": 71
       },
       "id": 130,
       "links": [],
@@ -10058,7 +11798,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -10113,7 +11853,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 63
+        "y": 73
       },
       "id": 121,
       "links": [],
@@ -10133,7 +11873,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
@@ -10184,7 +11924,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 63
+        "y": 73
       },
       "id": 125,
       "links": [],
@@ -10204,7 +11944,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"gemini\"})",
@@ -10223,7 +11963,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 75
       },
       "id": 176,
       "panels": [],
@@ -10274,7 +12014,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 66
+        "y": 76
       },
       "id": 177,
       "links": [],
@@ -10294,7 +12034,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -10349,7 +12089,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 66
+        "y": 76
       },
       "id": 183,
       "links": [],
@@ -10369,7 +12109,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"hitbtc\"}",
@@ -10442,7 +12182,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 66
+        "y": 76
       },
       "id": 368,
       "options": {
@@ -10532,7 +12272,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 66
+        "y": 76
       },
       "id": 195,
       "options": {
@@ -10622,7 +12362,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 66
+        "y": 76
       },
       "id": 186,
       "options": {
@@ -10709,7 +12449,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 66
+        "y": 76
       },
       "id": 353,
       "options": {
@@ -10799,7 +12539,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 66
+        "y": 76
       },
       "id": 187,
       "options": {
@@ -10860,7 +12600,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 66
+        "y": 76
       },
       "id": 188,
       "links": [],
@@ -10877,7 +12617,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -10933,7 +12673,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 68
+        "y": 78
       },
       "id": 178,
       "links": [],
@@ -10953,7 +12693,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
@@ -11006,7 +12746,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 68
+        "y": 78
       },
       "id": 185,
       "links": [],
@@ -11026,7 +12766,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"hitbtc\"})",
@@ -11047,7 +12787,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 80
       },
       "id": 270,
       "panels": [],
@@ -11098,7 +12838,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 71
+        "y": 81
       },
       "id": 281,
       "links": [],
@@ -11118,7 +12858,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -11174,7 +12914,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 71
+        "y": 81
       },
       "id": 287,
       "links": [],
@@ -11194,7 +12934,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -11268,7 +13008,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 71
+        "y": 81
       },
       "id": 369,
       "options": {
@@ -11358,7 +13098,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 71
+        "y": 81
       },
       "id": 291,
       "options": {
@@ -11448,7 +13188,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 71
+        "y": 81
       },
       "id": 290,
       "options": {
@@ -11536,7 +13276,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 71
+        "y": 81
       },
       "id": 354,
       "options": {
@@ -11626,7 +13366,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 71
+        "y": 81
       },
       "id": 292,
       "options": {
@@ -11687,7 +13427,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 71
+        "y": 81
       },
       "id": 293,
       "links": [],
@@ -11704,7 +13444,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -11761,7 +13501,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 73
+        "y": 83
       },
       "id": 282,
       "links": [],
@@ -11781,7 +13521,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -11835,7 +13575,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 73
+        "y": 83
       },
       "id": 289,
       "links": [],
@@ -11855,7 +13595,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -11877,7 +13617,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 85
       },
       "id": 302,
       "panels": [],
@@ -11928,7 +13668,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 76
+        "y": 86
       },
       "id": 303,
       "links": [],
@@ -11948,7 +13688,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -12004,7 +13744,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 76
+        "y": 86
       },
       "id": 307,
       "links": [],
@@ -12024,7 +13764,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -12098,7 +13838,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 76
+        "y": 86
       },
       "id": 370,
       "options": {
@@ -12188,7 +13928,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 76
+        "y": 86
       },
       "id": 311,
       "options": {
@@ -12278,7 +14018,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 76
+        "y": 86
       },
       "id": 310,
       "options": {
@@ -12366,7 +14106,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 76
+        "y": 86
       },
       "id": 355,
       "options": {
@@ -12456,7 +14196,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 76
+        "y": 86
       },
       "id": 312,
       "options": {
@@ -12517,7 +14257,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 76
+        "y": 86
       },
       "id": 313,
       "links": [],
@@ -12534,7 +14274,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -12591,7 +14331,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 78
+        "y": 88
       },
       "id": 304,
       "links": [],
@@ -12611,7 +14351,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -12665,7 +14405,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 78
+        "y": 88
       },
       "id": 309,
       "links": [],
@@ -12685,7 +14425,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -12707,7 +14447,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 80
+        "y": 90
       },
       "id": 197,
       "panels": [],
@@ -12758,7 +14498,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 81
+        "y": 91
       },
       "id": 198,
       "links": [],
@@ -12778,7 +14518,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -12833,7 +14573,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 81
+        "y": 91
       },
       "id": 205,
       "links": [],
@@ -12853,7 +14593,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"kraken\"}",
@@ -12926,7 +14666,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 81
+        "y": 91
       },
       "id": 371,
       "options": {
@@ -13016,7 +14756,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 81
+        "y": 91
       },
       "id": 208,
       "options": {
@@ -13106,7 +14846,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 81
+        "y": 91
       },
       "id": 207,
       "options": {
@@ -13193,7 +14933,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 81
+        "y": 91
       },
       "id": 356,
       "options": {
@@ -13283,7 +15023,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 81
+        "y": 91
       },
       "id": 209,
       "options": {
@@ -13344,7 +15084,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 81
+        "y": 91
       },
       "id": 343,
       "links": [],
@@ -13361,7 +15101,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -13417,7 +15157,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 83
+        "y": 93
       },
       "id": 199,
       "links": [],
@@ -13437,7 +15177,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
@@ -13490,7 +15230,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 83
+        "y": 93
       },
       "id": 206,
       "links": [],
@@ -13510,7 +15250,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"kraken\"})",
@@ -13531,7 +15271,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 85
+        "y": 95
       },
       "id": 268,
       "panels": [],
@@ -13582,7 +15322,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 86
+        "y": 96
       },
       "id": 271,
       "links": [],
@@ -13602,7 +15342,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -13658,7 +15398,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 86
+        "y": 96
       },
       "id": 275,
       "links": [],
@@ -13678,7 +15418,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -13752,7 +15492,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 86
+        "y": 96
       },
       "id": 372,
       "options": {
@@ -13842,7 +15582,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 86
+        "y": 96
       },
       "id": 278,
       "options": {
@@ -13932,7 +15672,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 86
+        "y": 96
       },
       "id": 277,
       "options": {
@@ -14020,7 +15760,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 86
+        "y": 96
       },
       "id": 357,
       "options": {
@@ -14110,7 +15850,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 86
+        "y": 96
       },
       "id": 279,
       "options": {
@@ -14171,7 +15911,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 86
+        "y": 96
       },
       "id": 280,
       "links": [],
@@ -14188,7 +15928,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -14245,7 +15985,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 88
+        "y": 98
       },
       "id": 272,
       "links": [],
@@ -14265,7 +16005,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -14319,7 +16059,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 88
+        "y": 98
       },
       "id": 276,
       "links": [],
@@ -14339,7 +16079,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -14361,7 +16101,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 90
+        "y": 100
       },
       "id": 320,
       "panels": [],
@@ -14412,7 +16152,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 91
+        "y": 101
       },
       "id": 323,
       "links": [],
@@ -14432,7 +16172,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -14488,7 +16228,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 91
+        "y": 101
       },
       "id": 331,
       "links": [],
@@ -14508,7 +16248,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -14582,7 +16322,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 91
+        "y": 101
       },
       "id": 373,
       "options": {
@@ -14672,7 +16412,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 91
+        "y": 101
       },
       "id": 339,
       "options": {
@@ -14762,7 +16502,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 91
+        "y": 101
       },
       "id": 337,
       "options": {
@@ -14850,7 +16590,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 91
+        "y": 101
       },
       "id": 358,
       "options": {
@@ -14940,7 +16680,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 91
+        "y": 101
       },
       "id": 341,
       "options": {
@@ -15001,7 +16741,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 91
+        "y": 101
       },
       "id": 210,
       "links": [],
@@ -15018,7 +16758,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15075,7 +16815,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 93
+        "y": 103
       },
       "id": 325,
       "links": [],
@@ -15095,7 +16835,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15149,7 +16889,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 93
+        "y": 103
       },
       "id": 335,
       "links": [],
@@ -15169,7 +16909,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15191,7 +16931,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 95
+        "y": 105
       },
       "id": 322,
       "panels": [],
@@ -15242,7 +16982,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 96
+        "y": 106
       },
       "id": 324,
       "links": [],
@@ -15262,7 +17002,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15318,7 +17058,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 96
+        "y": 106
       },
       "id": 332,
       "links": [],
@@ -15338,7 +17078,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15412,7 +17152,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 96
+        "y": 106
       },
       "id": 374,
       "options": {
@@ -15502,7 +17242,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 96
+        "y": 106
       },
       "id": 340,
       "options": {
@@ -15592,7 +17332,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 96
+        "y": 106
       },
       "id": 338,
       "options": {
@@ -15680,7 +17420,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 96
+        "y": 106
       },
       "id": 359,
       "options": {
@@ -15770,7 +17510,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 96
+        "y": 106
       },
       "id": 342,
       "options": {
@@ -15831,7 +17571,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 96
+        "y": 106
       },
       "id": 344,
       "links": [],
@@ -15848,7 +17588,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15905,7 +17645,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 98
+        "y": 108
       },
       "id": 326,
       "links": [],
@@ -15925,7 +17665,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -15979,7 +17719,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 98
+        "y": 108
       },
       "id": 336,
       "links": [],
@@ -15999,7 +17739,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "exemplar": true,
@@ -16021,7 +17761,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 110
       },
       "id": 409,
       "panels": [],
@@ -16072,7 +17812,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 101
+        "y": 111
       },
       "id": 410,
       "links": [],
@@ -16092,7 +17832,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -16152,7 +17892,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 101
+        "y": 111
       },
       "id": 412,
       "links": [],
@@ -16172,7 +17912,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -16250,7 +17990,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 101
+        "y": 111
       },
       "id": 414,
       "options": {
@@ -16344,7 +18084,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 101
+        "y": 111
       },
       "id": 415,
       "options": {
@@ -16438,7 +18178,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 101
+        "y": 111
       },
       "id": 416,
       "options": {
@@ -16530,7 +18270,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 101
+        "y": 111
       },
       "id": 417,
       "options": {
@@ -16624,7 +18364,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 101
+        "y": 111
       },
       "id": 418,
       "options": {
@@ -16689,7 +18429,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 101
+        "y": 111
       },
       "id": 419,
       "links": [],
@@ -16706,7 +18446,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -16767,7 +18507,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 103
+        "y": 113
       },
       "id": 411,
       "links": [],
@@ -16787,7 +18527,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -16845,7 +18585,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 103
+        "y": 113
       },
       "id": 413,
       "links": [],
@@ -16865,7 +18605,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -16891,7 +18631,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 105
+        "y": 115
       },
       "id": 63,
       "panels": [],
@@ -16957,7 +18697,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 106
+        "y": 116
       },
       "id": 65,
       "options": {
@@ -17044,7 +18784,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 106
+        "y": 116
       },
       "id": 40,
       "options": {
@@ -17131,7 +18871,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 111
+        "y": 121
       },
       "id": 39,
       "options": {
@@ -17218,7 +18958,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 111
+        "y": 121
       },
       "id": 64,
       "options": {
@@ -17252,7 +18992,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 116
+        "y": 126
       },
       "id": 56,
       "panels": [],
@@ -17317,7 +19057,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 117
+        "y": 127
       },
       "id": 94,
       "options": {
@@ -17403,7 +19143,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 122
+        "y": 132
       },
       "id": 111,
       "options": {
@@ -17507,7 +19247,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 128
+        "y": 138
       },
       "id": 112,
       "options": {
@@ -17611,7 +19351,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 128
+        "y": 138
       },
       "id": 113,
       "options": {
@@ -17715,7 +19455,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 128
+        "y": 138
       },
       "id": 114,
       "options": {
@@ -17801,7 +19541,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 134
+        "y": 144
       },
       "id": 110,
       "options": {
@@ -17887,7 +19627,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 139
+        "y": 149
       },
       "id": 38,
       "options": {
@@ -17993,7 +19733,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 145
+        "y": 155
       },
       "id": 91,
       "options": {
@@ -18098,7 +19838,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 145
+        "y": 155
       },
       "id": 92,
       "options": {
@@ -18202,7 +19942,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 145
+        "y": 155
       },
       "id": 43,
       "options": {
@@ -18289,7 +20029,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 151
+        "y": 161
       },
       "id": 54,
       "options": {
@@ -18393,7 +20133,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 157
+        "y": 167
       },
       "id": 66,
       "options": {
@@ -18497,7 +20237,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 157
+        "y": 167
       },
       "id": 67,
       "options": {
@@ -18601,7 +20341,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 157
+        "y": 167
       },
       "id": 105,
       "options": {
@@ -18635,7 +20375,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 163
+        "y": 173
       },
       "id": 104,
       "panels": [],
@@ -18701,7 +20441,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 164
+        "y": 174
       },
       "id": 98,
       "options": {
@@ -18789,7 +20529,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 169
+        "y": 179
       },
       "id": 102,
       "options": {
@@ -18877,7 +20617,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 174
+        "y": 184
       },
       "id": 99,
       "options": {
@@ -18965,7 +20705,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 179
+        "y": 189
       },
       "id": 100,
       "options": {
@@ -19053,7 +20793,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 184
+        "y": 194
       },
       "id": 101,
       "options": {
@@ -19084,7 +20824,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -19111,6 +20851,6 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 28,
+  "version": 29,
   "weekStart": ""
 }
