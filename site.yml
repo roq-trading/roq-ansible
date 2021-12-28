@@ -61,6 +61,14 @@
   roles:
     - roq-bitstamp
 
+- hosts: roq_bybit
+  roles:
+    - roq-bybit
+
+- hosts: roq_bybit_futures
+  roles:
+    - roq-bybit-futures
+
 - hosts: roq_coinbase_pro
   roles:
     - roq-coinbase-pro
@@ -80,6 +88,14 @@
 - hosts: roq_hitbtc
   roles:
     - roq-hitbtc
+
+- hosts: roq_huobi
+  roles:
+    - roq-huobi
+
+- hosts: roq_huobi_futures
+  roles:
+    - roq-huobi-futures
 
 - hosts: roq_kraken
   roles:

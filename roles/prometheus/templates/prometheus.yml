@@ -99,6 +99,24 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_bybit' in groups %}
+
+  - job_name: 'roq-bybit'
+    metrics_path: '/metrics/roq-bybit'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_bybit_futures' in groups %}
+
+  - job_name: 'roq-bybit-futures'
+    metrics_path: '/metrics/roq-bybit-futures'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
 {% if 'roq_coinbase_pro' in groups %}
 
   - job_name: 'roq-coinbase-pro'

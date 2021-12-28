@@ -21,6 +21,6 @@ roq_huobi_defaults:
     rest_uri: "https://api.huobi.pro"
     ws_market_uri: "wss://api.huobi.pro/ws"
     ws_mbp_uri: "wss://api.huobi.pro/feed"
-    ws_account_uri: "wss://api.huobi.pro/ws/v2"
+    ws_order_uri: "wss://api.huobi.pro/ws/v2"
   symbols:
     - ".*"
