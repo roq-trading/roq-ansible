@@ -17765,7 +17765,7 @@
       },
       "id": 409,
       "panels": [],
-      "title": "OKEx",
+      "title": "OKX",
       "type": "row"
     },
     {
@@ -17840,7 +17840,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "max(absent(roq_updated{source=\"okex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "expr": "max(absent(roq_updated{source=\"okx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -17920,7 +17920,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "roq_exceptions{source=\"okex\"}",
+          "expr": "roq_exceptions{source=\"okx\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -18014,7 +18014,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"okex\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"okex\"}[1m]) / 1000",
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"okx\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"okx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -18108,7 +18108,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "irate(roq_profile_sum{source=\"okex\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"okex\"}[1m]) / 1000",
+          "expr": "irate(roq_profile_sum{source=\"okx\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"okx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -18199,7 +18199,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "irate(roq_events_count{source=\"okex\"}[1m])",
+          "expr": "irate(roq_events_count{source=\"okx\"}[1m])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -18294,7 +18294,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "irate(roq_market_data_latency_sum{source=\"okex\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"okex\"}[1m]) / 1000",
+          "expr": "irate(roq_market_data_latency_sum{source=\"okx\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"okx\"}[1m]) / 1000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -18388,7 +18388,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "irate(roq_latency_sum{source=\"okex\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"okex\"}[1m]) / 1000000",
+          "expr": "irate(roq_latency_sum{source=\"okx\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"okx\"}[1m]) / 1000000",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -18454,7 +18454,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "max by (connection) (roq_counter{source=\"okex\",function=\"disconnect\"})",
+          "expr": "max by (connection) (roq_counter{source=\"okx\",function=\"disconnect\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "{{connection}}",
@@ -18535,7 +18535,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "time() - roq_process{source=\"okex\",name=\"start_time\"}",
+          "expr": "time() - roq_process{source=\"okx\",name=\"start_time\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -18613,7 +18613,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "sum(roq_events_count{source=\"okex\"})",
+          "expr": "sum(roq_events_count{source=\"okx\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",

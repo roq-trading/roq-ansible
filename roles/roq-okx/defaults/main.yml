@@ -1,0 +1,25 @@
+---
+
+roq_okx_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-okx"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  logging:
+    verbosity: 0
+  flags:
+    name: "okx"
+    config_file: "{{ directory_config.usr_local_etc }}/roq-okx/config.toml"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
+    client_listen_address: "{{ directory_config.run }}/roq/roq-okx.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-okx.sock"
+    auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
+    auth_cache_dir: "{{ directory_config.var_lib }}"
+    rest_uri: "https://www.okx.com"
+    ws_public_uri: "wss://ws.okx.com:8443/ws/v5/public"
+    ws_private_uri: "wss://ws.okx.com:8443/ws/v5/private"
+  symbols:
+    - ".*"

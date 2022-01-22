@@ -113,9 +113,9 @@
   roles:
     - roq-kucoin-futures
 
-- hosts: roq_okex
+- hosts: roq_okx
   roles:
-    - roq-okex
+    - roq-okx
 
 - hosts: trading
   roles:

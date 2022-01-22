@@ -2,8 +2,8 @@
 
 - name: combine user configuration with defaults
   set_fact:
-    roq_okex_config: >
-        {{ roq_okex_defaults | combine(roq_okex | default({}), recursive=True) }}
+    roq_okx_config: >
+        {{ roq_okx_defaults | combine(roq_okx | default({}), recursive=True) }}
     cacheable: true
   tags:
     - always
@@ -12,13 +12,13 @@
 
   - name: shorter variable name for config
     set_fact:
-      config: "{{ roq_okex_config }}"
+      config: "{{ roq_okx_config }}"
 
   - name: install
     include_role:
       name: common
       tasks_from: gateway
 
-  when: "'roq_okex' in group_names"
+  when: "'roq_okx' in group_names"
   tags:
-    - roq-okex
+    - roq-okx
