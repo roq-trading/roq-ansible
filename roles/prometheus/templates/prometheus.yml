@@ -81,6 +81,15 @@ scrape_configs:
     static_configs:
       - targets: ['nginx.service:{{ nginx_config.http_port }}']
 {% endif %}
+{% if 'roq_bitfinex' in groups %}
+
+  - job_name: 'roq-bitfinex'
+    metrics_path: '/metrics/roq-bitfinex'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
 {% if 'roq_bitmex' in groups %}
 
   - job_name: 'roq-bitmex'
@@ -139,6 +148,24 @@ scrape_configs:
 
   - job_name: 'roq-ftx'
     metrics_path: '/metrics/roq-ftx'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_gate' in groups %}
+
+  - job_name: 'roq-gate'
+    metrics_path: '/metrics/roq-gate'
+    params:
+      format: [ prometheus ]
+    static_configs:
+      - targets: ['nginx.service:{{ nginx_config.http_port }}']
+{% endif %}
+{% if 'roq_gate_futures' in groups %}
+
+  - job_name: 'roq-gate-futures'
+    metrics_path: '/metrics/roq-gate-futures'
     params:
       format: [ prometheus ]
     static_configs:
