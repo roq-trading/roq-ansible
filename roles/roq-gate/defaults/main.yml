@@ -18,8 +18,7 @@ roq_gate_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-gate.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}"
-    rest_uri: "https://api-testnet.gate.com"
-    ws_public_uri: "wss://stream-testnet.gate.com/spot/quote/ws/v2"
-    ws_private_uri: "wss://stream-testnet.gate.com/spot/ws"
+    rest_uri: "https://api.gateio.ws/api/v4"
+    ws_uri: "wss://api.gateio.ws/ws/v4"
   symbols:
     - ".*"
