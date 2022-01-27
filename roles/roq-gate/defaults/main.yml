@@ -19,6 +19,6 @@ roq_gate_defaults:
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}"
     rest_uri: "https://api.gateio.ws/api/v4"
-    ws_uri: "wss://api.gateio.ws/ws/v4"
+    ws_uri: "wss://api.gateio.ws/ws/v4/"
   symbols:
     - ".*"
