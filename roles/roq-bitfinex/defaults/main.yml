@@ -1,10 +1,10 @@
 ---
 
-roq_bybit_defaults:
+roq_bitfinex_defaults:
   version: "{{ roq_version }}"
   docker:
     use: "{{ roq_use_docker }}"
-    name: "roqtrading/roq-bybit"
+    name: "roqtrading/roq-bitfinex"
   service:
     start: "Sun *-*-* 00:01:00"
     stop: "Sat *-*-* 23:59:00"
