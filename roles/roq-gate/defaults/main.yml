@@ -1,0 +1,25 @@
+---
+
+roq_gate_defaults:
+  version: "{{ roq_version }}"
+  docker:
+    use: "{{ roq_use_docker }}"
+    name: "roqtrading/roq-gate"
+  service:
+    start: "Sun *-*-* 00:01:00"
+    stop: "Sat *-*-* 23:59:00"
+  logging:
+    verbosity: 0
+  flags:
+    name: "gate"
+    config_file: "{{ directory_config.usr_local_etc }}/roq-gate/config.toml"
+    event_log_dir: "{{ directory_config.var_lib }}/roq/data"
+    client_listen_address: "{{ directory_config.run }}/roq/roq-gate.sock"
+    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-gate.sock"
+    auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
+    auth_cache_dir: "{{ directory_config.var_lib }}"
+    rest_uri: "https://api-testnet.gate.com"
+    ws_public_uri: "wss://stream-testnet.gate.com/spot/quote/ws/v2"
+    ws_private_uri: "wss://stream-testnet.gate.com/spot/ws"
+  symbols:
+    - ".*"

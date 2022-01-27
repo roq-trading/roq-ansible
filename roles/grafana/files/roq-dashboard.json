@@ -87,7 +87,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_celsius)",
@@ -147,7 +147,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_hertz) / 1000 / 1000 / 1000",
@@ -207,7 +207,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "irate(node_intr_total[1m])",
@@ -267,7 +267,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "node_memory_Active_bytes / node_memory_MemTotal_bytes",
@@ -326,7 +326,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "node_edac_uncorrectable_errors_total",
@@ -385,7 +385,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(node_filesystem_device_error)",
@@ -446,7 +446,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "1 - (max(node_filesystem_free_bytes{device!=\"tmpfs\"}) by (device) / max(node_filesystem_size_bytes{device!=\"tmpfs\"}) by (device))",
@@ -508,7 +508,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(node_hwmon_temp_crit_celsius)",
@@ -567,7 +567,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(node_cpu_frequency_max_hertz) / 1000 / 1000 / 1000",
@@ -627,7 +627,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "irate(node_context_switches_total[1m])",
@@ -686,7 +686,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "node_memory_MemTotal_bytes",
@@ -746,7 +746,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "node_memory_Dirty_bytes",
@@ -806,7 +806,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(irate(node_disk_written_bytes_total[1m]))",
@@ -894,7 +894,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "ceil(node_systemd_unit_state{name=\"clickhouse-server.service\",state=\"active\"})",
@@ -967,7 +967,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1317,7 +1317,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1394,7 +1394,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(roq_export{source=\"clickhouse\", name=\"messages\"})",
@@ -1485,7 +1485,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1561,7 +1561,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1906,7 +1906,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -1980,7 +1980,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2073,7 +2073,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2147,7 +2147,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2657,7 +2657,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2734,7 +2734,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2811,7 +2811,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2903,7 +2903,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -2977,7 +2977,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -3487,7 +3487,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -3564,7 +3564,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -3641,7 +3641,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -3733,7 +3733,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"binance\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -3808,7 +3808,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"binance\"}",
@@ -4316,7 +4316,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"binance\",function=\"disconnect\"})",
@@ -4392,7 +4392,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"binance\",name=\"start_time\"}",
@@ -4465,7 +4465,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -4558,7 +4558,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -4634,7 +4634,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -5144,7 +5144,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -5221,7 +5221,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -5295,7 +5295,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -5318,6 +5318,876 @@
         "w": 24,
         "x": 0,
         "y": 35
+      },
+      "id": 469,
+      "panels": [],
+      "title": "Bitfinex",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 36
+      },
+      "id": 470,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max(absent(roq_updated{source=\"bitfinex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 36
+      },
+      "id": 472,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "roq_exceptions{source=\"bitfinex\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 4,
+        "y": 36
+      },
+      "id": 474,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"bitfinex\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"bitfinex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPC (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 36
+      },
+      "id": 475,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"bitfinex\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"bitfinex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 36
+      },
+      "id": 476,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"bitfinex\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 36
+      },
+      "id": 477,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"bitfinex\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"bitfinex\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 36
+      },
+      "id": 478,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"bitfinex\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"bitfinex\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 36
+      },
+      "id": 479,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max by (connection) (roq_counter{source=\"bitfinex\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Disconnects (total)",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 38
+      },
+      "id": 471,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "time() - roq_process{source=\"bitfinex\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 38
+      },
+      "id": 473,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "sum(roq_events_count{source=\"bitfinex\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 40
       },
       "id": 134,
       "panels": [],
@@ -5368,7 +6238,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 36
+        "y": 41
       },
       "id": 135,
       "links": [],
@@ -5388,7 +6258,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitmex\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -5441,7 +6311,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 36
+        "y": 41
       },
       "id": 141,
       "links": [],
@@ -5461,7 +6331,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitmex\"}",
@@ -5532,7 +6402,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 36
+        "y": 41
       },
       "id": 362,
       "options": {
@@ -5622,7 +6492,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 36
+        "y": 41
       },
       "id": 189,
       "options": {
@@ -5712,7 +6582,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 36
+        "y": 41
       },
       "id": 143,
       "options": {
@@ -5799,7 +6669,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 36
+        "y": 41
       },
       "id": 350,
       "options": {
@@ -5889,7 +6759,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 36
+        "y": 41
       },
       "id": 144,
       "options": {
@@ -5950,7 +6820,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 36
+        "y": 41
       },
       "id": 145,
       "links": [],
@@ -5967,7 +6837,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitmex\",function=\"disconnect\"})",
@@ -6022,7 +6892,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 38
+        "y": 43
       },
       "id": 136,
       "links": [],
@@ -6042,7 +6912,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitmex\",name=\"start_time\"}",
@@ -6093,7 +6963,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 38
+        "y": 43
       },
       "id": 146,
       "links": [],
@@ -6113,7 +6983,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitmex\"})",
@@ -6132,7 +7002,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 45
       },
       "id": 148,
       "panels": [],
@@ -6183,7 +7053,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 41
+        "y": 46
       },
       "id": 151,
       "links": [],
@@ -6203,7 +7073,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"bitstamp\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -6258,7 +7128,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 41
+        "y": 46
       },
       "id": 169,
       "links": [],
@@ -6278,7 +7148,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"bitstamp\"}",
@@ -6351,7 +7221,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 41
+        "y": 46
       },
       "id": 363,
       "options": {
@@ -6441,7 +7311,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 41
+        "y": 46
       },
       "id": 190,
       "options": {
@@ -6531,7 +7401,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 41
+        "y": 46
       },
       "id": 172,
       "options": {
@@ -6618,7 +7488,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 41
+        "y": 46
       },
       "id": 348,
       "options": {
@@ -6708,7 +7578,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 41
+        "y": 46
       },
       "id": 173,
       "options": {
@@ -6769,7 +7639,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 41
+        "y": 46
       },
       "id": 174,
       "links": [],
@@ -6786,7 +7656,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"bitstamp\",function=\"disconnect\"})",
@@ -6842,7 +7712,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 43
+        "y": 48
       },
       "id": 152,
       "links": [],
@@ -6862,7 +7732,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"bitstamp\",name=\"start_time\"}",
@@ -6915,7 +7785,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 43
+        "y": 48
       },
       "id": 171,
       "links": [],
@@ -6935,7 +7805,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"bitstamp\"})",
@@ -6956,7 +7826,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 50
       },
       "id": 421,
       "panels": [],
@@ -7007,7 +7877,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 46
+        "y": 51
       },
       "id": 422,
       "links": [],
@@ -7027,7 +7897,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7087,7 +7957,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 46
+        "y": 51
       },
       "id": 424,
       "links": [],
@@ -7107,7 +7977,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7185,7 +8055,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 46
+        "y": 51
       },
       "id": 426,
       "options": {
@@ -7279,7 +8149,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 46
+        "y": 51
       },
       "id": 427,
       "options": {
@@ -7373,7 +8243,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 46
+        "y": 51
       },
       "id": 428,
       "options": {
@@ -7465,7 +8335,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 46
+        "y": 51
       },
       "id": 429,
       "options": {
@@ -7559,7 +8429,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 46
+        "y": 51
       },
       "id": 430,
       "options": {
@@ -7624,7 +8494,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 46
+        "y": 51
       },
       "id": 431,
       "links": [],
@@ -7641,7 +8511,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7702,7 +8572,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 48
+        "y": 53
       },
       "id": 423,
       "links": [],
@@ -7722,7 +8592,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7780,7 +8650,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 48
+        "y": 53
       },
       "id": 425,
       "links": [],
@@ -7800,7 +8670,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7826,7 +8696,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 55
       },
       "id": 433,
       "panels": [],
@@ -7877,7 +8747,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 51
+        "y": 56
       },
       "id": 434,
       "links": [],
@@ -7897,7 +8767,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -7957,7 +8827,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 51
+        "y": 56
       },
       "id": 436,
       "links": [],
@@ -7977,7 +8847,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -8055,7 +8925,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 51
+        "y": 56
       },
       "id": 438,
       "options": {
@@ -8149,7 +9019,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 51
+        "y": 56
       },
       "id": 439,
       "options": {
@@ -8243,7 +9113,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 51
+        "y": 56
       },
       "id": 440,
       "options": {
@@ -8335,7 +9205,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 51
+        "y": 56
       },
       "id": 441,
       "options": {
@@ -8429,7 +9299,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 51
+        "y": 56
       },
       "id": 442,
       "options": {
@@ -8494,7 +9364,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 51
+        "y": 56
       },
       "id": 443,
       "links": [],
@@ -8511,7 +9381,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -8572,7 +9442,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 53
+        "y": 58
       },
       "id": 435,
       "links": [],
@@ -8592,7 +9462,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -8650,7 +9520,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 53
+        "y": 58
       },
       "id": 437,
       "links": [],
@@ -8670,7 +9540,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -8696,7 +9566,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 60
       },
       "id": 4,
       "panels": [],
@@ -8747,7 +9617,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 56
+        "y": 61
       },
       "id": 7,
       "links": [],
@@ -8767,7 +9637,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"coinbase-pro\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -8820,7 +9690,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 56
+        "y": 61
       },
       "id": 20,
       "links": [],
@@ -8840,7 +9710,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"coinbase-pro\"}",
@@ -8911,7 +9781,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 56
+        "y": 61
       },
       "id": 364,
       "options": {
@@ -9001,7 +9871,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 56
+        "y": 61
       },
       "id": 191,
       "options": {
@@ -9091,7 +9961,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 56
+        "y": 61
       },
       "id": 108,
       "options": {
@@ -9178,7 +10048,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 56
+        "y": 61
       },
       "id": 347,
       "options": {
@@ -9268,7 +10138,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 56
+        "y": 61
       },
       "id": 70,
       "options": {
@@ -9329,7 +10199,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 56
+        "y": 61
       },
       "id": 132,
       "links": [],
@@ -9346,7 +10216,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"coinbase-pro\",function=\"disconnect\"})",
@@ -9401,7 +10271,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 58
+        "y": 63
       },
       "id": 74,
       "links": [],
@@ -9421,7 +10291,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"coinbase-pro\",name=\"start_time\"}",
@@ -9472,7 +10342,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 58
+        "y": 63
       },
       "id": 95,
       "links": [],
@@ -9492,7 +10362,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"coinbase-pro\"})",
@@ -9511,7 +10381,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 65
       },
       "id": 11,
       "panels": [],
@@ -9562,7 +10432,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 61
+        "y": 66
       },
       "id": 2,
       "links": [],
@@ -9582,7 +10452,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"deribit\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -9635,7 +10505,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 61
+        "y": 66
       },
       "id": 21,
       "links": [],
@@ -9655,7 +10525,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"deribit\"}",
@@ -9726,7 +10596,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 61
+        "y": 66
       },
       "id": 365,
       "options": {
@@ -9816,7 +10686,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 61
+        "y": 66
       },
       "id": 192,
       "options": {
@@ -9906,7 +10776,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 61
+        "y": 66
       },
       "id": 96,
       "options": {
@@ -9991,7 +10861,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 61
+        "y": 66
       },
       "id": 346,
       "options": {
@@ -10081,7 +10951,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 61
+        "y": 66
       },
       "id": 71,
       "options": {
@@ -10142,7 +11012,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 61
+        "y": 66
       },
       "id": 131,
       "links": [],
@@ -10159,7 +11029,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"deribit\",function=\"disconnect\"})",
@@ -10214,7 +11084,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 63
+        "y": 68
       },
       "id": 75,
       "links": [],
@@ -10234,7 +11104,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"deribit\",name=\"start_time\"}",
@@ -10287,7 +11157,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 63
+        "y": 68
       },
       "id": 109,
       "links": [],
@@ -10307,7 +11177,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"deribit\"})",
@@ -10326,7 +11196,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 70
       },
       "id": 150,
       "panels": [],
@@ -10377,7 +11247,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 66
+        "y": 71
       },
       "id": 153,
       "links": [],
@@ -10397,7 +11267,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"ftx\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -10452,7 +11322,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 66
+        "y": 71
       },
       "id": 159,
       "links": [],
@@ -10472,7 +11342,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"ftx\"}",
@@ -10545,7 +11415,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 66
+        "y": 71
       },
       "id": 366,
       "options": {
@@ -10635,7 +11505,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 66
+        "y": 71
       },
       "id": 193,
       "options": {
@@ -10725,7 +11595,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 66
+        "y": 71
       },
       "id": 162,
       "options": {
@@ -10812,7 +11682,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 66
+        "y": 71
       },
       "id": 345,
       "options": {
@@ -10902,7 +11772,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 66
+        "y": 71
       },
       "id": 163,
       "options": {
@@ -10963,7 +11833,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 66
+        "y": 71
       },
       "id": 164,
       "links": [],
@@ -10980,7 +11850,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"ftx\",function=\"disconnect\"})",
@@ -11036,7 +11906,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 68
+        "y": 73
       },
       "id": 154,
       "links": [],
@@ -11056,7 +11926,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"ftx\",name=\"start_time\"}",
@@ -11109,7 +11979,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 68
+        "y": 73
       },
       "id": 161,
       "links": [],
@@ -11129,7 +11999,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"ftx\"})",
@@ -11150,7 +12020,1747 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 75
+      },
+      "id": 445,
+      "panels": [],
+      "title": "Gate.io",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 76
+      },
+      "id": 448,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max(absent(roq_updated{source=\"gate\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 76
+      },
+      "id": 450,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "roq_exceptions{source=\"gate\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 4,
+        "y": 76
+      },
+      "id": 452,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"gate\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"gate\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPC (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 76
+      },
+      "id": 453,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"gate\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"gate\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 76
+      },
+      "id": 454,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"gate\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 76
+      },
+      "id": 455,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"gate\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"gate\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 76
+      },
+      "id": 456,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"gate\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"gate\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 76
+      },
+      "id": 457,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max by (connection) (roq_counter{source=\"gate\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Disconnects (total)",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 78
+      },
+      "id": 449,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "time() - roq_process{source=\"gate\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 78
+      },
+      "id": 451,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "sum(roq_events_count{source=\"gate\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 80
+      },
+      "id": 447,
+      "panels": [],
+      "title": "Gate.io Futures",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "UP"
+                },
+                "1": {
+                  "text": "DOWN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0.5
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 81
+      },
+      "id": 458,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max(absent(roq_updated{source=\"gate-futures\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Service",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 1
+              },
+              {
+                "color": "#d44a3a",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 81
+      },
+      "id": 460,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "roq_exceptions{source=\"gate-futures\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Exceptions",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 4,
+        "y": 81
+      },
+      "id": 462,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_heartbeat_latency_sum{receiver=\"gate-futures\"}[1m]) / on(sender) irate(roq_heartbeat_latency_count{receiver=\"gate-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "IPC (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 7,
+        "y": 81
+      },
+      "id": 463,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_profile_sum{source=\"gate-futures\"}[1m]) / on (connection, function) irate(roq_profile_count{source=\"gate-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 10,
+        "y": 81
+      },
+      "id": 464,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_events_count{source=\"gate-futures\"}[1m])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (frequency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "µs"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 13,
+        "y": 81
+      },
+      "id": 465,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_market_data_latency_sum{source=\"gate-futures\"}[1m]) / on (function) irate(roq_market_data_latency_count{source=\"gate-futures\"}[1m]) / 1000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Market Data (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 16,
+        "y": 81
+      },
+      "id": 466,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "hidden",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "irate(roq_latency_sum{source=\"gate-futures\", function=\"ping\"}[1m]) / on(connection, function) irate(roq_latency_count{source=\"gate-futures\"}[1m]) / 1000000",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ping (latency)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__series.name}",
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 19,
+        "y": 81
+      },
+      "id": 467,
+      "links": [],
+      "options": {
+        "displayMode": "basic",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "text": {}
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "max by (connection) (roq_counter{source=\"gate-futures\",function=\"disconnect\"})",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{connection}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Disconnects (total)",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 0
+              },
+              {
+                "color": "#d44a3a",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 0,
+        "y": 83
+      },
+      "id": 459,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "time() - roq_process{source=\"gate-futures\",name=\"start_time\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 2,
+        "y": 83
+      },
+      "id": 461,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "sum(roq_events_count{source=\"gate-futures\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Events (total)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 85
       },
       "id": 116,
       "panels": [],
@@ -11201,7 +13811,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 71
+        "y": 86
       },
       "id": 117,
       "links": [],
@@ -11221,7 +13831,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"gemini\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -11274,7 +13884,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 71
+        "y": 86
       },
       "id": 120,
       "links": [],
@@ -11294,7 +13904,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"gemini\"}",
@@ -11365,7 +13975,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 71
+        "y": 86
       },
       "id": 367,
       "options": {
@@ -11455,7 +14065,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 71
+        "y": 86
       },
       "id": 194,
       "options": {
@@ -11545,7 +14155,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 71
+        "y": 86
       },
       "id": 126,
       "options": {
@@ -11630,7 +14240,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 71
+        "y": 86
       },
       "id": 352,
       "options": {
@@ -11720,7 +14330,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 71
+        "y": 86
       },
       "id": 127,
       "options": {
@@ -11781,7 +14391,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 71
+        "y": 86
       },
       "id": 130,
       "links": [],
@@ -11798,7 +14408,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"gemini\",function=\"disconnect\"})",
@@ -11853,7 +14463,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 73
+        "y": 88
       },
       "id": 121,
       "links": [],
@@ -11873,7 +14483,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"gemini\",name=\"start_time\"}",
@@ -11924,7 +14534,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 73
+        "y": 88
       },
       "id": 125,
       "links": [],
@@ -11944,7 +14554,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"gemini\"})",
@@ -11963,7 +14573,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 90
       },
       "id": 176,
       "panels": [],
@@ -12014,7 +14624,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 76
+        "y": 91
       },
       "id": 177,
       "links": [],
@@ -12034,7 +14644,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"hitbtc\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -12089,7 +14699,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 76
+        "y": 91
       },
       "id": 183,
       "links": [],
@@ -12109,7 +14719,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"hitbtc\"}",
@@ -12182,7 +14792,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 76
+        "y": 91
       },
       "id": 368,
       "options": {
@@ -12272,7 +14882,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 76
+        "y": 91
       },
       "id": 195,
       "options": {
@@ -12362,7 +14972,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 76
+        "y": 91
       },
       "id": 186,
       "options": {
@@ -12449,7 +15059,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 76
+        "y": 91
       },
       "id": 353,
       "options": {
@@ -12539,7 +15149,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 76
+        "y": 91
       },
       "id": 187,
       "options": {
@@ -12600,7 +15210,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 76
+        "y": 91
       },
       "id": 188,
       "links": [],
@@ -12617,7 +15227,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"hitbtc\",function=\"disconnect\"})",
@@ -12673,7 +15283,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 78
+        "y": 93
       },
       "id": 178,
       "links": [],
@@ -12693,7 +15303,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"hitbtc\",name=\"start_time\"}",
@@ -12746,7 +15356,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 78
+        "y": 93
       },
       "id": 185,
       "links": [],
@@ -12766,7 +15376,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"hitbtc\"})",
@@ -12787,7 +15397,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 80
+        "y": 95
       },
       "id": 270,
       "panels": [],
@@ -12838,7 +15448,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 81
+        "y": 96
       },
       "id": 281,
       "links": [],
@@ -12858,7 +15468,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -12914,7 +15524,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 81
+        "y": 96
       },
       "id": 287,
       "links": [],
@@ -12934,7 +15544,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13008,7 +15618,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 81
+        "y": 96
       },
       "id": 369,
       "options": {
@@ -13098,7 +15708,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 81
+        "y": 96
       },
       "id": 291,
       "options": {
@@ -13188,7 +15798,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 81
+        "y": 96
       },
       "id": 290,
       "options": {
@@ -13276,7 +15886,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 81
+        "y": 96
       },
       "id": 354,
       "options": {
@@ -13366,7 +15976,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 81
+        "y": 96
       },
       "id": 292,
       "options": {
@@ -13427,7 +16037,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 81
+        "y": 96
       },
       "id": 293,
       "links": [],
@@ -13444,7 +16054,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13501,7 +16111,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 83
+        "y": 98
       },
       "id": 282,
       "links": [],
@@ -13521,7 +16131,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13575,7 +16185,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 83
+        "y": 98
       },
       "id": 289,
       "links": [],
@@ -13595,7 +16205,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13617,7 +16227,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 85
+        "y": 100
       },
       "id": 302,
       "panels": [],
@@ -13668,7 +16278,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 86
+        "y": 101
       },
       "id": 303,
       "links": [],
@@ -13688,7 +16298,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13744,7 +16354,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 86
+        "y": 101
       },
       "id": 307,
       "links": [],
@@ -13764,7 +16374,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -13838,7 +16448,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 86
+        "y": 101
       },
       "id": 370,
       "options": {
@@ -13928,7 +16538,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 86
+        "y": 101
       },
       "id": 311,
       "options": {
@@ -14018,7 +16628,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 86
+        "y": 101
       },
       "id": 310,
       "options": {
@@ -14106,7 +16716,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 86
+        "y": 101
       },
       "id": 355,
       "options": {
@@ -14196,7 +16806,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 86
+        "y": 101
       },
       "id": 312,
       "options": {
@@ -14257,7 +16867,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 86
+        "y": 101
       },
       "id": 313,
       "links": [],
@@ -14274,7 +16884,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -14331,7 +16941,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 88
+        "y": 103
       },
       "id": 304,
       "links": [],
@@ -14351,7 +16961,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -14405,7 +17015,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 88
+        "y": 103
       },
       "id": 309,
       "links": [],
@@ -14425,7 +17035,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -14447,7 +17057,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 90
+        "y": 105
       },
       "id": 197,
       "panels": [],
@@ -14498,7 +17108,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 91
+        "y": 106
       },
       "id": 198,
       "links": [],
@@ -14518,7 +17128,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max(absent(roq_updated{source=\"kraken\",connection=\"process\",state=\"heartbeat\"}) OR vector(0))",
@@ -14573,7 +17183,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 91
+        "y": 106
       },
       "id": 205,
       "links": [],
@@ -14593,7 +17203,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "roq_exceptions{source=\"kraken\"}",
@@ -14666,7 +17276,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 91
+        "y": 106
       },
       "id": 371,
       "options": {
@@ -14756,7 +17366,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 91
+        "y": 106
       },
       "id": 208,
       "options": {
@@ -14846,7 +17456,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 91
+        "y": 106
       },
       "id": 207,
       "options": {
@@ -14933,7 +17543,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 91
+        "y": 106
       },
       "id": 356,
       "options": {
@@ -15023,7 +17633,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 91
+        "y": 106
       },
       "id": 209,
       "options": {
@@ -15084,7 +17694,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 91
+        "y": 106
       },
       "id": 343,
       "links": [],
@@ -15101,7 +17711,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "max by (connection) (roq_counter{source=\"kraken\",function=\"disconnect\"})",
@@ -15157,7 +17767,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 93
+        "y": 108
       },
       "id": 199,
       "links": [],
@@ -15177,7 +17787,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "time() - roq_process{source=\"kraken\",name=\"start_time\"}",
@@ -15230,7 +17840,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 93
+        "y": 108
       },
       "id": 206,
       "links": [],
@@ -15250,7 +17860,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "expr": "sum(roq_events_count{source=\"kraken\"})",
@@ -15271,7 +17881,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 95
+        "y": 110
       },
       "id": 268,
       "panels": [],
@@ -15322,7 +17932,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 96
+        "y": 111
       },
       "id": 271,
       "links": [],
@@ -15342,7 +17952,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -15398,7 +18008,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 96
+        "y": 111
       },
       "id": 275,
       "links": [],
@@ -15418,7 +18028,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -15492,7 +18102,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 96
+        "y": 111
       },
       "id": 372,
       "options": {
@@ -15582,7 +18192,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 96
+        "y": 111
       },
       "id": 278,
       "options": {
@@ -15672,7 +18282,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 96
+        "y": 111
       },
       "id": 277,
       "options": {
@@ -15760,7 +18370,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 96
+        "y": 111
       },
       "id": 357,
       "options": {
@@ -15850,7 +18460,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 96
+        "y": 111
       },
       "id": 279,
       "options": {
@@ -15911,7 +18521,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 96
+        "y": 111
       },
       "id": 280,
       "links": [],
@@ -15928,7 +18538,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -15985,7 +18595,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 98
+        "y": 113
       },
       "id": 272,
       "links": [],
@@ -16005,7 +18615,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16059,7 +18669,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 98
+        "y": 113
       },
       "id": 276,
       "links": [],
@@ -16079,7 +18689,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16101,7 +18711,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 115
       },
       "id": 320,
       "panels": [],
@@ -16152,7 +18762,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 101
+        "y": 116
       },
       "id": 323,
       "links": [],
@@ -16172,7 +18782,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16228,7 +18838,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 101
+        "y": 116
       },
       "id": 331,
       "links": [],
@@ -16248,7 +18858,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16322,7 +18932,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 101
+        "y": 116
       },
       "id": 373,
       "options": {
@@ -16412,7 +19022,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 101
+        "y": 116
       },
       "id": 339,
       "options": {
@@ -16502,7 +19112,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 101
+        "y": 116
       },
       "id": 337,
       "options": {
@@ -16590,7 +19200,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 101
+        "y": 116
       },
       "id": 358,
       "options": {
@@ -16680,7 +19290,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 101
+        "y": 116
       },
       "id": 341,
       "options": {
@@ -16741,7 +19351,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 101
+        "y": 116
       },
       "id": 210,
       "links": [],
@@ -16758,7 +19368,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16815,7 +19425,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 103
+        "y": 118
       },
       "id": 325,
       "links": [],
@@ -16835,7 +19445,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16889,7 +19499,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 103
+        "y": 118
       },
       "id": 335,
       "links": [],
@@ -16909,7 +19519,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -16931,7 +19541,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 105
+        "y": 120
       },
       "id": 322,
       "panels": [],
@@ -16982,7 +19592,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 106
+        "y": 121
       },
       "id": 324,
       "links": [],
@@ -17002,7 +19612,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -17058,7 +19668,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 106
+        "y": 121
       },
       "id": 332,
       "links": [],
@@ -17078,7 +19688,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -17152,7 +19762,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 106
+        "y": 121
       },
       "id": 374,
       "options": {
@@ -17242,7 +19852,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 106
+        "y": 121
       },
       "id": 340,
       "options": {
@@ -17332,7 +19942,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 106
+        "y": 121
       },
       "id": 338,
       "options": {
@@ -17420,7 +20030,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 106
+        "y": 121
       },
       "id": 359,
       "options": {
@@ -17510,7 +20120,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 106
+        "y": 121
       },
       "id": 342,
       "options": {
@@ -17571,7 +20181,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 106
+        "y": 121
       },
       "id": 344,
       "links": [],
@@ -17588,7 +20198,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -17645,7 +20255,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 108
+        "y": 123
       },
       "id": 326,
       "links": [],
@@ -17665,7 +20275,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -17719,7 +20329,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 108
+        "y": 123
       },
       "id": 336,
       "links": [],
@@ -17739,7 +20349,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "exemplar": true,
@@ -17761,7 +20371,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 110
+        "y": 125
       },
       "id": 409,
       "panels": [],
@@ -17812,7 +20422,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 111
+        "y": 126
       },
       "id": 410,
       "links": [],
@@ -17832,7 +20442,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -17892,7 +20502,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 111
+        "y": 126
       },
       "id": 412,
       "links": [],
@@ -17912,7 +20522,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -17990,7 +20600,7 @@
         "h": 4,
         "w": 3,
         "x": 4,
-        "y": 111
+        "y": 126
       },
       "id": 414,
       "options": {
@@ -18084,7 +20694,7 @@
         "h": 4,
         "w": 3,
         "x": 7,
-        "y": 111
+        "y": 126
       },
       "id": 415,
       "options": {
@@ -18178,7 +20788,7 @@
         "h": 4,
         "w": 3,
         "x": 10,
-        "y": 111
+        "y": 126
       },
       "id": 416,
       "options": {
@@ -18270,7 +20880,7 @@
         "h": 4,
         "w": 3,
         "x": 13,
-        "y": 111
+        "y": 126
       },
       "id": 417,
       "options": {
@@ -18364,7 +20974,7 @@
         "h": 4,
         "w": 3,
         "x": 16,
-        "y": 111
+        "y": 126
       },
       "id": 418,
       "options": {
@@ -18429,7 +21039,7 @@
         "h": 4,
         "w": 3,
         "x": 19,
-        "y": 111
+        "y": 126
       },
       "id": 419,
       "links": [],
@@ -18446,7 +21056,7 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -18507,7 +21117,7 @@
         "h": 2,
         "w": 2,
         "x": 0,
-        "y": 113
+        "y": 128
       },
       "id": 411,
       "links": [],
@@ -18527,7 +21137,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -18585,7 +21195,7 @@
         "h": 2,
         "w": 2,
         "x": 2,
-        "y": 113
+        "y": 128
       },
       "id": 413,
       "links": [],
@@ -18605,7 +21215,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "8.3.4",
       "targets": [
         {
           "datasource": {
@@ -18631,7 +21241,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 115
+        "y": 130
       },
       "id": 63,
       "panels": [],
@@ -18697,7 +21307,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 116
+        "y": 131
       },
       "id": 65,
       "options": {
@@ -18784,7 +21394,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 116
+        "y": 131
       },
       "id": 40,
       "options": {
@@ -18871,7 +21481,7 @@
         "h": 5,
         "w": 10,
         "x": 0,
-        "y": 121
+        "y": 136
       },
       "id": 39,
       "options": {
@@ -18958,7 +21568,7 @@
         "h": 5,
         "w": 10,
         "x": 10,
-        "y": 121
+        "y": 136
       },
       "id": 64,
       "options": {
@@ -18992,7 +21602,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 126
+        "y": 141
       },
       "id": 56,
       "panels": [],
@@ -19057,7 +21667,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 127
+        "y": 142
       },
       "id": 94,
       "options": {
@@ -19143,7 +21753,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 132
+        "y": 147
       },
       "id": 111,
       "options": {
@@ -19247,7 +21857,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 138
+        "y": 153
       },
       "id": 112,
       "options": {
@@ -19351,7 +21961,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 138
+        "y": 153
       },
       "id": 113,
       "options": {
@@ -19455,7 +22065,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 138
+        "y": 153
       },
       "id": 114,
       "options": {
@@ -19541,7 +22151,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 144
+        "y": 159
       },
       "id": 110,
       "options": {
@@ -19627,7 +22237,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 149
+        "y": 164
       },
       "id": 38,
       "options": {
@@ -19733,7 +22343,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 155
+        "y": 170
       },
       "id": 91,
       "options": {
@@ -19838,7 +22448,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 155
+        "y": 170
       },
       "id": 92,
       "options": {
@@ -19942,7 +22552,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 155
+        "y": 170
       },
       "id": 43,
       "options": {
@@ -20029,7 +22639,7 @@
         "h": 6,
         "w": 18,
         "x": 0,
-        "y": 161
+        "y": 176
       },
       "id": 54,
       "options": {
@@ -20133,7 +22743,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 167
+        "y": 182
       },
       "id": 66,
       "options": {
@@ -20237,7 +22847,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 167
+        "y": 182
       },
       "id": 67,
       "options": {
@@ -20341,7 +22951,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 167
+        "y": 182
       },
       "id": 105,
       "options": {
@@ -20375,7 +22985,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 173
+        "y": 188
       },
       "id": 104,
       "panels": [],
@@ -20441,7 +23051,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 174
+        "y": 189
       },
       "id": 98,
       "options": {
@@ -20529,7 +23139,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 179
+        "y": 194
       },
       "id": 102,
       "options": {
@@ -20617,7 +23227,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 184
+        "y": 199
       },
       "id": 99,
       "options": {
@@ -20705,7 +23315,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 189
+        "y": 204
       },
       "id": 100,
       "options": {
@@ -20793,7 +23403,7 @@
         "h": 5,
         "w": 18,
         "x": 0,
-        "y": 194
+        "y": 209
       },
       "id": 101,
       "options": {
@@ -20851,6 +23461,6 @@
   "timezone": "",
   "title": "roq-dashboard",
   "uid": "Afi9GToZz",
-  "version": 29,
+  "version": 2,
   "weekStart": ""
 }

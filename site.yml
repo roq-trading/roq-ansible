@@ -53,6 +53,10 @@
   roles:
     - roq-binance-futures
 
+- hosts: roq_bitfinex
+  roles:
+    - roq-bitfinex
+
 - hosts: roq_bitmex
   roles:
     - roq-bitmex
@@ -80,6 +84,14 @@
 - hosts: roq_ftx
   roles:
     - roq-ftx
+
+- hosts: roq_gate
+  roles:
+    - roq-gate
+
+- hosts: roq_gate_futures
+  roles:
+    - roq-gate-futures
 
 - hosts: roq_gemini
   roles:
