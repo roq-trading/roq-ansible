@@ -4,6 +4,8 @@ All notable changes will be documented in this file.
 
 ## Head
 
+## 0.8.3 &ndash; 2022-03-22
+
 ## 0.8.2 &ndash; 2022-02-18
 
 ## 0.8.1 &ndash; 2022-01-16
