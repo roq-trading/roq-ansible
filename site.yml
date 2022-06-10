@@ -15,6 +15,7 @@
     - kernel
     - python
     - docker
+    - podman
 
 - hosts: trading,web
   roles:

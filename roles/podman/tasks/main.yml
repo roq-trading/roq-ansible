@@ -1,0 +1,21 @@
+---
+
+- block:
+
+  - name: install
+    apt:
+      name:
+        - podman
+
+  - name: test if roq network exists
+    shell: "podman network inspect roq-network"
+    register: roq_network_exists
+    failed_when: roq_network_exists.rc != 0 and roq_network_exists.rc != 125
+
+  - name: create roq network
+    shell: "podman network create roq-network"
+    when: roq_network_exists.rc == 125
+
+  become: true
+  tags:
+    - podman
