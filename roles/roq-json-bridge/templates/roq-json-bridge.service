@@ -1,16 +1,17 @@
 [Unit]
 Description=roq-{{ config.flags.name }}
+Wants=network-online.target                                                                                             
 After=network-online.target
 
 [Service]
 {% if config.docker.use %}
 TimeoutStartSec=0
-ExecStart=/usr/bin/docker run --rm --name %n -i \
+ExecStart=/usr/bin/podman run --rm --name %n -i \
   --network roq-network \
   --volume {{ directory_config.var_lib }}/roq/data:/var/lib/roq/data \
   --volume {{ directory_config.usr_local_etc }}/roq-json-bridge:/usr/local/etc/roq-json-bridge \
   --env ROQ_v={{ config.logging.verbosity }} \
-  {{ docker_registry_prefix | default('') }}{{ config.docker.name }}:{{ config.version }} \
+  {{ docker_registry }}/{{ config.docker.name }}:{{ config.version }} \
   --flagfile "/usr/local/etc/roq-json-bridge/flags.cfg"
 {% else %}
 User={{ roq_user }}

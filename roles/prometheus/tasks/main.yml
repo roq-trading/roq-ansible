@@ -33,16 +33,13 @@
     - restart prometheus
     - restart alertmanager
   
-  - name: pull docker images
-    docker_image:
+  - name: pull images
+    containers.podman.podman_image:
       name: "{{ item }}"
-      source: pull
-      force_source: true
-      force_tag: true
     with_items:
-      - "{{ docker_registry_prefix | default('') }}{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }}"
-      - "{{ docker_registry_prefix | default('') }}{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }}"
-      - "{{ docker_registry_prefix | default('') }}{{ alertmanager_config.docker.name }}:{{ alertmanager_config.docker.tag }}"
+      - "{{ docker_registry }}/{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }}"
+      - "{{ docker_registry }}/{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }}"
+      - "{{ docker_registry }}/{{ alertmanager_config.docker.name }}:{{ alertmanager_config.docker.tag }}"
     notify:
     - restart prometheus
     - restart alertmanager

@@ -1,7 +1,7 @@
 [Unit]
 Description=alertmanager
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -9,13 +9,13 @@ Restart=always
 {% if cpu_affinity is defined %}
 CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --rm --name %n \
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
+ExecStart=/usr/bin/podman run --rm --name %n \
   --network roq-network \
   --volume {{ directory_config.usr_local_etc }}/alertmanager:/etc/alertmanager:ro \
   --volume {{ directory_config.var_lib }}/alertmanager:/var/lib/alertmanager \
-  {{ docker_registry_prefix | default('') }}{{ alertmanager_config.docker.name }}:{{ alertmanager_config.docker.tag }} \
+  {{ docker_registry }}/{{ alertmanager_config.docker.name }}:{{ alertmanager_config.docker.tag }} \
   --web.external-url=http://localhost/alertmanager \
   --config.file=/etc/alertmanager/alertmanager.yml \
   --storage.path=/var/lib/alertmanager

@@ -1,7 +1,7 @@
 [Unit]
 Description=clickhouse server
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -9,9 +9,9 @@ Restart=always
 {% if cpu_affinity is defined %}
 CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --rm --name %n \
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
+ExecStart=/usr/bin/podman run --rm --name %n \
   --user 0:0 \
   --network roq-network \
   --publish {{ clickhouse_config.port }}:9000 \
@@ -19,7 +19,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --publish {{ clickhouse_config.metrics_port }}:8001 \
   --volume {{ directory_config.var_lib }}/clickhouse:/var/lib/clickhouse \
   --volume {{ directory_config.usr_local_etc }}/clickhouse:/etc/clickhouse-server/config.d \
-  {{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-server:{{ clickhouse_config.docker.tag }}
+  {{ docker_registry }}/{{ clickhouse_config.docker.name }}-server:{{ clickhouse_config.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

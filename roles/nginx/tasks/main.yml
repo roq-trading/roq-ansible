@@ -37,13 +37,10 @@
     notify:
       - restart logrotate
 
-  - name: docker pull images
-    docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ nginx_config.docker.name }}"
+  - name: pull image
+    containers.podman.podman_image:
+      name: "{{ docker_registry }}/{{ nginx_config.docker.name }}"
       tag: "{{ nginx_config.docker.tag }}"
-      source: pull
-      force_source: true
-      force_tag: true
     notify:
       - restart nginx
   

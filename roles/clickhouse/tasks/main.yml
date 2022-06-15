@@ -36,13 +36,10 @@
     notify:
     - restart clickhouse
 
-  - name: pull docker images
-    docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ clickhouse_config.docker.name }}-{{ item }}"
+  - name: pull images
+    containers.podman.podman_image:
+      name: "{{ docker_registry }}/{{ clickhouse_config.docker.name }}-{{ item }}"
       tag: "{{ clickhouse_config.docker.tag }}"
-      source: pull
-      force_source: true
-      force_tag: true
     with_items:
       - "server"
       - "client"

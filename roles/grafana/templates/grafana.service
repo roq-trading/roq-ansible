@@ -1,7 +1,7 @@
 [Unit]
 Description=grafana
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -9,9 +9,9 @@ Restart=always
 {% if cpu_affinity is defined %}
 CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --rm --name %n \
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
+ExecStart=/usr/bin/podman run --rm --name %n \
   --user 0:0 \
   --network roq-network \
   --volume {{ directory_config.var_lib }}/grafana:/var/lib/grafana \
@@ -22,7 +22,7 @@ ExecStart=/usr/bin/docker run --rm --name %n \
   --env GF_DATABASE_TYPE=sqlite3 \
   --env GF_PATHS_PROVISIONING=/etc/grafana/provisioning \
   --env GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=vertamedia-clickhouse-datasource \
-  {{ docker_registry_prefix | default('') }}{{ grafana_config.docker.name }}:{{ grafana_config.docker.tag }}
+  {{ docker_registry }}/{{ grafana_config.docker.name }}:{{ grafana_config.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

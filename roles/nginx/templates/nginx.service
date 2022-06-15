@@ -1,7 +1,7 @@
 [Unit]
 Description=nginx
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -10,18 +10,18 @@ Restart=always
 CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 UMask=0000
-ExecReload=/usr/bin/docker kill -s HUP %n
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
+ExecReload=/usr/bin/podman kill -s HUP %n
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
 ExecStartPre=+/bin/mkdir -p {{ (directory_config.run + '/roq') | roq_realpath }}
 ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ (directory_config.run + '/roq') | roq_realpath }}
-ExecStart=/usr/bin/docker run --rm --name %n -i \
+ExecStart=/usr/bin/podman run --rm --name %n -i \
   --network roq-network \
   --volume {{ (directory_config.usr_local_etc + '/nginx/conf.d') | roq_realpath }}:/etc/nginx/conf.d:ro \
   --volume {{ (directory_config.var_log + '/nginx') | roq_realpath }}:/var/log/nginx \
   --volume {{ (directory_config.var_www) | roq_realpath }}:/var/www:ro \
   --volume {{ (directory_config.run + '/roq') | roq_realpath }}:/run/roq \
-  {{ docker_registry_prefix | default('') }}{{ nginx_defaults.docker.name }}:{{ nginx_defaults.docker.tag }}
+  {{ docker_registry }}/{{ nginx_defaults.docker.name }}:{{ nginx_defaults.docker.tag }}
 
 [Install]
 WantedBy=multi-user.target

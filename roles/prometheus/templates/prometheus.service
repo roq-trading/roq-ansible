@@ -1,7 +1,7 @@
 [Unit]
 Description=prometheus
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -9,14 +9,14 @@ Restart=always
 {% if cpu_affinity is defined %}
 CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --rm --name %n \
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
+ExecStart=/usr/bin/podman run --rm --name %n \
   --user 0:0 \
   --network roq-network \
   --volume {{ directory_config.usr_local_etc }}/prometheus:/etc/prometheus:ro \
   --volume {{ directory_config.var_lib }}/prometheus:/var/lib/prometheus \
-  {{ docker_registry_prefix | default('') }}{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }} \
+  {{ docker_registry }}/{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }} \
   --web.external-url=http://localhost/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
   --storage.tsdb.path=/var/lib/prometheus

@@ -1,7 +1,7 @@
 [Unit]
 Description=node-exporter
-After=docker.service
-Requires=docker.service
+Wants=network-online.target                                                                                             
+After=network-online.target
 
 [Service]
 TimeoutStartSec=0
@@ -9,14 +9,14 @@ Restart=always
 {% if cpu_affinity is defined %}
 CPUAffinity={{ cpu_affinity.zone_2 }}
 {% endif %}
-ExecStartPre=-/usr/bin/docker stop %n
-ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --rm --name %n -i \
+ExecStartPre=-/usr/bin/podman stop %n
+ExecStartPre=-/usr/bin/podman rm %n
+ExecStart=/usr/bin/podman run --rm --name %n -i \
   --user 0:0 \
   --security-opt apparmor=unconfined \
   --network roq-network \
   --volume /run/systemd:/run/systemd \
-  {{ docker_registry_prefix | default('') }}{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }} \
+  {{ docker_registry }}/{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }} \
   --collector.systemd \
   --collector.interrupts \
   --collector.processes

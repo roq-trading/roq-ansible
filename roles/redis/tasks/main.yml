@@ -24,13 +24,10 @@
     notify:
     - restart redis
 
-  - name: pull docker image
-    docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ redis_config.docker.name }}"
+  - name: pull image
+    containers.podman.podman_image:
+      name: "{{ docker_registry }}/{{ redis_config.docker.name }}"
       tag: "{{ redis_config.docker.tag }}"
-      source: pull
-      force_source: true
-      force_tag: true
 
   - name: create systemd service
     template:

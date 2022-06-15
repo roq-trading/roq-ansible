@@ -48,13 +48,10 @@
     notify:
     - restart grafana
 
-  - name: pull docker image
-    docker_image:
-      name: "{{ docker_registry_prefix | default('') }}{{ grafana_config.docker.name }}"
+  - name: pull image
+    containers.podman.podman_image:
+      name: "{{ docker_registry }}/{{ grafana_config.docker.name }}"
       tag: "{{ grafana_config.docker.tag }}"
-      source: pull
-      force_source: true
-      force_tag: true
     notify:
     - restart grafana
   
