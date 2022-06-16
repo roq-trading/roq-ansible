@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-docker run \
+/usr/bin/podman run \
   --interactive \
   --tty \
   --rm \
   --network roq-network \
-  yandex/clickhouse-client \
+  docker.io/yandex/clickhouse-client \
     --host clickhouse-server.service \
     $@

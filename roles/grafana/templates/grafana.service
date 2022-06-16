@@ -1,7 +1,7 @@
 [Unit]
 Description=grafana
-Wants=network-online.target                                                                                             
-After=network-online.target
+After=prometheus.service
+Requires=prometheus.service
 
 [Service]
 TimeoutStartSec=0
