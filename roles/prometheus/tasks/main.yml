@@ -2,7 +2,7 @@
 
 - block:
 
-  - name: create directories
+  - name: create directories (prometheus)
     file:
       path: "{{ item }}"
       state: directory
@@ -12,10 +12,20 @@
     with_items:
       - "{{ directory_config.usr_local_etc }}/prometheus"
       - "{{ directory_config.var_lib }}/prometheus"
+    notify:
+    - restart prometheus
+
+  - name: create directories (alertmanager)
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0777
+    with_items:
       - "{{ directory_config.usr_local_etc }}/alertmanager"
       - "{{ directory_config.var_lib }}/alertmanager"
     notify:
-    - restart prometheus
     - restart alertmanager
   
   - name: create config files
