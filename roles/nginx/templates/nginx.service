@@ -1,7 +1,13 @@
 [Unit]
 Description=nginx
-Wants=network-online.target                                                                                             
-After=network-online.target
+{% if 'trading' in groups %}
+After=grafana.service prometheus.service clickhouse-server.service
+Requires=grafana.service prometheus.service clickhouse-server.service
+{% endif %}
+{% for (name, options) in nginx_config.upstream.items() %}
+After={{ options.name }}
+Requires={{ options.name }}
+{% endfor %}
 
 [Service]
 TimeoutStartSec=0
