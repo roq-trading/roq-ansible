@@ -46,6 +46,7 @@
   - name: pull images
     containers.podman.podman_image:
       name: "{{ item }}"
+      force: true
     with_items:
       - "{{ docker_registry }}/{{ node_exporter_config.docker.name }}:{{ node_exporter_config.docker.tag }}"
       - "{{ docker_registry }}/{{ prometheus_config.docker.name }}:{{ prometheus_config.docker.tag }}"

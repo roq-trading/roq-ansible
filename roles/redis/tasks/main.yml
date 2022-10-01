@@ -28,6 +28,7 @@
     containers.podman.podman_image:
       name: "{{ docker_registry }}/{{ redis_config.docker.name }}"
       tag: "{{ redis_config.docker.tag }}"
+      force: true
 
   - name: create systemd service
     template:

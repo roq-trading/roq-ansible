@@ -40,6 +40,7 @@
     containers.podman.podman_image:
       name: "{{ docker_registry }}/{{ clickhouse_config.docker.name }}-{{ item }}"
       tag: "{{ clickhouse_config.docker.tag }}"
+      force: true
     with_items:
       - "server"
       - "client"

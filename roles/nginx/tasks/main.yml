@@ -41,6 +41,7 @@
     containers.podman.podman_image:
       name: "{{ docker_registry }}/{{ nginx_config.docker.name }}"
       tag: "{{ nginx_config.docker.tag }}"
+      force: true
     notify:
       - restart nginx
   
