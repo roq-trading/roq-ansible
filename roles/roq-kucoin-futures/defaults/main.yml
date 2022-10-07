@@ -18,6 +18,7 @@ roq_kucoin_futures_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kucoin-futures.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api-sandbox-futures.kucoin.com"
   symbols:
     - ".*"

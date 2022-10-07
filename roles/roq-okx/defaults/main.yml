@@ -18,6 +18,7 @@ roq_okx_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-okx.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://www.okx.com"
     ws_public_uri: "wss://ws.okx.com:8443/ws/v5/public"
     ws_private_uri: "wss://ws.okx.com:8443/ws/v5/private"

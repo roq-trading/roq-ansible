@@ -18,6 +18,7 @@ roq_huobi_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-huobi.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api.huobi.pro"
     ws_market_uri: "wss://api.huobi.pro/ws"
     ws_mbp_uri: "wss://api.huobi.pro/feed"

@@ -18,6 +18,7 @@ roq_coinbase_pro_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-coinbase-pro.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     fix_uri: "tcp+ssl://fix-public.sandbox.pro.coinbase.com:4198"
     ws_uri: "wss://ws-feed-public.sandbox.pro.coinbase.com"
     rest_uri: "https://api-public.sandbox.pro.coinbase.com"

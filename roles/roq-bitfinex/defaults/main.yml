@@ -18,6 +18,7 @@ roq_bitfinex_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitfinex.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api-pub.bitfinex.com"
     ws_public_uri: "wss://api-pub.bitfinex.com/ws/2"
     ws_private_uri: "wss://api.bitfinex.com/ws/2"

@@ -18,6 +18,7 @@ roq_gate_futures_defaults:
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-gate-futures.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     auth_cache_dir: "{{ directory_config.var_lib }}"
+    cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api.gateio.ws/api/v4"
     ws_uri: "wss://fx-ws.gateio.ws/v4/ws/usdt"
     api: "usdt"
