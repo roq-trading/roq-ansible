@@ -17,7 +17,6 @@ roq_deribit_defaults:
     client_listen_address: "{{ directory_config.run }}/roq/roq-deribit.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-deribit.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
-    auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     ws_uri: "wss://test.deribit.com/ws/api/v2"
     fix_uri: "tcp://test.deribit.com:9881"

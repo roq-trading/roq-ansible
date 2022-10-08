@@ -17,7 +17,6 @@ roq_kraken_futures_defaults:
     client_listen_address: "{{ directory_config.run }}/roq/roq-kraken-futures.sock"
     metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kraken-futures.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
-    auth_cache_dir: "{{ directory_config.var_lib }}/roq/cache/roq-krake-futures"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://demo-futures.kraken.com"
     ws_uri: "wss://demo-futures.kraken.com/ws/v3"
