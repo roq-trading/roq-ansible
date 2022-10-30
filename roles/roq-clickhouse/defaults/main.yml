@@ -10,7 +10,7 @@ roq_clickhouse_defaults:
     verbosity: 0
   flags:
     name: "clickhouse"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-clickhouse.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-clickhouse.sock"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     uri: "http://localhost:8123"
     database_name: "roq"

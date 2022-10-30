@@ -15,7 +15,7 @@ roq_hitbtc_defaults:
     config_file: "{{ directory_config.usr_local_etc }}/roq-hitbtc/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-hitbtc.sock"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-hitbtc.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-hitbtc.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     ws_uri: "wss://hitbtc.com/ws"

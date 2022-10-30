@@ -15,7 +15,7 @@ roq_coinbase_pro_defaults:
     config_file: "{{ directory_config.usr_local_etc }}/roq-coinbase-pro/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-coinbase-pro.sock"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-coinbase-pro.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-coinbase-pro.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     fix_uri: "tcp+ssl://fix-public.sandbox.pro.coinbase.com:4198"

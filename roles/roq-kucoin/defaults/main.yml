@@ -15,7 +15,7 @@ roq_kucoin_defaults:
     config_file: "{{ directory_config.usr_local_etc }}/roq-kucoin/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-kucoin.sock"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kucoin.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-kucoin.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://openapi-sandbox.kucoin.com"

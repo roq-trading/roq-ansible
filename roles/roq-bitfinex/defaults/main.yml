@@ -15,7 +15,7 @@ roq_bitfinex_defaults:
     config_file: "{{ directory_config.usr_local_etc }}/roq-bitfinex/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/roq-bitfinex.sock"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitfinex.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitfinex.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api-pub.bitfinex.com"

@@ -14,7 +14,7 @@ roq_json_bridge_defaults:
     name: "json-bridge"
     config_file: "{{ directory_config.usr_local_etc }}/roq-json-bridge/config.toml"
     client_listen_address: "{{ directory_config.run }}/roq/roq-json-bridge.sock"
-    metrics_listen_address: "{{ directory_config.run }}/roq/metrics/roq-json-bridge.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-json-bridge.sock"
   symbols:
     - ".*"
   users: {}
