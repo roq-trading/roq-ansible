@@ -12,9 +12,9 @@ roq_fix_bridge_defaults:
     verbosity: 0
   flags:
     name: "fix-bridge"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-fix-bridge/config.toml"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-fix-bridge.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-fix-bridge.sock"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/fix-bridge/config.toml"
+    client_listen_address: "{{ directory_config.run }}/roq/client/fix-bridge.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/fix-bridge.sock"
   symbols:
     - ".*"
   users: {}

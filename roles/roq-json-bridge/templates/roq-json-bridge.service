@@ -20,15 +20,15 @@ UMask=0000
 # Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ directory_config.opt }}/conda/bin/roq-json-bridge \
-  --flagfile "{{ directory_config.usr_local_etc }}/roq-json-bridge/flags.cfg" \
+  --flagfile "{{ directory_config.usr_local_etc }}/roq/json-bridge/flags.cfg" \
 {% if 'roq_ftx' in groups %}
-  "{{ directory_config.run }}/roq/roq-ftx.sock" \
+  "{{ directory_config.run }}/roq/client/ftx.sock" \
 {% endif %}
 {% if 'roq_bitmex' in groups %}
-  "{{ directory_config.run }}/roq/roq-bitmex.sock" \
+  "{{ directory_config.run }}/roq/client/bitmex.sock" \
 {% endif %}
 {% if 'roq_deribit' in groups %}
-  "{{ directory_config.run }}/roq/roq-deribit.sock"
+  "{{ directory_config.run }}/roq/client/deribit.sock"
 {% endif %}
 {% endif %}
 

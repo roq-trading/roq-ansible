@@ -33,12 +33,13 @@
     with_items:
       - "{{ directory_config.var_lib }}/roq"
       - "{{ directory_config.var_lib }}/roq/data"
-      - "{{ directory_config.usr_local_etc }}/roq-json-bridge"
+      - "{{ directory_config.usr_local_etc }}/roq"
+      - "{{ directory_config.usr_local_etc }}/roq/json-bridge"
 
   - name: create config
     template:
       src: "templates/{{ item }}"
-      dest: "{{ directory_config.usr_local_etc }}/roq-json-bridge/{{ item }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq/json-bridge/{{ item }}"
       owner: "{{ roq_user }}"
       # group: "{{ roq_user }}"
       mode: 0644

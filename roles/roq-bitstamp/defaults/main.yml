@@ -12,10 +12,10 @@ roq_bitstamp_defaults:
     verbosity: 0
   flags:
     name: "bitstamp"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-bitstamp/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/bitstamp/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-bitstamp.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-bitstamp.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/bitstamp.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/bitstamp.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     ws_uri: "wss://ws.bitstamp.net"

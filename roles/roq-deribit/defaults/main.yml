@@ -12,10 +12,10 @@ roq_deribit_defaults:
     verbosity: 0
   flags:
     name: "deribit"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-deribit/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/deribit/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-deribit.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-deribit.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/deribit.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/deribit.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     ws_uri: "wss://test.deribit.com/ws/api/v2"

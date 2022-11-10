@@ -12,10 +12,10 @@ roq_huobi_defaults:
     verbosity: 0
   flags:
     name: "huobi"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-huobi/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/huobi/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-huobi.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-huobi.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/huobi.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/huobi.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://api.huobi.pro"

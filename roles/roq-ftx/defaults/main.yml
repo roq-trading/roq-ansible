@@ -12,10 +12,10 @@ roq_ftx_defaults:
     verbosity: 0
   flags:
     name: "ftx"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-ftx/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/ftx/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-ftx.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-ftx.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/ftx.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/ftx.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     ws_uri: "wss://ftx.com/ws"

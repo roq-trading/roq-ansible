@@ -12,10 +12,10 @@ roq_gemini_defaults:
     verbosity: 0
   flags:
     name: "gemini"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-gemini/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/gemini/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-gemini.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-gemini.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/gemini.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/gemini.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     fix_mkt_uri: "tcp://3.220.21.165:1514"

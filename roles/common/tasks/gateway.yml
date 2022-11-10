@@ -17,22 +17,16 @@
       - "{{ directory_config.var_lib }}/roq"
       - "{{ directory_config.var_lib }}/roq/cache"
       - "{{ directory_config.var_lib }}/roq/data"
-
-  - name: create locked-down directories
-    file:
-      path: "{{ item }}"
-      state: directory
-      owner: "{{ roq_user }}"
-      # group: "{{ roq_user }}"
-      mode: 0700
-    with_items:
+      - "{{ directory_config.run }}/roq"
+      - "{{ directory_config.run }}/roq/client"
+      - "{{ directory_config.run }}/roq/service"
       - "{{ directory_config.usr_local_etc }}/roq"
-      - "{{ directory_config.usr_local_etc }}/roq-{{ config.flags.name }}"
+      - "{{ directory_config.usr_local_etc }}/roq/{{ config.flags.name }}"
 
   - name: create config and flagfile
     template:
       src: "gateway/{{ item }}"
-      dest: "{{ directory_config.usr_local_etc }}/roq-{{ config.flags.name }}"
+      dest: "{{ directory_config.usr_local_etc }}/roq/{{ config.flags.name }}"
       mode: 0644
     with_items:
       - "flags.cfg"

@@ -12,10 +12,10 @@ roq_binance_defaults:
     verbosity: 0
   flags:
     name: "binance"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-binance/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/binance/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-binance.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-binance.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/binance.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/binance.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://testnet.binance.com"

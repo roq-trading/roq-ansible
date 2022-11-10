@@ -10,11 +10,11 @@ TimeoutStartSec=0
 ExecStart=/usr/bin/podman run --rm --name %n -i \
   --network roq-network \
   --volume {{ (directory_config.var_tmp) | roq_realpath }}:/var/tmp \
-  --volume {{ (directory_config.usr_local_etc + '/roq-' + config.flags.name) | roq_realpath }}:/usr/local/etc/roq-{{ config.flags.name }} \
+  --volume {{ (directory_config.usr_local_etc + '/roq/' + config.flags.name) | roq_realpath }}:/usr/local/etc/roq/{{ config.flags.name }} \
   --env ROQ_v={{ config.logging.verbosity | default(0) }} \
   --env FLAGS_monitor_port={{ config.metrics.port }} \
   {{ docker_registry }}/{{ config.docker.name }}:{{ config.version }} \
-  --flagfile "/usr/local/etc/roq-{{ config.flags.name }}/flags.cfg"
+  --flagfile "/usr/local/etc/roq/{{ config.flags.name }}/flags.cfg"
 {% else %}
 UMask=0000
 User={{ roq_user if roq_user is defined else ansible_user_id }}
@@ -23,7 +23,7 @@ Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStartPre=+/bin/mkdir -p {{ (directory_config.run + '/roq') | roq_realpath }}
 ExecStartPre=+/bin/chown {{ roq_user if roq_user is defined else ansible_user_id }}:{{ roq_user if roq_user is defined else ansible_user_id }} {{ (directory_config.run + '/roq') | roq_realpath }}
 ExecStart={{ (directory_config.opt + '/conda/bin/roq-' + config.flags.name) | roq_realpath }} \
-  --flagfile "{{ (directory_config.usr_local_etc + '/roq-' + config.flags.name) | roq_realpath }}/flags.cfg"
+  --flagfile "{{ (directory_config.usr_local_etc + '/roq/' + config.flags.name) | roq_realpath }}/flags.cfg"
 Restart=on-abnormal
 {% endif %}
 

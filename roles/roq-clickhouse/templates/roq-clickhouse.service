@@ -20,7 +20,7 @@ UMask=0000
 # Restart=on-abnormal
 Environment="ROQ_v={{ config.logging.verbosity }}"
 ExecStart={{ directory_config.opt }}/conda/bin/roq-clickhouse \
-  --flagfile "{{ directory_config.usr_local_etc }}/roq-clickhouse/flags.cfg"
+  --flagfile "{{ directory_config.usr_local_etc }}/roq/clickhouse/flags.cfg"
 {% endif %}
 
 [Install]

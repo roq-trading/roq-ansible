@@ -12,10 +12,10 @@ roq_binance_futures_defaults:
     verbosity: 0
   flags:
     name: "binance-futures"
-    config_file: "{{ directory_config.usr_local_etc }}/roq-binance-futures/config.toml"
+    config_file: "{{ directory_config.usr_local_etc }}/roq/binance-futures/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
-    client_listen_address: "{{ directory_config.run }}/roq/roq-binance-futures.sock"
-    service_listen_address: "{{ directory_config.run }}/roq/metrics/roq-binance-futures.sock"
+    client_listen_address: "{{ directory_config.run }}/roq/client/binance-futures.sock"
+    service_listen_address: "{{ directory_config.run }}/roq/service/binance-futures.sock"
     auth_keys_file: "{{ directory_config.usr_local_etc }}/roq/keys.json"
     cache_dir: "{{ directory_config.var_lib }}/roq/cache"
     rest_uri: "https://testnet.binancefuture.com"
