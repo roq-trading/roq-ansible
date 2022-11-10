@@ -21,7 +21,7 @@
       state: directory
       owner: root
       group: root
-      mode: 0777
+      mode: 0755
     with_items:
       - "{{ directory_config.usr_local_etc }}/alertmanager"
       - "{{ directory_config.var_lib }}/alertmanager"

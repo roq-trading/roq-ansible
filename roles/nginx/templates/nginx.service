@@ -3,8 +3,12 @@ Description=nginx
 Wants=network.target
 After=network-online.target
 {% if 'trading' in groups %}
-After=grafana.service prometheus.service clickhouse-server.service
-Requires=grafana.service prometheus.service clickhouse-server.service
+After=grafana.service prometheus.service
+Requires=grafana.service prometheus.service
+{% endif %}
+{% if 'clickhouse' in groups %}
+After=clickhouse-server.service
+Requires=clickhouse-server.service
 {% endif %}
 {% for (name, options) in nginx_config.upstream.items() %}
 After={{ options.name }}

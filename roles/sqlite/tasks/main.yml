@@ -1,0 +1,10 @@
+---
+
+- block:
+
+  - name: install conda package
+    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base sqlite"
+  
+  become: "{{ 'true' if become_user is defined else 'false' }}"
+  tags:
+    - sqlite

@@ -19,6 +19,7 @@
 - hosts: trading,web
   roles:
     - conda
+    - sqlite
     - roq-tools
 
 - hosts: clickhouse
