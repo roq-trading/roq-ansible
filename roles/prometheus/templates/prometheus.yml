@@ -30,7 +30,7 @@ scrape_configs:
 {% if 'roq_clickhouse' in groups %}
 
   - job_name: 'roq-clickhouse'
-    metrics_path: '/roq/clickhouse/api/metrics'
+    metrics_path: '/roq/clickhouse/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -39,7 +39,7 @@ scrape_configs:
 {% if 'roq_pubsub' in groups %}
 
   - job_name: 'roq-pubsub'
-    metrics_path: '/roq/pubsub/api/metrics'
+    metrics_path: '/roq/gateway/pubsub/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -48,7 +48,7 @@ scrape_configs:
 {% if 'roq_json_bridge' in groups %}
 
   - job_name: 'roq-json-bridge'
-    metrics_path: '/roq/json-bridge/api/metrics'
+    metrics_path: '/roq/gateway/json-bridge/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -57,7 +57,7 @@ scrape_configs:
 {% if 'roq_fix_bridge' in groups %}
 
   - job_name: 'roq-fix-bridge'
-    metrics_path: '/roq/fix-bridge/api/metrics'
+    metrics_path: '/roq/gateway/fix-bridge/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -66,7 +66,7 @@ scrape_configs:
 {% if 'roq_binance' in groups %}
 
   - job_name: 'roq-binance'
-    metrics_path: '/roq/binance/api/metrics'
+    metrics_path: '/roq/gateway/binance/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -75,7 +75,7 @@ scrape_configs:
 {% if 'roq_binance_futures' in groups %}
 
   - job_name: 'roq-binance-futures'
-    metrics_path: '/roq/binance-futures/api/metrics'
+    metrics_path: '/roq/gateway/binance-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -84,7 +84,7 @@ scrape_configs:
 {% if 'roq_bitfinex' in groups %}
 
   - job_name: 'roq-bitfinex'
-    metrics_path: '/roq/bitfinex/api/metrics'
+    metrics_path: '/roq/gateway/bitfinex/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -93,7 +93,7 @@ scrape_configs:
 {% if 'roq_bitmex' in groups %}
 
   - job_name: 'roq-bitmex'
-    metrics_path: '/roq/bitmex/api/metrics'
+    metrics_path: '/roq/gateway/bitmex/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -102,7 +102,7 @@ scrape_configs:
 {% if 'roq_bitstamp' in groups %}
 
   - job_name: 'roq-bitstamp'
-    metrics_path: '/roq/bitstamp/api/metrics'
+    metrics_path: '/roq/gateway/bitstamp/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -111,7 +111,7 @@ scrape_configs:
 {% if 'roq_bybit' in groups %}
 
   - job_name: 'roq-bybit'
-    metrics_path: '/roq/bybit/api/metrics'
+    metrics_path: '/roq/gateway/bybit/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -120,7 +120,7 @@ scrape_configs:
 {% if 'roq_bybit_futures' in groups %}
 
   - job_name: 'roq-bybit-futures'
-    metrics_path: '/roq/bybit-futures/api/metrics'
+    metrics_path: '/roq/gateway/bybit-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -129,7 +129,7 @@ scrape_configs:
 {% if 'roq_coinbase_pro' in groups %}
 
   - job_name: 'roq-coinbase-pro'
-    metrics_path: '/roq/coinbase-pro/api/metrics'
+    metrics_path: '/roq/gateway/coinbase-pro/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -138,7 +138,7 @@ scrape_configs:
 {% if 'roq_deribit' in groups %}
 
   - job_name: 'roq-deribit'
-    metrics_path: '/roq/deribit/api/metrics'
+    metrics_path: '/roq/gateway/deribit/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -147,7 +147,7 @@ scrape_configs:
 {% if 'roq_ftx' in groups %}
 
   - job_name: 'roq-ftx'
-    metrics_path: '/roq/ftx/api/metrics'
+    metrics_path: '/roq/gateway/ftx/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -156,7 +156,7 @@ scrape_configs:
 {% if 'roq_gate' in groups %}
 
   - job_name: 'roq-gate'
-    metrics_path: '/roq/gate/api/metrics'
+    metrics_path: '/roq/gateway/gate/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -165,7 +165,7 @@ scrape_configs:
 {% if 'roq_gate_futures' in groups %}
 
   - job_name: 'roq-gate-futures'
-    metrics_path: '/roq/gate-futures/api/metrics'
+    metrics_path: '/roq/gateway/gate-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -174,7 +174,7 @@ scrape_configs:
 {% if 'roq_gemini' in groups %}
 
   - job_name: 'roq-gemini'
-    metrics_path: '/roq/gemini/api/metrics'
+    metrics_path: '/roq/gateway/gemini/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -183,7 +183,7 @@ scrape_configs:
 {% if 'roq_hitbtc' in groups %}
 
   - job_name: 'roq-hitbtc'
-    metrics_path: '/roq/hitbtc/api/metrics'
+    metrics_path: '/roq/gateway/hitbtc/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -192,7 +192,7 @@ scrape_configs:
 {% if 'roq_huobi' in groups %}
 
   - job_name: 'roq-huobi'
-    metrics_path: '/roq/huobi/api/metrics'
+    metrics_path: '/roq/gateway/huobi/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -201,7 +201,7 @@ scrape_configs:
 {% if 'roq_huobi_futures' in groups %}
 
   - job_name: 'roq-huobi-futures'
-    metrics_path: '/roq/huobi-futures/api/metrics'
+    metrics_path: '/roq/gateway/huobi-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -210,7 +210,7 @@ scrape_configs:
 {% if 'roq_kraken' in groups %}
 
   - job_name: 'roq-kraken'
-    metrics_path: '/roq/kraken/api/metrics'
+    metrics_path: '/roq/gateway/kraken/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -219,7 +219,7 @@ scrape_configs:
 {% if 'roq_kraken_futures' in groups %}
 
   - job_name: 'roq-kraken-futures'
-    metrics_path: '/roq/kraken-futures/api/metrics'
+    metrics_path: '/roq/gateway/kraken-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -228,7 +228,7 @@ scrape_configs:
 {% if 'roq_kucoin' in groups %}
 
   - job_name: 'roq-kucoin'
-    metrics_path: '/roq/kucoin/api/metrics'
+    metrics_path: '/roq/gateway/kucoin/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -237,7 +237,7 @@ scrape_configs:
 {% if 'roq_kucoin_futures' in groups %}
 
   - job_name: 'roq-kucoin-futures'
-    metrics_path: '/roq/kucoin-futures/api/metrics'
+    metrics_path: '/roq/gateway/kucoin-futures/metrics'
     params:
       format: [ prometheus ]
     static_configs:
@@ -246,7 +246,7 @@ scrape_configs:
 {% if 'roq_okx' in groups %}
 
   - job_name: 'roq-okx'
-    metrics_path: '/roq/okx/api/metrics'
+    metrics_path: '/roq/gateway/okx/metrics'
     params:
       format: [ prometheus ]
     static_configs:
