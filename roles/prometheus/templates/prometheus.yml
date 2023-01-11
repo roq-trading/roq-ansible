@@ -30,7 +30,7 @@ scrape_configs:
 {% if 'roq_clickhouse' in groups %}
 
   - job_name: 'roq-clickhouse'
-    metrics_path: '/roq/clickhouse/metrics'
+    metrics_path: '/roq/gateway/clickhouse/metrics'
     params:
       format: [ prometheus ]
     static_configs:
