@@ -11,7 +11,7 @@ CPUAffinity={{ cpu_affinity.zone_3 }}
 {% endif %}
 ExecStartPre=-/usr/bin/podman stop %n
 ExecStartPre=-/usr/bin/podman rm %n
-ExecStart=/usr/bin/podman run --rm --name %n \
+ExecStart=/usr/bin/podman --cgroup-manager=cgroupfs run --rm --name %n \
   --network roq-network \
   --volume {{ directory_config.usr_local_etc }}/alertmanager:/etc/alertmanager:ro \
   --volume {{ directory_config.var_lib }}/alertmanager:/var/lib/alertmanager \
