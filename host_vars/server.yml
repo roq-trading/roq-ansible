@@ -1,3 +1,19 @@
-prometheus:
-  scrape_configs:
-  - cme
+roq:
+  gateways:
+    cme:
+      package: roq-cme
+      environment: prod
+      flags:
+        channels: 344
+      config:
+        symbols: "ZNM3"
+        accounts:
+          A1:
+            login: "some_key"
+            secret: "some_secret"
+            symbols: ".*"
+        users:
+          trader:
+            password: secret
+            symbols: "ZNM3"
+            accounts: A1

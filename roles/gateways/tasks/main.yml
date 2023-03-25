@@ -1,0 +1,26 @@
+---
+
+- block:
+
+  - name: gateways
+    set_fact:                                                                                                                
+       gateways: "{{ roq_config.gateways.keys() }}"
+
+  - name: create required directories
+    file:
+      path: "/usr/local/etc/roq/{{ item }}"
+      state: directory
+    with_items: "{{ gateways }}"
+  
+  - name: create flagfiles
+    template:                                                                                                                                                                 
+      src: templates/flags.cfg
+      dest: /usr/local/etc/roq/{{ item }}/flags.cfg
+      owner: root                                                                                                       
+      group: root                                                                                                       
+      mode: 0644
+    with_items: "{{ gateways }}"
+  
+  become: true
+  tags:
+    - gateways
