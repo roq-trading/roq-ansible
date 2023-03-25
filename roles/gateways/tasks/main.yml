@@ -8,7 +8,11 @@
     file:
       path: /usr/local/etc/roq/{{ item }}
       state: directory
+      owner: '{{ roq_config.user }}'
+      group: '{{ roq_config.group }}'
+      mode: 0755
     with_items: '{{ gateways }}'
+
   - name: create flags files
     template:
       src: templates/flags.cfg
