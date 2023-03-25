@@ -2,7 +2,7 @@
 
 - block:
 
-  - name: gateways
+  - name: find list of gateways
     set_fact:                                                                                                                
        gateways: "{{ roq_config.gateways.keys() }}"
 
@@ -12,10 +12,19 @@
       state: directory
     with_items: "{{ gateways }}"
   
-  - name: create flagfiles
+  - name: create flags files
     template:                                                                                                                                                                 
       src: templates/flags.cfg
       dest: /usr/local/etc/roq/{{ item }}/flags.cfg
+      owner: root                                                                                                       
+      group: root                                                                                                       
+      mode: 0644
+    with_items: "{{ gateways }}"
+
+  - name: create config files
+    template:                                                                                                                                                                 
+      src: templates/config.toml
+      dest: /usr/local/etc/roq/{{ item }}/config.toml
       owner: root                                                                                                       
       group: root                                                                                                       
       mode: 0644
