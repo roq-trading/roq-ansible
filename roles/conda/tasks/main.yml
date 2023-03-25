@@ -20,12 +20,6 @@
     args:
       creates: "/opt/conda/bin/activate"
   
-  - name: create .condarc
-    template:
-      src: "templates/condarc"
-      dest: "/opt/conda/.condarc"
-      mode: 0644
-  
   become: true
   tags:
     - conda

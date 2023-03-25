@@ -29,7 +29,15 @@
       group: root                                                                                                       
       mode: 0644
     with_items: "{{ gateways }}"
-  
+
+  - name: find list of packages
+    set_fact:
+      packages: "{{ ( packages | default([]) ) + [ roq_config.gateways[item].package ] }}"
+    loop: "{{ gateways }}"
+
+  - name: install conda packages
+    shell: "/opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{ roq_config.conda.channel }} {{ packages | unique | join(' ') }}"
+
   become: true
   tags:
     - gateways

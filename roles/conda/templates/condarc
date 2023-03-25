@@ -1,8 +1,0 @@
-auto_update_conda: false
-channels:
-{% if roq_config.url is defined %}
-  - {{ roq_config.url }}/conda/{{ roq_config.conda.channel }}
-{% endif %}
-{% for source in conda_config.sources %}
-  - {{ source }}
-{% endfor %}
