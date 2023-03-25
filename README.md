@@ -1,4 +1,4 @@
-# roq-gateway
+# roq-gateways
 
 Ansible script to install gateways.
 
