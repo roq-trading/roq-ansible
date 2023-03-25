@@ -13,8 +13,8 @@
     template:
       src: templates/flags.cfg
       dest: /usr/local/etc/roq/{{ item }}/flags.cfg
-      owner: root
-      group: root
+      owner: '{{ roq_config.user }}'
+      group: '{{ roq_config.group }}'
       mode: 0644
     with_items: '{{ gateways }}'
 
@@ -22,8 +22,8 @@
     template:
       src: templates/config.toml
       dest: /usr/local/etc/roq/{{ item }}/config.toml
-      owner: root
-      group: root
+      owner: '{{ roq_config.user }}'
+      group: '{{ roq_config.group }}'
       mode: 0644
     with_items: '{{ gateways }}'
 

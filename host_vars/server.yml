@@ -1,4 +1,6 @@
 roq:
+  user: ansible
+  group: ansible
   common:
     auth_keys:
       public_key: some_key

@@ -6,15 +6,12 @@ Conflicts={{ item }}-stop.service
 
 [Service]
 UMask=0000
-User=ansible
-Group=ansible
+User={{ roq_config.user }}
+Group={{ roq_config.group }}
 Environment="ROQ_v={{ roq_config.gateways[item].logging.verbosity }}"
 ExecStartPre=+/bin/mkdir -p /run/roq
-ExecStartPre=+/bin/chown ansible:ansible /run/roq
-ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile \
-  "/opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg" \
-  "/usr/local/etc/roq/flags.cfg" \
-  "/usr/local/etc/roq/{{ item }}/flags.cfg"
+ExecStartPre=+/bin/chown {{ roq_config.user }}:{{ roq_config.group }} /run/roq
+ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,/usr/local/etc/roq/flags.cfg,/usr/local/etc/roq/{{ item }}/flags.cfg
 Restart=on-abnormal
 
 [Install]
