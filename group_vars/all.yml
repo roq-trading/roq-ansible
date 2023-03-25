@@ -1,11 +1,12 @@
 roq_defaults:
   run_dir: /run/roq
-  url: "https://roq-trading.com"
+  url: https://roq-trading.com
   conda:
-    channel: "unstable"
+    channel: unstable
 
 conda_defaults:
-  url: "https://github.com/conda-forge/miniforge/releases/latest/download"
-  script: 'Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
+  url: https://github.com/conda-forge/miniforge/releases/latest/download
+  script: Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{
+    ansible_architecture }}.sh
   sources:
-    - "conda-forge"
+  - conda-forge

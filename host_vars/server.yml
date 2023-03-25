@@ -2,54 +2,54 @@ roq:
   gateways:
     cme:
       package: roq-cme
-      service:                                                                                                              
-        start: "*-*-* 00:01:00"                                                                                             
-        stop: "*-*-* 23:59:00"                                                                                              
-      logging:                                                                                                              
+      service:
+        start: '*-*-* 00:01:00'
+        stop: '*-*-* 23:59:00'
+      logging:
         verbosity: 0
       environment: prod
       flags:
         channels: 344
       config:
-        symbols: "ZNM3"
+        symbols: ZNM3
         accounts:
           A1:
-            login: "some_key"
-            secret: "some_secret"
-            symbols: ".*"
+            login: some_key
+            secret: some_secret
+            symbols: .*
         users:
           trader:
             password: secret
-            symbols: "ZNM3"
+            symbols: ZNM3
             accounts: A1
     deribit:
       package: roq-deribit
-      service:                                                                                                              
-        start: "*-*-* 00:01:00"                                                                                             
-        stop: "*-*-* 23:59:00"                                                                                              
-      logging:                                                                                                              
+      service:
+        start: '*-*-* 00:01:00'
+        stop: '*-*-* 23:59:00'
+      logging:
         verbosity: 0
       environment: prod
       flags:
         channels: 344
       config:
         symbols:
-        - "^BTC-[0-9]{1,2}[A-Z]{3}[0-9]{2}$"  # futures                                                                         
-        - "^ETH-[0-9]{1,2}[A-Z]{3}[0-9]{2}$"  # futures                                                                         
-        - "^BTC(_USD[A-Z]?)?-PERPETUAL$"      # swaps                                                                           
-        - "^ETH(_USD[A-Z]?)?-PERPETUAL$"      # swaps                                                                           
-        - "^BTC(-USD[A-Z]?)?-DERIBIT-INDEX$"  # index                                                                           
-        - "^ETH(-USD[A-Z]?)?-DERIBIT-INDEX$"  # index
+        - ^BTC-[0-9]{1,2}[A-Z]{3}[0-9]{2}$    # futures                                                                         
+        - ^ETH-[0-9]{1,2}[A-Z]{3}[0-9]{2}$    # futures                                                                         
+        - ^BTC(_USD[A-Z]?)?-PERPETUAL$        # swaps                                                                           
+        - ^ETH(_USD[A-Z]?)?-PERPETUAL$        # swaps                                                                           
+        - ^BTC(-USD[A-Z]?)?-DERIBIT-INDEX$    # index                                                                           
+        - ^ETH(-USD[A-Z]?)?-DERIBIT-INDEX$    # index
         accounts:
           A1:
-            login: "some_key"
-            secret: "some_secret"
-            symbols: ".*"
+            login: some_key
+            secret: some_secret
+            symbols: .*
         users:
-          test:                                                                                                               
-            password: "1234"                                                                                                  
-            symbols: ".*"                                                                                                     
-          trader:                                                                                                             
-            password: "secret"                                                                                                
-            accounts: "A1"                                                                                                    
+          test:
+            password: '1234'
+            symbols: .*
+          trader:
+            password: secret
+            accounts: A1
             symbols: BTC-\\d{2}\\D{3}\\d{2}

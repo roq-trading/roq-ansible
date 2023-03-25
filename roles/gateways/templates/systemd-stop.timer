@@ -1,0 +1,8 @@
+[Unit]
+Description={{ item }} gateway stop timer
+
+[Timer]
+OnCalendar={{ roq_config.gateways[item].service.stop }}
+
+[Install]
+WantedBy=multi-user.target

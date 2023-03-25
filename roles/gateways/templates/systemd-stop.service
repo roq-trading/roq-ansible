@@ -1,0 +1,10 @@
+[Unit]
+Description={{ item }} gateway stop service
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/echo ''
+
+[Install]
+WantedBy=multi-user.target

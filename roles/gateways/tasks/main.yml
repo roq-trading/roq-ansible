@@ -1,43 +1,109 @@
----
 
 - block:
 
   - name: find list of gateways
-    set_fact:                                                                                                                
-       gateways: "{{ roq_config.gateways.keys() }}"
+    set_fact:
+      gateways: '{{ roq_config.gateways.keys() }}'
 
   - name: create required directories
     file:
-      path: "/usr/local/etc/roq/{{ item }}"
+      path: /usr/local/etc/roq/{{ item }}
       state: directory
-    with_items: "{{ gateways }}"
-  
+    with_items: '{{ gateways }}'
   - name: create flags files
-    template:                                                                                                                                                                 
+    template:
       src: templates/flags.cfg
       dest: /usr/local/etc/roq/{{ item }}/flags.cfg
-      owner: root                                                                                                       
-      group: root                                                                                                       
+      owner: root
+      group: root
       mode: 0644
-    with_items: "{{ gateways }}"
+    with_items: '{{ gateways }}'
 
   - name: create config files
-    template:                                                                                                                                                                 
+    template:
       src: templates/config.toml
       dest: /usr/local/etc/roq/{{ item }}/config.toml
-      owner: root                                                                                                       
-      group: root                                                                                                       
+      owner: root
+      group: root
       mode: 0644
-    with_items: "{{ gateways }}"
+    with_items: '{{ gateways }}'
 
   - name: find list of packages
     set_fact:
-      packages: "{{ ( packages | default([]) ) + [ roq_config.gateways[item].package ] }}"
-    loop: "{{ gateways }}"
+      packages: '{{ ( packages | default([]) ) + [ roq_config.gateways[item].package
+        ] }}'
+    loop: '{{ gateways }}'
 
   - name: install conda packages
-    shell: "/opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{ roq_config.conda.channel }} {{ packages | unique | join(' ') }}"
+    shell: /opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{
+      roq_config.conda.channel }} {{ packages | unique | join(' ') }}
+
+  - name: create systemd service files
+    template:
+      src: templates/systemd.service
+      dest: /etc/systemd/system/{{ item }}.service
+      owner: root
+      group: root
+      mode: 0644
+    with_items: '{{ gateways }}'
+
+  - name: disable systemd services
+    systemd:
+      name: '{{ item }}.service'
+      enabled: false
+      daemon_reload: true
+    with_items: '{{ gateways }}'
+
+  - name: create systemd timer files
+    template:
+      src: templates/systemd.timer
+      dest: /etc/systemd/system/{{ item }}.timer
+      owner: root
+      group: root
+      mode: 0644
+    with_items: '{{ gateways }}'
+
+  - name: enable systemd timers
+    systemd:
+      name: '{{ item }}.timer'
+      state: started
+      enabled: true
+      daemon_reload: true
+    with_items: '{{ gateways }}'
+
+  - name: create systemd stop service files
+    template:
+      src: templates/systemd-stop.service
+      dest: /etc/systemd/system/{{ item }}-stop.service
+      owner: root
+      group: root
+      mode: 0644
+    with_items: '{{ gateways }}'
+
+  - name: disable systemd stop services
+    systemd:
+      name: '{{ item }}-stop.service'
+      enabled: false
+      daemon_reload: true
+    with_items: '{{ gateways }}'
+
+  - name: create systemd stop timer files
+    template:
+      src: templates/systemd-stop.timer
+      dest: /etc/systemd/system/{{ item }}-stop.timer
+      owner: root
+      group: root
+      mode: 0644
+    with_items: '{{ gateways }}'
+
+  - name: enable systemd timers
+    systemd:
+      name: '{{ item }}-stop.timer'
+      state: started
+      enabled: true
+      daemon_reload: true
+    with_items: '{{ gateways }}'
 
   become: true
   tags:
-    - gateways
+  - gateways

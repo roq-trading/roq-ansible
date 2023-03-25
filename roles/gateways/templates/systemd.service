@@ -1,0 +1,20 @@
+[Unit]
+Description={{ item }} gateway
+Wants=network.target
+After=network-online.target
+Conflicts={{ item }}-stop.service
+
+[Service]
+UMask=0000
+User=ansible
+Group=ansible
+Environment="ROQ_v={{ roq_config.gateways[item].logging.verbosity }}"
+ExecStartPre=+/bin/mkdir -p /run/roq
+ExecStartPre=+/bin/chown ansible:ansible /run/roq
+ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile \
+  "/opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg" \
+  "/usr/local/etc/roq/{{ item }}/flags.cfg"
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
