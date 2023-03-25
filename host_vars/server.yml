@@ -1,4 +1,15 @@
 roq:
+  common:
+    auth_keys:
+      public_key: some_key
+      private_key: another_more_secret_key
+    flags:
+      loop_sleep: 500ns
+      loop_timer_freq: 2500ns
+      event_log_iso_week: false
+      event_log_symlink: true
+      cache_mbp_checksum: false
+      cache_all_reference_data: true
   gateways:
     cme:
       package: roq-cme

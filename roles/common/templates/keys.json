@@ -1,0 +1,4 @@
+{
+  "public_key": "{{ roq_config.common.auth_keys.public_key }}",
+  "private_key": "{{ roq_config.common.auth_keys.private_key }}"
+}
