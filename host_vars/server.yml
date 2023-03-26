@@ -15,7 +15,7 @@ roq:
     service:
       start: '*-*-* 00:01:00'
       stop: '*-*-* 23:59:00'
-      restart: no
+      restart: 'no'
   gateways:
     cme:
       package: roq-cme
@@ -24,7 +24,7 @@ roq:
       environment: prod
       flags:
         multicast_channel_ids: 344
-        multicast_config_file: /opt/conda/share/prod/config.xml
+        multicast_config_file: /opt/conda/share/roq-cme/prod/config.xml
         multicast_local_interface: 1.2.3.4
       config:
         symbols: Z[TFNB][HMUZ][0-9]           # futures
