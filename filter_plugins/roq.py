@@ -8,7 +8,8 @@ from os.path import normpath
 
 def format_realpath(value):
     # note! realpath will follow symlinks, e.g. /var => /private/var on OSX
-    return normpath(value).replace('//', '/')
+    return normpath(value).replace("//", "/")
+
 
 def format_toml_simple(value):
     if isinstance(value, Mapping):
@@ -27,9 +28,7 @@ def format_toml_simple(value):
 
 def _format_toml_mapping(value):
     assert isinstance(value, Mapping), "not a mapping"
-    return "\n".join(
-        "{} = {}".format(k, format_toml_simple(v)) for k, v in value.items()
-    )
+    return "\n".join("{} = {}".format(k, format_toml_simple(v)) for k, v in value.items())
 
 
 def format_toml_symbols(symbols):
@@ -45,9 +44,7 @@ def format_toml_accounts(accounts):
     def _helper(key, value):
         return "\n[accounts.{}]\n{}".format(key, _format_toml_mapping(value))
 
-    return "\n[accounts]\n{}".format(
-        "\n".join(_helper(k, v) for k, v in accounts.items())
-    )
+    return "\n[accounts]\n{}".format("\n".join(_helper(k, v) for k, v in accounts.items()))
 
 
 def format_toml_users(users):

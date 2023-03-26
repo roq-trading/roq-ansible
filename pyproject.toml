@@ -1,3 +1,7 @@
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
 [tool.yamlfix]
 line_length = 160
 sequence_style = 'block_style'
