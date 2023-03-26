@@ -23,9 +23,11 @@ roq:
         verbosity: 0
       environment: prod
       flags:
-        channels: 344
+        multicast_channel_ids: 344
+        multicast_config_file: /opt/conda/share/prod/config.xml
+        multicast_local_interface: 1.2.3.4
       config:
-        symbols: ZNM3
+        symbols: Z[TFNB][HMUZ][0-9]           # futures
         accounts:
           A1:
             login: YOUR_CME_PUBLIC_KEY
@@ -38,10 +40,6 @@ roq:
             accounts: A1
     deribit:
       package: roq-deribit
-      service:
-        start: '*-*-* 00:01:00'
-        stop: '*-*-* 23:59:00'
-        restart: no
       logging:
         verbosity: 0
       environment: test
