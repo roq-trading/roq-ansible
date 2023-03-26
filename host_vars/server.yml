@@ -12,13 +12,13 @@ roq:
       event_log_symlink: true
       cache_mbp_checksum: false
       cache_all_reference_data: true
+    service:
+      start: '*-*-* 00:01:00'
+      stop: '*-*-* 23:59:00'
+      restart: no
   gateways:
     cme:
       package: roq-cme
-      service:
-        start: '*-*-* 00:01:00'
-        stop: '*-*-* 23:59:00'
-        restart: no
       logging:
         verbosity: 0
       environment: prod

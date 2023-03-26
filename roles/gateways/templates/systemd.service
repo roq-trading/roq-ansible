@@ -13,7 +13,7 @@ ExecStartPre=+/bin/mkdir -p /run/roq/client
 ExecStartPre=+/bin/mkdir -p /run/roq/service
 ExecStartPre=+/bin/chown -R {{ roq_config.user }}:{{ roq_config.group }} /run/roq
 ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,/usr/local/etc/roq/flags.cfg,/usr/local/etc/roq/{{ item }}/flags.cfg
-Restart={{ roq_config.gateways[item].service.restart }}
+Restart={{ roq_config.common.service.restart }}
 
 [Install]
 WantedBy=multi-user.target
