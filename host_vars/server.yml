@@ -44,7 +44,7 @@ roq:
         restart: no
       logging:
         verbosity: 0
-      environment: prod
+      environment: test
       flags: {}
       config:
         symbols:
@@ -59,6 +59,7 @@ roq:
             login: YOUR_DERIBIT_PUBLIC_KEY
             secret: YOUR_DERIBIT_SECRET_KEY
             symbols: .*
+            master: true
         users:
           test:
             password: '1234'

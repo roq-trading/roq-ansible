@@ -13,10 +13,11 @@
       dest: /opt
       mode: 0644
 
-  - name: install
+  - name: install conda
     shell: bash /opt/{{ conda_config.script }} -b -u -p /opt/conda
     args:
       creates: /opt/conda/bin/activate
+
   become: true
   tags:
   - conda

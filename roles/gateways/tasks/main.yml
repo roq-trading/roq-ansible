@@ -38,8 +38,7 @@
     loop: '{{ gateways }}'
 
   - name: install conda packages
-    shell: /opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{
-      roq_config.conda.channel }} {{ packages | unique | join(' ') }}
+    shell: /opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{ roq_config.conda.channel }} {{ packages | unique | join(' ') }} roq-tools
 
   - name: create systemd service files
     template:
