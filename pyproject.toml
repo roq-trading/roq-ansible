@@ -1,0 +1,3 @@
+[tool.yamlfix]
+line_length = 160
+sequence_style = 'block_style'

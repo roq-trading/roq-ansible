@@ -1,35 +1,32 @@
+---
 - block:
-
-  - name: create required directories
-    file:
-      path: '{{ item }}'
-      state: directory
-      owner: '{{ roq_config.user }}'
-      group: '{{ roq_config.group }}'
-      mode: 0755
-    with_items:
-    - /usr/local/etc/roq
-    - /var/lib/roq
-    - /var/lib/roq/data
-    - /var/lib/roq/cache
-    - /run/roq
-
-  - name: create flags file
-    template:
-      src: templates/flags.cfg
-      dest: /usr/local/etc/roq/flags.cfg
-      owner: '{{ roq_config.user }}'
-      group: '{{ roq_config.group }}'
-      mode: 0644
-
-  - name: create auth-keys file
-    template:
-      src: templates/keys.json
-      dest: /usr/local/etc/roq/keys.json
-      owner: '{{ roq_config.user }}'
-      group: '{{ roq_config.group }}'
-      mode: 0644
-
+    - name: create required directories
+      file:
+        path: '{{ item }}'
+        state: directory
+        owner: '{{ roq_config.user }}'
+        group: '{{ roq_config.group }}'
+        mode: 0755
+      with_items:
+        - /usr/local/etc/roq
+        - /var/lib/roq
+        - /var/lib/roq/data
+        - /var/lib/roq/cache
+        - /run/roq
+    - name: create flags file
+      template:
+        src: templates/flags.cfg
+        dest: /usr/local/etc/roq/flags.cfg
+        owner: '{{ roq_config.user }}'
+        group: '{{ roq_config.group }}'
+        mode: 0644
+    - name: create auth-keys file
+      template:
+        src: templates/keys.json
+        dest: /usr/local/etc/roq/keys.json
+        owner: '{{ roq_config.user }}'
+        group: '{{ roq_config.group }}'
+        mode: 0644
   become: true
   tags:
-  - common
+    - common

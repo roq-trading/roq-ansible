@@ -1,3 +1,4 @@
+---
 roq:
   user: ansible
   group: ansible
@@ -27,7 +28,7 @@ roq:
         multicast_config_file: /opt/conda/share/roq-cme/prod/config.xml
         multicast_local_interface: 1.2.3.4
       config:
-        symbols: Z[TFNB][HMUZ][0-9]           # futures
+        symbols: Z[TFNB][HMUZ][0-9]  # futures
         accounts:
           A1:
             login: YOUR_CME_PUBLIC_KEY
@@ -46,12 +47,12 @@ roq:
       flags: {}
       config:
         symbols:
-        - ^BTC-[0-9]{1,2}[A-Z]{3}[0-9]{2}$    # futures                                                                         
-        - ^ETH-[0-9]{1,2}[A-Z]{3}[0-9]{2}$    # futures                                                                         
-        - ^BTC(_USD[A-Z]?)?-PERPETUAL$        # swaps                                                                           
-        - ^ETH(_USD[A-Z]?)?-PERPETUAL$        # swaps                                                                           
-        - ^BTC(-USD[A-Z]?)?-DERIBIT-INDEX$    # index                                                                           
-        - ^ETH(-USD[A-Z]?)?-DERIBIT-INDEX$    # index
+          - ^BTC-[0-9]{1,2}[A-Z]{3}[0-9]{2}$  # futures                                                                         
+          - ^ETH-[0-9]{1,2}[A-Z]{3}[0-9]{2}$  # futures                                                                         
+          - ^BTC(_USD[A-Z]?)?-PERPETUAL$  # swaps                                                                           
+          - ^ETH(_USD[A-Z]?)?-PERPETUAL$  # swaps                                                                           
+          - ^BTC(-USD[A-Z]?)?-DERIBIT-INDEX$  # index                                                                           
+          - ^ETH(-USD[A-Z]?)?-DERIBIT-INDEX$  # index
         accounts:
           A1:
             login: YOUR_DERIBIT_PUBLIC_KEY

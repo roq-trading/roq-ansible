@@ -1,23 +1,20 @@
-
+---
 - block:
-
-  - name: create required directories
-    file:
-      path: '{{ item }}'
-      state: directory
-    with_items:
-    - /opt/conda
-  - name: download installer
-    get_url:
-      url: '{{ conda_config.url }}/{{ conda_config.script }}'
-      dest: /opt
-      mode: 0644
-
-  - name: install conda
-    shell: bash /opt/{{ conda_config.script }} -b -u -p /opt/conda
-    args:
-      creates: /opt/conda/bin/activate
-
+    - name: create required directories
+      file:
+        path: '{{ item }}'
+        state: directory
+      with_items:
+        - /opt/conda
+    - name: download installer
+      get_url:
+        url: '{{ conda_config.url }}/{{ conda_config.script }}'
+        dest: /opt
+        mode: 0644
+    - name: install conda
+      shell: bash /opt/{{ conda_config.script }} -b -u -p /opt/conda
+      args:
+        creates: /opt/conda/bin/activate
   become: true
   tags:
-  - conda
+    - conda

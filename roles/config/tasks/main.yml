@@ -1,16 +1,14 @@
+---
 - block:
-
-  - name: create roq config
-    set_fact:
-      roq_config: >
-        {{ roq_defaults | combine(roq | default({}), recursive=True) }}
-      cacheable: true
-
-  - name: create conda config
-    set_fact:
-      conda_config: >
-        {{ conda_defaults | combine(conda | default({}), recursive=True) }}
-      cacheable: true
-
+    - name: create roq config
+      set_fact:
+        roq_config: >
+          {{ roq_defaults | combine(roq | default({}), recursive=True) }}
+        cacheable: true
+    - name: create conda config
+      set_fact:
+        conda_config: >
+          {{ conda_defaults | combine(conda | default({}), recursive=True) }}
+        cacheable: true
   tags:
-  - always
+    - always

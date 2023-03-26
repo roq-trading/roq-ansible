@@ -1,6 +1,7 @@
+---
 - hosts: all
   roles:
-  - config
-  - conda
-  - common
-  - gateways
+    - config
+    - conda
+    - common
+    - gateways
