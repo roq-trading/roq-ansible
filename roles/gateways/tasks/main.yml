@@ -5,26 +5,26 @@
         gateways: '{{ roq_config.gateways.keys() }}'
     - name: create required directories
       file:
-        path: /usr/local/etc/roq/{{ item }}
+        path: '{{ roq_config.dirs.config }}/{{ item }}'
         state: directory
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0755
       with_items: '{{ gateways }}'
     - name: create flags files
       template:
         src: templates/flags.cfg
-        dest: /usr/local/etc/roq/{{ item }}/flags.cfg
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        dest: '{{ roq_config.dirs.config }}/{{ item }}/flags.cfg'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0644
       with_items: '{{ gateways }}'
     - name: create config files
       template:
         src: templates/config.toml
-        dest: /usr/local/etc/roq/{{ item }}/config.toml
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        dest: '{{ roq_config.dirs.config }}/{{ item }}/config.toml'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0644
       with_items: '{{ gateways }}'
     - name: find list of packages
@@ -32,7 +32,7 @@
         packages: '{{ ( packages | default([]) ) + [ roq_config.gateways[item].package ] }}'
       loop: '{{ gateways }}'
     - name: install conda packages
-      shell: /opt/conda/bin/conda install -y -n base -c {{ roq_config.url }}/conda/{{ roq_config.conda.channel }} {{ packages | unique | join(' ') }} roq-tools
+      shell: /opt/conda/bin/conda install -y -n base -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
     - name: create systemd service files
       template:
         src: templates/systemd.service

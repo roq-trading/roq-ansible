@@ -4,28 +4,30 @@
       file:
         path: '{{ item }}'
         state: directory
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0755
       with_items:
-        - /usr/local/etc/roq
-        - /var/lib/roq
-        - /var/lib/roq/data
-        - /var/lib/roq/cache
-        - /run/roq
+        - '{{ roq_config.dirs.config }}'
+        - '{{ roq_config.dirs.data }}'
+        - '{{ roq_config.dirs.data }}/data'
+        - '{{ roq_config.dirs.data }}/cache'
+        - '{{ roq_config.dirs.run }}'
+        - '{{ roq_config.dirs.run }}/service'
+        - '{{ roq_config.dirs.run }}/client'
     - name: create flags file
       template:
         src: templates/flags.cfg
-        dest: /usr/local/etc/roq/flags.cfg
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        dest: '{{ roq_config.dirs.config }}/flags.cfg'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0644
     - name: create auth-keys file
       template:
         src: templates/keys.json
-        dest: /usr/local/etc/roq/keys.json
-        owner: '{{ roq_config.user }}'
-        group: '{{ roq_config.group }}'
+        dest: '{{ roq_config.dirs.config }}/keys.json'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
         mode: 0644
   become: true
   tags:

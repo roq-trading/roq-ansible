@@ -12,28 +12,3 @@
 # clients (trading strategies)
 {{ roq_config.gateways[item].config.users | roq_toml_users }}
 {%- endif %}
-{%- if roq_config.gateways[item].config.market_data is defined %}
-
-# gemini, only
-[market_data]
-{% for (name, value) in roq_config.gateways[item].config.market_data.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-{%- endif %}
-{%- if roq_config.gateways[item].config.order_entry is defined %}
-
-# gemini, only
-[order_entry]
-{% for (name, value) in roq_config.gateways[item].config.order_entry.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-{%- endif %}
-
-{%- if roq_config.gateways[item].config.drop_copy is defined %}
-
-# gemini, only
-[drop_copy]
-{% for (name, value) in roq_config.gateways[item].config.drop_copy.items() %}
-  {{ name }} = "{{ value }}"
-{% endfor %}
-{%- endif %}

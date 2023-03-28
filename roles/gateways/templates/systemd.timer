@@ -2,7 +2,7 @@
 Description={{ item }} gateway timer
 
 [Timer]
-OnCalendar={{ roq_config.common.service.start }}
+OnCalendar={{ roq_config.service.start }}
 
 [Install]
 WantedBy=multi-user.target

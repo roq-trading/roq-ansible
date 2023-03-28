@@ -6,14 +6,14 @@ Conflicts={{ item }}-stop.service
 
 [Service]
 UMask=0000
-User={{ roq_config.user }}
-Group={{ roq_config.group }}
+User={{ roq_config.service.user }}
+Group={{ roq_config.service.group }}
 Environment="ROQ_v={{ roq_config.gateways[item].logging.verbosity }}"
-ExecStartPre=+/bin/mkdir -p /run/roq/client
-ExecStartPre=+/bin/mkdir -p /run/roq/service
-ExecStartPre=+/bin/chown -R {{ roq_config.user }}:{{ roq_config.group }} /run/roq
-ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,/usr/local/etc/roq/flags.cfg,/usr/local/etc/roq/{{ item }}/flags.cfg
-Restart={{ roq_config.common.service.restart }}
+ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/client
+ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/service
+ExecStartPre=+/bin/chown -R {{ roq_config.service.user }}:{{ roq_config.service.group }} {{ roq_config.dirs.run }}
+ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
+Restart={{ roq_config.service.restart }}
 
 [Install]
 WantedBy=multi-user.target
