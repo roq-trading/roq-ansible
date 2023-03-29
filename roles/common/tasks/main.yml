@@ -12,6 +12,14 @@
         - '{{ roq_config.dirs.data }}'
         - '{{ roq_config.dirs.data }}/data'
         - '{{ roq_config.dirs.data }}/cache'
+    - name: create required directories
+      file:
+        path: '{{ item }}'
+        state: directory
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
+        mode: 0777
+      with_items:
         - '{{ roq_config.dirs.run }}'
         - '{{ roq_config.dirs.run }}/service'
         - '{{ roq_config.dirs.run }}/client'
