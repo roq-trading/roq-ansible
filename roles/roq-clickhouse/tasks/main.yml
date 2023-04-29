@@ -55,17 +55,17 @@
       mode: 0755
 
   - name: check previous version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/mamba list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: previous_version
     changed_when: false
 
   - name: install conda package
-    shell: "{{ directory_config.opt }}/conda/bin/conda install -y -n base \
+    shell: "{{ directory_config.opt }}/conda/bin/mamba install -y -n base \
       roq-clickhouse{{ '' if config.version == 'latest' else '==%s'|format(config.version) }}"
     changed_when: false
 
   - name: check current version
-    shell: '{{ directory_config.opt }}/conda/bin/conda list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
+    shell: '{{ directory_config.opt }}/conda/bin/mamba list -f roq-clickhouse | sed -n "s/^roq-clickhouse\s*\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p"'
     register: current_version
     changed_when: "current_version.stdout != previous_version.stdout"
 

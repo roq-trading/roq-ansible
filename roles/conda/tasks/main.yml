@@ -25,7 +25,7 @@
       src: "templates/condarc"
       dest: "{{ directory_config.opt }}/conda/.condarc"
       mode: 0644
-  
+
   become: "{{ 'true' if become_user is defined else 'false' }}"
   tags:
     - conda

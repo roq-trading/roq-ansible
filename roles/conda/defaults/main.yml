@@ -2,7 +2,7 @@
 
 conda:
   url: "https://github.com/conda-forge/miniforge/releases/latest/download"
-  script: 'Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
+  script: 'Mambaforge-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh'
   sources:
     - "conda-forge"
 
