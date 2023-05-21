@@ -74,6 +74,10 @@
   roles:
     - roq-bybit-futures
 
+- hosts: roq_bybit_v5
+  roles:
+    - roq-bybit-v5
+
 - hosts: roq_coinbase_pro
   roles:
     - roq-coinbase-pro
