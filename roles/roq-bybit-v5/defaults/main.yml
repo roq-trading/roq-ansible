@@ -11,7 +11,7 @@ roq_bybit_v5_defaults:
   logging:
     verbosity: 0
   flags:
-    name: "bybit"
+    name: "bybit-v5"
     config_file: "{{ directory_config.usr_local_etc }}/roq/bybit/config.toml"
     event_log_dir: "{{ directory_config.var_lib }}/roq/data"
     client_listen_address: "{{ directory_config.run }}/roq/client/bybit.sock"

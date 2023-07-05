@@ -66,14 +66,6 @@
   roles:
     - roq-bitstamp
 
-- hosts: roq_bybit
-  roles:
-    - roq-bybit
-
-- hosts: roq_bybit_futures
-  roles:
-    - roq-bybit-futures
-
 - hosts: roq_bybit_v5
   roles:
     - roq-bybit-v5
