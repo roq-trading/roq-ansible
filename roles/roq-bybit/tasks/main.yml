@@ -2,8 +2,8 @@
 
 - name: combine user configuration with defaults
   set_fact:
-    roq_bybit_v5_config: >
-        {{ roq_bybit_v5_defaults | combine(roq_bybit_v5 | default({}), recursive=True) }}
+    roq_bybit_config: >
+        {{ roq_bybit_defaults | combine(roq_bybit | default({}), recursive=True) }}
     cacheable: true
   tags:
     - always
@@ -12,13 +12,13 @@
 
   - name: shorter variable name for config
     set_fact:
-      config: "{{ roq_bybit_v5_config }}"
+      config: "{{ roq_bybit_config }}"
 
   - name: install
     include_role:
       name: common
       tasks_from: gateway
 
-  when: "'roq_bybit_v5' in group_names"
+  when: "'roq_bybit' in group_names"
   tags:
-    - roq-bybit_v5
+    - roq-bybit
