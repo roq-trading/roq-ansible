@@ -6,7 +6,7 @@ Ansible script to install gateways.
 
 ### Conda
 
-Install Mambaforge to /opt/conda
+Install Miniforge3 to /opt/conda
 
 ### systemd
 
@@ -20,7 +20,7 @@ Gateway configurations installed to /usr/local/etc/roq
 ## Dedendencies
 
 * [Ansible](https://www.ansible.com/)
-* [Mambaforge](https://github.com/conda-forge/miniforge)
+* [Miniforge3](https://github.com/conda-forge/miniforge)
 * [systemd](https://systemd.io/)
 
 
@@ -31,7 +31,7 @@ Gateway configurations installed to /usr/local/etc/roq
 If using conda, you can install ansible like this
 
 ```bash
-mamba install -y ansible
+conda install --freeze-installed -y ansible
 ```
 
 ### Remote Host
