@@ -28,7 +28,7 @@ Gateway configurations installed to /usr/local/etc/roq
 
 ### Ansible
 
-If using conda, you can install ansible like this
+If using conda, you can install ansible (on your local machine) like this
 
 ```bash
 conda install --freeze-installed -y ansible

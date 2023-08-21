@@ -13,7 +13,7 @@ ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/client
 ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/service
 ExecStartPre=+/bin/chown -R {{ roq_config.service.user }}:{{ roq_config.service.group }} {{ roq_config.dirs.run }}
 ExecStartPre=+/bin/chmod -R 0777 {{ roq_config.dirs.run }}
-ExecStart=/opt/conda/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
+ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.gateways[item].package }} --flagfile /opt/conda/envs/deploy/share/{{ roq_config.gateways[item].package }}/flags/{{ roq_config.gateways[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
 Restart={{ roq_config.service.restart }}
 
 [Install]

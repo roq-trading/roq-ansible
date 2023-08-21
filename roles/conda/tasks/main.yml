@@ -15,6 +15,10 @@
       shell: bash /opt/{{ conda_config.script }} -b -u -p /opt/conda
       args:
         creates: /opt/conda/bin/activate
+    - name: install deploy environment
+      shell: /opt/conda/bin/conda create -n deploy -y
+      args:
+        creates: /opt/conda/envs/deploy
   become: true
   tags:
     - conda
