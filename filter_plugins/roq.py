@@ -55,7 +55,11 @@ def format_toml_symbols(symbols):
         return result
 
     if isinstance(symbols, list):
-        return "\n[symbols]\n{}".format(_helper_fix_bridge(symbols))
+        is_fix_bridge = False
+        for item in symbols:
+            is_fix_bridge = is_fix_bridge or isinstance(item, Mapping)
+        if is_fix_bridge:
+            return "\n[symbols]\n{}".format(_helper_fix_bridge(symbols))
 
     return "\nsymbols = {}".format(format_toml_simple(symbols))
 
