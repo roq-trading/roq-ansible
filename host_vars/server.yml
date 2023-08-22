@@ -78,6 +78,8 @@ roq:
       logging:
         verbosity: 0
       environment: prod
+      dependencies:
+        - deribit
       flags:
         init_missing_md_entry_type_to_zero: true
       config:
