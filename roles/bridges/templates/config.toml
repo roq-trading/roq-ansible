@@ -1,0 +1,14 @@
+# config file for the {{ item }} bridge
+
+# symbols to subscribe from exchange
+{{ roq_config.bridges[item].config.symbols | roq_toml_symbols }}
+{%- if roq_config.bridges[item].config.accounts is defined %}
+
+# exchange accounts
+{{ roq_config.bridges[item].config.accounts | roq_toml_accounts }}
+{%- endif %}
+{%- if roq_config.bridges[item].config.users is defined %}
+
+# clients (trading strategies)
+{{ roq_config.bridges[item].config.users | roq_toml_users }}
+{%- endif %}

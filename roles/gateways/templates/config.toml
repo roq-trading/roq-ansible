@@ -1,14 +1,15 @@
 # config file for the {{ item }} gateway
 
-# symbols to subscribe from exchange
 {{ roq_config.gateways[item].config.symbols | roq_toml_symbols }}
 {%- if roq_config.gateways[item].config.accounts is defined %}
 
-# exchange accounts
 {{ roq_config.gateways[item].config.accounts | roq_toml_accounts }}
 {%- endif %}
 {%- if roq_config.gateways[item].config.users is defined %}
 
-# clients (trading strategies)
 {{ roq_config.gateways[item].config.users | roq_toml_users }}
+{%- endif %}
+{%- if roq_config.gateways[item].config.statistics is defined %}
+
+{{ roq_config.gateways[item].config.statistics | roq_toml_statistics }}
 {%- endif %}

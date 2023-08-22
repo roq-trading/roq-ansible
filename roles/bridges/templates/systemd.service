@@ -1,0 +1,20 @@
+[Unit]
+Description={{ item }} bridge
+Wants=network.target
+After=network-online.target
+Conflicts={{ item }}-stop.service
+
+[Service]
+UMask=0000
+User={{ roq_config.service.user }}
+Group={{ roq_config.service.group }}
+Environment="ROQ_v={{ roq_config.bridges[item].logging.verbosity }}"
+ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/client
+ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/service
+ExecStartPre=+/bin/chown -R {{ roq_config.service.user }}:{{ roq_config.service.group }} {{ roq_config.dirs.run }}
+ExecStartPre=+/bin/chmod -R 0777 {{ roq_config.dirs.run }}
+ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.bridges[item].package }} --flagfile /opt/conda/envs/deploy/share/{{ roq_config.bridges[item].package }}/flags/{{ roq_config.bridges[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
+Restart={{ roq_config.service.restart }}
+
+[Install]
+WantedBy=multi-user.target

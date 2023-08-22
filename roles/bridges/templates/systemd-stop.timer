@@ -1,0 +1,8 @@
+[Unit]
+Description={{ item }} bridge stop timer
+
+[Timer]
+OnCalendar={{ roq_config.service.stop }}
+
+[Install]
+WantedBy=multi-user.target

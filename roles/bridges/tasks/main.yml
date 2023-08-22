@@ -1,0 +1,96 @@
+---
+- block:
+    - name: find list of bridges
+      set_fact:
+        bridges: '{{ roq_config.bridges.keys() }}'
+    - name: create required directories
+      file:
+        path: '{{ roq_config.dirs.config }}/{{ item }}'
+        state: directory
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
+        mode: 0755
+      with_items: '{{ bridges }}'
+    - name: create flags files
+      template:
+        src: templates/flags.cfg
+        dest: '{{ roq_config.dirs.config }}/{{ item }}/flags.cfg'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: create config files
+      template:
+        src: templates/config.toml
+        dest: '{{ roq_config.dirs.config }}/{{ item }}/config.toml'
+        owner: '{{ roq_config.service.user }}'
+        group: '{{ roq_config.service.group }}'
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: find list of packages
+      set_fact:
+        packages: '{{ ( packages | default([]) ) + [ roq_config.bridges[item].package ] }}'
+      loop: '{{ bridges }}'
+    - name: install conda packages
+      shell: /opt/conda/bin/mamba install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
+    - name: create systemd service files
+      template:
+        src: templates/systemd.service
+        dest: /etc/systemd/system/{{ item }}.service
+        owner: root
+        group: root
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: disable systemd services
+      systemd:
+        name: '{{ item }}.service'
+        enabled: false
+        daemon_reload: true
+      with_items: '{{ bridges }}'
+    - name: create systemd timer files
+      template:
+        src: templates/systemd.timer
+        dest: /etc/systemd/system/{{ item }}.timer
+        owner: root
+        group: root
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: enable systemd timers
+      systemd:
+        name: '{{ item }}.timer'
+        state: started
+        enabled: true
+        daemon_reload: true
+      with_items: '{{ bridges }}'
+    - name: create systemd stop service files
+      template:
+        src: templates/systemd-stop.service
+        dest: /etc/systemd/system/{{ item }}-stop.service
+        owner: root
+        group: root
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: disable systemd stop services
+      systemd:
+        name: '{{ item }}-stop.service'
+        enabled: false
+        daemon_reload: true
+      with_items: '{{ bridges }}'
+    - name: create systemd stop timer files
+      template:
+        src: templates/systemd-stop.timer
+        dest: /etc/systemd/system/{{ item }}-stop.timer
+        owner: root
+        group: root
+        mode: 0644
+      with_items: '{{ bridges }}'
+    - name: enable systemd timers
+      systemd:
+        name: '{{ item }}-stop.timer'
+        state: started
+        enabled: true
+        daemon_reload: true
+      with_items: '{{ bridges }}'
+  become: true
+  tags:
+    - bridges
