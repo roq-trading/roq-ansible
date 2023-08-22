@@ -73,7 +73,7 @@ roq:
             accounts: A1
             symbols: BTC-\\d{2}\\D{3}\\d{2}
 
-    fix_bridge:
+    fix-bridge:
       package: roq-fix-bridge
       logging:
         verbosity: 0
