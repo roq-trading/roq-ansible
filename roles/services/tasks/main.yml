@@ -7,24 +7,24 @@
       file:
         path: '{{ roq_config.dirs.config }}/{{ item }}'
         state: directory
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0755
       with_items: '{{ services }}'
     - name: create flags files
       template:
         src: templates/flags.cfg
         dest: '{{ roq_config.dirs.config }}/{{ item }}/flags.cfg'
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0644
       with_items: '{{ services }}'
     - name: create config files
       template:
         src: templates/config.toml
         dest: '{{ roq_config.dirs.config }}/{{ item }}/config.toml'
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0644
       with_items: '{{ services }}'
     - name: find list of packages

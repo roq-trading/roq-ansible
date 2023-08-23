@@ -1,7 +1,7 @@
 ---
 roq:
 
-  service:
+  systemd:
     user: ansible
     group: ansible
     start: '*-*-* 00:01:00'

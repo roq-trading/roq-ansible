@@ -2,7 +2,7 @@
 Description={{ item }} stop timer
 
 [Timer]
-OnCalendar={{ roq_config.service.stop }}
+OnCalendar={{ roq_config.systemd.stop }}
 
 [Install]
 WantedBy=multi-user.target

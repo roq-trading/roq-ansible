@@ -4,8 +4,8 @@
       file:
         path: '{{ item }}'
         state: directory
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0755
       with_items:
         - '{{ roq_config.dirs.config }}'
@@ -16,8 +16,8 @@
       file:
         path: '{{ item }}'
         state: directory
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0777
       with_items:
         - '{{ roq_config.dirs.run }}'
@@ -27,8 +27,8 @@
       template:
         src: templates/keys.json
         dest: '{{ roq_config.dirs.config }}/keys.json'
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
+        owner: '{{ roq_config.systemd.user }}'
+        group: '{{ roq_config.systemd.group }}'
         mode: 0644
   become: true
   tags:

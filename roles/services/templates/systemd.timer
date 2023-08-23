@@ -2,7 +2,7 @@
 Description={{ item }} timer
 
 [Timer]
-OnCalendar={{ roq_config.service.start }}
+OnCalendar={{ roq_config.systemd.start }}
 
 [Install]
 WantedBy=multi-user.target
