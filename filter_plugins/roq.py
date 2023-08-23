@@ -39,10 +39,10 @@ def format_toml_symbols(symbols):
         return "\n[symbols]\n{}".format(_format_toml_mapping(_helper(symbols)))
 
     def _helper_fix_bridge_1(value):
-        return "regex={}\n".format(format_toml_simple(value))
+        return "regex={}".format(format_toml_simple(value))
 
     def _helper_fix_bridge_2(key, value):
-        return "[symbols.{}]\n{}\n".format(key, _helper_fix_bridge_1(value))
+        return "\n\n[symbols.{}]\n{}".format(key, _helper_fix_bridge_1(value))
 
     def _helper_fix_bridge(value):
         result = ""
