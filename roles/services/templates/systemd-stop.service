@@ -1,5 +1,5 @@
 [Unit]
-Description={{ item }} gateway stop service
+Description={{ item }} stop service
 After=network-online.target
 
 [Service]

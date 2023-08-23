@@ -20,7 +20,7 @@ roq:
       cache_mbp_checksum: false
       cache_all_reference_data: true
 
-  gateways:
+  services:
 
     cme:
       package: roq-cme

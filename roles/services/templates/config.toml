@@ -1,0 +1,15 @@
+# config file for {{ item }}
+
+{{ roq_config.services[item].config.symbols | roq_toml_symbols }}
+{%- if roq_config.services[item].config.accounts is defined %}
+
+{{ roq_config.services[item].config.accounts | roq_toml_accounts }}
+{%- endif %}
+{%- if roq_config.services[item].config.users is defined %}
+
+{{ roq_config.services[item].config.users | roq_toml_users }}
+{%- endif %}
+{%- if roq_config.services[item].config.statistics is defined %}
+
+{{ roq_config.services[item].config.statistics | roq_toml_statistics }}
+{%- endif %}

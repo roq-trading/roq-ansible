@@ -1,5 +1,5 @@
 [Unit]
-Description={{ item }} bridge timer
+Description={{ item }} timer
 
 [Timer]
 OnCalendar={{ roq_config.service.start }}

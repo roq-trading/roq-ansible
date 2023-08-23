@@ -1,5 +1,5 @@
 [Unit]
-Description={{ item }} gateway stop timer
+Description={{ item }} stop timer
 
 [Timer]
 OnCalendar={{ roq_config.service.stop }}

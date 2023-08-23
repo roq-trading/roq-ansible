@@ -4,4 +4,4 @@
     - config
     - conda
     - common
-    - gateways
+    - services

@@ -1,6 +1,6 @@
-# roq-gateways
+# roq-services
 
-Ansible script to install gateways.
+Ansible script to install services.
 
 ## Design
 

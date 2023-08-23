@@ -23,7 +23,7 @@ roq_defaults:
       event_log_symlink: true
       cache_mbp_checksum: false
       cache_all_reference_data: true
-  gateways: {}
+  services: {}
 conda_defaults:
   url: https://github.com/conda-forge/miniforge/releases/latest/download
   script: Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh
