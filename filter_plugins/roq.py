@@ -89,7 +89,10 @@ def format_gflags_options(options):
     def _helper(key, value):
         return "--{}={}".format(key, value)
 
-    return "\n".join(_helper(k, v) for k, v in options.items())
+    if options is None or len(options) == 0:
+        return ""
+
+    return "\n{}".format("\n".join(_helper(k, v) for k, v in options.items()))
 
 
 class FilterModule(object):

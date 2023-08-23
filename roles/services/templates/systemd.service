@@ -14,16 +14,12 @@ ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/service
 ExecStartPre=+/bin/chown -R {{ roq_config.service.user }}:{{ roq_config.service.group }} {{ roq_config.dirs.run }}
 ExecStartPre=+/bin/chmod -R 0777 {{ roq_config.dirs.run }}
 ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.services[item].package }} \
-{% if roq_config.services[item].package in ('roq-fix-bridge',) %}
   --flagfile /opt/conda/envs/deploy/share/{{ roq_config.services[item].package }}/flags/{{ roq_config.services[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg{{ ' \\' if 'dependencies' in roq_config.services[item] else '' }}
 {% if 'dependencies' in roq_config.services[item] %}
 {% for name in roq_config.services[item].dependencies %}
   {{ roq_config.dirs.run }}/client/{{ name }}.sock{{ '' if loop.last else ' \\' }}
 {% endfor %}
 {%- endif %}
-{% else %}
-  --flagfile /opt/conda/envs/deploy/share/{{ roq_config.services[item].package }}/flags/{{ roq_config.services[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
-{% endif %}
 Restart={{ roq_config.service.restart }}
 
 [Install]

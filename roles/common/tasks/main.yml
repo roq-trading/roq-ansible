@@ -23,13 +23,6 @@
         - '{{ roq_config.dirs.run }}'
         - '{{ roq_config.dirs.run }}/service'
         - '{{ roq_config.dirs.run }}/client'
-    - name: create flags file
-      template:
-        src: templates/flags.cfg
-        dest: '{{ roq_config.dirs.config }}/flags.cfg'
-        owner: '{{ roq_config.service.user }}'
-        group: '{{ roq_config.service.group }}'
-        mode: 0644
     - name: create auth-keys file
       template:
         src: templates/keys.json
