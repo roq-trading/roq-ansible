@@ -21,9 +21,9 @@ ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.services[item].package }} \
   {{ roq_config.dirs.run }}/client/{{ name }}.sock{{ '' if loop.last else ' \\' }}
 {% endfor %}
 {%- endif %}
-{% else -%}
+{% else %}
   --flagfile /opt/conda/envs/deploy/share/{{ roq_config.services[item].package }}/flags/{{ roq_config.services[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg
-{%- endif %}
+{% endif %}
 Restart={{ roq_config.service.restart }}
 
 [Install]
