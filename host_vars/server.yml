@@ -9,9 +9,11 @@ roq:
     restart: 'no'
 
   common:
+
     auth_keys:
       public_key: YOUR_ROQ_PUBLIC_KEY
       secret_key: YOUR_ROQ_SECRET_KEY
+
     flags:
       loop_sleep: 500ns
       loop_timer_freq: 2500ns
