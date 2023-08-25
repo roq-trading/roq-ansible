@@ -38,7 +38,7 @@ ansible-playbook -i inventory site.yml
 ### SSH Tunnel
 
 ```bash
-ssh -L 8081:localhost:2023 ubuntu@1.2.3.4 -N
+ssh -L 8081:localhost:1234 ubuntu@1.2.3.4 -N
 ```
 
 * `http://localhost:8081/grafana/`
