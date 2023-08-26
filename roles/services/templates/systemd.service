@@ -1,3 +1,5 @@
+# !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
+
 [Unit]
 Description={{ item }}
 Wants=network.target

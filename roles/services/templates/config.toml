@@ -1,4 +1,6 @@
 # {{ item }}
+
+# !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 {{ roq_config.services[item].config.symbols | roq_toml_symbols }}
 {%- if roq_config.services[item].config.accounts is defined %}
 

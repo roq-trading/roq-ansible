@@ -1,3 +1,5 @@
+# !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
+
 [Unit]
 Description={{ item }} stop service
 After=network-online.target
