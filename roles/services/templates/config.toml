@@ -1,7 +1,10 @@
 # {{ item }}
 
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
+{%- if roq_config.services[item].config.symbols is defined %}
 {{ roq_config.services[item].config.symbols | roq_toml_symbols }}
+
+{%- endif %}
 {%- if roq_config.services[item].config.accounts is defined %}
 
 {{ roq_config.services[item].config.accounts | roq_toml_accounts }}
