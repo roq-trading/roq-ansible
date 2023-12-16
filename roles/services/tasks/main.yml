@@ -3,6 +3,10 @@
     - name: find list of services
       set_fact:
         services: '{{ roq_config.services.keys() }}'
+    - name: find list of packages
+      set_fact:
+        packages: '{{ ( packages | default([]) ) + [ roq_config.services[item].package ] }}'
+      loop: '{{ services }}'
     - name: install conda packages
       shell: /opt/conda/bin/mamba install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
     - name: create systemd service files
@@ -43,10 +47,6 @@
         group: '{{ roq_config.systemd.group }}'
         mode: 0644
       with_items: '{{ services }}'
-    - name: find list of packages
-      set_fact:
-        packages: '{{ ( packages | default([]) ) + [ roq_config.services[item].package ] }}'
-      loop: '{{ services }}'
     - name: create systemd timer files
       template:
         src: templates/systemd.timer
