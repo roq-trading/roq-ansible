@@ -23,6 +23,7 @@ ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.services[item].package }} \
 {% endfor %}
 {%- endif %}
 Restart={{ roq_config.systemd.restart }}
+TimeoutStopSec=10
 
 [Install]
 WantedBy=multi-user.target
