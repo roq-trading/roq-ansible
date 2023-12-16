@@ -3,6 +3,22 @@
     - name: find list of services
       set_fact:
         services: '{{ roq_config.services.keys() }}'
+    - name: install conda packages
+      shell: /opt/conda/bin/mamba install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
+    - name: create systemd service files
+      template:
+        src: templates/systemd.service
+        dest: /etc/systemd/system/{{ item }}.service
+        owner: root
+        group: root
+        mode: 0644
+      with_items: '{{ services }}'
+    - name: disable systemd services
+      systemd:
+        name: '{{ item }}.service'
+        enabled: false
+        daemon_reload: true
+      with_items: '{{ services }}'
     - name: create required directories
       file:
         path: '{{ roq_config.dirs.config }}/{{ item }}'
@@ -31,22 +47,6 @@
       set_fact:
         packages: '{{ ( packages | default([]) ) + [ roq_config.services[item].package ] }}'
       loop: '{{ services }}'
-    - name: install conda packages
-      shell: /opt/conda/bin/mamba install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
-    - name: create systemd service files
-      template:
-        src: templates/systemd.service
-        dest: /etc/systemd/system/{{ item }}.service
-        owner: root
-        group: root
-        mode: 0644
-      with_items: '{{ services }}'
-    - name: disable systemd services
-      systemd:
-        name: '{{ item }}.service'
-        enabled: false
-        daemon_reload: true
-      with_items: '{{ services }}'
     - name: create systemd timer files
       template:
         src: templates/systemd.timer
