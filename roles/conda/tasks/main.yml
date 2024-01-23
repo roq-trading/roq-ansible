@@ -16,7 +16,7 @@
       args:
         creates: /opt/conda/bin/activate
     - name: install deploy environment
-      shell: /opt/conda/bin/conda create -n deploy -y
+      shell: /opt/conda/bin/mamba create -n deploy -y
       args:
         creates: /opt/conda/envs/deploy
   become: true
