@@ -8,7 +8,7 @@
         packages: '{{ ( packages | default([]) ) + [ roq_config.services[item].package ] }}'
       loop: '{{ services }}'
     - name: install conda packages
-      shell: /opt/conda/bin/mamba install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
+      shell: /opt/conda/bin/conda install --freeze-installed -y -n deploy -c {{ roq_config.conda.url }} {{ packages | unique | join(' ') }} roq-tools
     - name: create systemd service files
       template:
         src: templates/systemd.service

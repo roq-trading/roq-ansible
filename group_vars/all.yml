@@ -4,9 +4,9 @@ roq_defaults:
     run: /run/roq
     config: /usr/local/etc/roq
     data: /var/lib/roq
-  service:
-    user: ansible
-    group: ansible
+  systemd:
+    user: root
+    group: root
     start: '*-*-* 00:01:00'
     stop: '*-*-* 23:59:00'
     restart: 'no'
