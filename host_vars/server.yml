@@ -1,19 +1,15 @@
 ---
 roq:
-
   systemd:
     user: ansible
     group: ansible
     start: '*-*-* 00:01:00'
     stop: '*-*-* 23:59:00'
     restart: 'no'
-
   common:
-
     auth_keys:
       public_key: YOUR_ROQ_PUBLIC_KEY
       secret_key: YOUR_ROQ_SECRET_KEY
-
     flags:
       loop_sleep: 500ns
       loop_timer_freq: 2500ns
@@ -21,9 +17,7 @@ roq:
       event_log_symlink: true
       cache_mbp_checksum: false
       cache_all_reference_data: true
-
   services:
-
     cme:
       package: roq-cme
       logging:
@@ -45,7 +39,6 @@ roq:
             password: secret
             symbols: ZNM3
             accounts: A1
-
     deribit:
       package: roq-deribit
       logging:
@@ -74,7 +67,6 @@ roq:
             password: secret
             accounts: A1
             symbols: BTC-\\d{2}\\D{3}\\d{2}
-
     fix-bridge:
       package: roq-fix-bridge
       logging:
@@ -86,22 +78,22 @@ roq:
         init_missing_md_entry_type_to_zero: true
       config:
         symbols:
-          - ["USD.*", "BTC.*"]
+          - [USD.*, BTC.*]
           - deribit:
-            - "BTC-PERPETUAL"
-            - "ETH-PERPETUAL"
+              - BTC-PERPETUAL
+              - ETH-PERPETUAL
         users:
           md1:
-            component: "test"
-            username: "md1"
+            component: test
+            username: md1
           oe1:
-            component: "test"
-            username: "oe1"
-            password: "secret"
-            account: "A1"
+            component: test
+            username: oe1
+            password: secret
+            account: A1
         statistics:
           FUNDING_RATE:
-            fix_md_entry_type: "PRIOR_SETTLE_PRICE"
+            fix_md_entry_type: PRIOR_SETTLE_PRICE
           PRE_SETTLEMENT_PRICE:
-            fix_md_entry_type: "SETTLEMENT_PRICE"
+            fix_md_entry_type: SETTLEMENT_PRICE
             default_value: -1.23
