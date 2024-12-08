@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 ## Head
 
+### Changed
+
+* [BREAKING CHANGE] Complete rewrite to support (1) systemd scope (system|user), (2) new service manager, and (3) algo strategies
+
 ## 1.0.3 &ndash; 2024-11-26
 
 ## 1.0.2 &ndash; 2024-07-14

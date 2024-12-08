@@ -1,35 +1,49 @@
 ---
 - block:
-    - name: create required directories
+    - name: create required directories (default access)
       file:
         path: '{{ item }}'
         state: directory
-        owner: '{{ roq_config.systemd.user }}'
-        group: '{{ roq_config.systemd.group }}'
         mode: 0755
       with_items:
-        - '{{ roq_config.dirs.config }}'
-        - '{{ roq_config.dirs.data }}'
-        - '{{ roq_config.dirs.data }}/data'
-        - '{{ roq_config.dirs.data }}/cache'
-    - name: create required directories
+        - '{{ user_config.conda_dir }}'
+    - name: create required directories (default access)
       file:
         path: '{{ item }}'
         state: directory
-        owner: '{{ roq_config.systemd.user }}'
-        group: '{{ roq_config.systemd.group }}'
-        mode: 0777
+        mode: 0755
       with_items:
-        - '{{ roq_config.dirs.run }}'
-        - '{{ roq_config.dirs.run }}/service'
-        - '{{ roq_config.dirs.run }}/client'
-    - name: create auth-keys file
+        - '{{ user_config.systemd_unit_dir }}'
+      when: systemd_scope == "user"
+    - name: create required directories (user access)
+      file:
+        path: '{{ item }}'
+        state: directory
+        mode: 0755
+        owner: '{{ systemd_config.user }}'
+        group: '{{ systemd_config.group }}'
+      with_items:
+        - '{{ user_config.run_dir }}/client'
+        - '{{ user_config.run_dir }}/service'
+        - '{{ user_config.config_dir }}'
+        - '{{ user_config.config_dir }}/shared'
+        - '{{ user_config.cache_dir }}'
+        - '{{ user_config.data_dir }}'
+    - name: create auth-keys file (user access)
       template:
         src: templates/keys.json
-        dest: '{{ roq_config.dirs.config }}/keys.json'
-        owner: '{{ roq_config.systemd.user }}'
-        group: '{{ roq_config.systemd.group }}'
+        dest: '{{ user_config.config_dir }}/shared/keys.json'
         mode: 0644
-  become: true
+        owner: '{{ systemd_config.user }}'
+        group: '{{ systemd_config.group }}'
+    - name: create shared flags
+      template:
+        src: templates/flags.cfg
+        dest: '{{ user_config.config_dir }}/shared/{{ item.key }}.cfg'
+        mode: 0644
+        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
+        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+      with_items: '{{ roq_config.flags.shared | dict2items }}'
+  become: '{{ systemd_scope == "system" }}'
   tags:
     - common

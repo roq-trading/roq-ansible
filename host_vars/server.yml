@@ -1,58 +1,56 @@
 ---
 roq:
+  auth:
+    public_key: YOUR_ROQ_PUBLIC_KEY
+    secret_key: YOUR_ROQ_SECRET_KEY
   systemd:
-    user: ansible
-    group: ansible
     start: '*-*-* 00:01:00'
     stop: '*-*-* 23:59:00'
-    restart: 'no'
-  common:
-    auth_keys:
-      public_key: YOUR_ROQ_PUBLIC_KEY
-      secret_key: YOUR_ROQ_SECRET_KEY
-    flags:
-      loop_sleep: 500ns
-      loop_timer_freq: 2500ns
-      event_log_iso_week: false
-      event_log_symlink: true
-      cache_mbp_checksum: false
-      cache_all_reference_data: true
+    restart: 'on-failure'
+  conda:
+    envs:
+      stable:
+        - 'https://roq-trading.com/conda/stable'
+      unstable:
+        - 'https://roq-trading.com/conda/unstable'
+  flags:
+    shared:
+      log:
+        log_verbosity: 0
+      loop:
+        loop_sleep: 500ns
+        loop_timer_freq: 2500ns
+      gateway:
+        auth_keys_file: '{{ user_config.config_dir }}/shared/keys.json'
+        cache_all_reference_data: true
+        cache_dir: '{{ user_config.cache_dir }}'
+        cache_mbp_checksum: false
+        event_log_dir: '{{ user_config.data_dir }}'
+        event_log_iso_week: false
+        event_log_symlink: true
   services:
-    cme:
-      package: roq-cme
-      logging:
-        verbosity: 0
-      environment: prod
-      flags:
-        multicast_channel_ids: 344
-        multicast_config_file: /opt/conda/share/roq-cme/prod/config.xml
-        multicast_local_interface: 1.2.3.4
-      config:
-        symbols: Z[TFNB][HMUZ][0-9]  # futures
-        accounts:
-          A1:
-            login: YOUR_CME_PUBLIC_KEY
-            secret: YOUR_CME_SECRET_KEY
-            symbols: .*
-        users:
-          trader:
-            password: secret
-            symbols: ZNM3
-            accounts: A1
     deribit:
-      package: roq-deribit
-      logging:
-        verbosity: 0
-      environment: test
-      flags: {}
+      systemd:
+        enabled: false
+      conda:
+        env: unstable
+        package: roq-deribit
+      client_listen_address:
+        type: unix
+      dependencies: []
+      flags:
+        package: test
+        shared:
+          - log
+          - loop
+          - gateway
+        custom:
+          # log_verbosity: 1
+          loop_cpu_affinity: 1
       config:
         symbols:
-          - ^BTC-[0-9]{1,2}[A-Z]{3}[0-9]{2}$  # futures
-          - ^ETH-[0-9]{1,2}[A-Z]{3}[0-9]{2}$  # futures
-          - ^BTC(_USD[A-Z]?)?-PERPETUAL$  # swaps
-          - ^ETH(_USD[A-Z]?)?-PERPETUAL$  # swaps
-          - ^BTC(-USD[A-Z]?)?-DERIBIT-INDEX$  # index
-          - ^ETH(-USD[A-Z]?)?-DERIBIT-INDEX$  # index
+          - ^BTC(_USD[A-Z]?)?-PERPETUAL$
+          - ^ETH(_USD[A-Z]?)?-PERPETUAL$
         accounts:
           A1:
             login: YOUR_DERIBIT_PUBLIC_KEY
@@ -66,16 +64,92 @@ roq:
           trader:
             password: secret
             accounts: A1
-            symbols: BTC-\\d{2}\\D{3}\\d{2}
+            symbols: BTC-PERPETUAL
+    bybit:
+      systemd:
+        enabled: false
+      conda:
+        env: unstable
+        package: roq-bybit
+      client_listen_address:
+        type: unix
+      dependencies: []
+      flags:
+        package: test
+        shared:
+          - log
+          - loop
+          - gateway
+        custom:
+          # log_verbosity: 1
+          loop_cpu_affinity: 2
+      config:
+        symbols:
+          - ^BTCUSD[A-Z]?$
+          - ^ETHUSD[A-Z]?$
+        accounts:
+          A1:
+            login: YOUR_BYBIT_PUBLIC_KEY
+            secret: YOUR_BYBIT_SECRET_KEY
+            symbols: .*
+            master: true
+        users:
+          test:
+            password: '1234'
+            symbols: .*
+          trader:
+            password: secret
+            accounts: A1
+            symbols: BTCUSDT
+    algo-1:
+      systemd:
+        enabled: false
+      conda:
+        env: unstable
+        package: roq-cpp-algo-template
+      dependencies:
+        - deribit
+        - bybit
+      flags:
+        shared:
+          - log
+          - loop
+        custom:
+          # log_verbosity: 1
+          loop_cpu_affinity: 3
+      config:
+        strategy_id: 123
+        legs:
+          - source: 0
+            account: A1
+            exchange: deribit
+            symbol: BTC-PERPETUAL
+            time_in_force: gtc
+          - source: 1
+            account: A1
+            exchange: bybit
+            symbol: BTCUSD
+            time_in_force: gtc
     fix-bridge:
-      package: roq-fix-bridge
-      logging:
-        verbosity: 0
-      environment: prod
+      systemd:
+        enabled: false
+      conda:
+        env: unstable
+        package: roq-fix-bridge
+      client_listen_address:
+        type: tcp
+        port: 1234
+        interface: localhost
       dependencies:
         - deribit
       flags:
-        init_missing_md_entry_type_to_zero: true
+        shared:
+          - log
+          - loop
+        custom:
+          # log_verbosity: 1
+          loop_cpu_affinity: 4
+          init_missing_md_entry_type_to_zero: true
       config:
         symbols:
           - [USD.*, BTC.*]
@@ -97,3 +171,20 @@ roq:
           PRE_SETTLEMENT_PRICE:
             fix_md_entry_type: SETTLEMENT_PRICE
             default_value: -1.23
+    service-manager:
+      systemd:
+        enabled: false
+      conda:
+        env: unstable
+        package: roq-service-manager
+      client_listen_address:
+        type: tcp
+        port: 2345
+        interface: localhost
+      flags:
+        shared:
+          - log
+        custom:
+          # log_verbosity: 1
+          scope: '{{ systemd_config.scope }}'
+      config: {}

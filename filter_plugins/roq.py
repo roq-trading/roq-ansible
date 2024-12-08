@@ -5,6 +5,9 @@ from numbers import Number
 
 from os.path import normpath
 
+import json
+import toml
+
 
 def format_realpath(value):
     # note! realpath will follow symlinks, e.g. /var => /private/var on OSX
@@ -95,6 +98,12 @@ def format_gflags_options(options):
     return "\n{}".format("\n".join(_helper(k, v) for k, v in options.items()))
 
 
+def format_toml(value):
+    tmp_1 = json.dumps(dict(value))
+    tmp_2 = json.loads(tmp_1)
+    return toml.dumps(tmp_2)
+
+
 class FilterModule(object):
     def filters(self):
         return dict(
@@ -105,4 +114,5 @@ class FilterModule(object):
             roq_toml_users=format_toml_users,
             roq_toml_statistics=format_toml_statistics,
             roq_gflags_options=format_gflags_options,
+            roq_toml=format_toml,
         )

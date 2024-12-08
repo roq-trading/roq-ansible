@@ -1,29 +1,58 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 
 [Unit]
-Description={{ item }}
+Description={{ roq_config.services[item]['description'] | default(item) }}
+{% if 'documentation' in roq_config.services[item] %}
+Documentation={{ roq_config.services[item].documentation }}
+{% endif %}
 Wants=network.target
 After=network-online.target
 Conflicts={{ item }}-stop.service
+StartLimitIntervalSec=60
+StartLimitBurst=2
 
 [Service]
-UMask=0000
-User={{ roq_config.systemd.user }}
-Group={{ roq_config.systemd.group }}
-Environment="ROQ_v={{ roq_config.services[item].logging.verbosity }}"
-ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/client
-ExecStartPre=+/bin/mkdir -p {{ roq_config.dirs.run }}/service
-ExecStartPre=+/bin/chown -R {{ roq_config.systemd.user }}:{{ roq_config.systemd.group }} {{ roq_config.dirs.run }}
-ExecStartPre=+/bin/chmod -R 0777 {{ roq_config.dirs.run }}
-ExecStart=/opt/conda/envs/deploy/bin/{{ roq_config.services[item].package }} \
-  --flagfile /opt/conda/envs/deploy/share/{{ roq_config.services[item].package }}/flags/{{ roq_config.services[item].environment }}/flags.cfg,{{ roq_config.dirs.config }}/{{ item }}/flags.cfg{{ '' if roq_config.services[item].get('dependencies', {}) | length == 0 else ' \\' }}
+Type=notify
+User={{ systemd_config.user }}
+Group={{ systemd_config.group }}
+Restart={{ roq_config.systemd.restart }}
+RestartSec=10
+TimeoutStopSec=10
+WatchdogSec=10
+ExecStartPre=+/bin/mkdir -p {{ user_config.run_dir }}/client {{ user_config.run_dir }}/roq/service
+ExecStartPre=+/bin/chmod -R 0770 {{ user_config.run_dir }}
+ExecStartPre=+/bin/mkdir -p {{ user_config.cache_dir }} {{ user_config.data_dir }}
+ExecStart={{ user_config.conda_dir }}/envs/{{ roq_config.services[item].conda.env }}/bin/{{ roq_config.services[item].conda.package }} \
 {% if 'dependencies' in roq_config.services[item] %}
 {% for name in roq_config.services[item].dependencies %}
-  {{ roq_config.dirs.run }}/client/{{ name }}.sock{{ '' if loop.last else ' \\' }}
+{% if roq_config.services[name].client_listen_address.type == 'unix' %}
+  {{ user_config.run_dir }}/client/{{ name }}.sock \
+{% else %}
+{{ 0/0 }}
+{% endif %}
 {% endfor %}
 {%- endif %}
-Restart={{ roq_config.systemd.restart }}
-TimeoutStopSec=10
+{% if 'package' in roq_config.services[item].flags %}
+  --flagfile {{ user_config.conda_dir }}/envs/{{ roq_config.services[item].conda.env }}/share/{{ roq_config.services[item].conda.package }}/flags/{{ roq_config.services[item].flags.package }}/flags.cfg \
+{% endif %}
+{% for name in roq_config.services[item].flags.shared %}
+  --flagfile {{ user_config.config_dir }}/shared/{{ name }}.cfg \
+{% endfor %}
+  --flagfile {{ user_config.config_dir }}/services/{{ item }}/flags.cfg \
+{% if 'config' in roq_config.services[item] %}
+  --config_file {{ user_config.config_dir }}/services/{{ item }}/config.toml \
+{% endif %}
+  --service_listen_address unix://{{ user_config.run_dir }}/service/{{ item }}.sock \
+{% if 'client_listen_address' in roq_config.services[item] %}
+{% if roq_config.services[item].client_listen_address.type == 'unix' %}
+  --client_listen_address unix://{{ user_config.run_dir }}/client/{{ item }}.sock \
+{% elif roq_config.services[item].client_listen_address.type == 'tcp' %}
+  --client_listen_address tcp://{{ roq_config.services[item].client_listen_address.interface }}:{{ roq_config.services[item].client_listen_address.port }} \
+{% else %}
+{{ 0/0 }}
+{% endif %}
+{%- endif %}
+  --name {{ item }}
 
 [Install]
 WantedBy=multi-user.target

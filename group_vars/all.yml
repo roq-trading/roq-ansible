@@ -1,31 +1,27 @@
 ---
-roq_defaults:
-  dirs:
-    run: /run/roq
-    config: /usr/local/etc/roq
-    data: /var/lib/roq
-  systemd:
-    user: root
-    group: root
-    start: '*-*-* 00:01:00'
-    stop: '*-*-* 23:59:00'
-    restart: 'no'
-  conda:
-    url: https://roq-trading.com/conda/unstable
-  common:
-    auth_keys:
-      public_key: YOUR_ROQ_PUBLIC_KEY
-      secret_key: YOUR_ROQ_SECRET_KEY
-    flags:
-      loop_sleep: 500ns
-      loop_timer_freq: 2500ns
-      event_log_iso_week: false
-      event_log_symlink: true
-      cache_mbp_checksum: false
-      cache_all_reference_data: true
-  services: {}
+systemd_defaults:
+  scope: system
+  user: '{{ ansible_user }}'
+  group: '{{ ansible_user }}'
 conda_defaults:
   url: https://github.com/conda-forge/miniforge/releases/latest/download
-  script: Miniforge3-{{ "MacOSX" if ansible_os_family == "Darwin" else "Linux" }}-{{ ansible_architecture }}.sh
+  script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh
   sources:
     - conda-forge
+roq_defaults:
+  auth:
+    public_key: YOUR_ROQ_PUBLIC_KEY
+    secret_key: YOUR_ROQ_SECRET_KEY
+  systemd:
+    start: '*-*-* 00:01:00'
+    stop: '*-*-* 23:59:00'
+    restart: 'on-failure'
+  conda:
+    envs:
+      stable:
+        - 'https://roq-trading.com/conda/stable'
+      unstable:
+        - 'https://roq-trading.com/conda/unstable'
+  flags:
+    shared: {}
+  services: {}

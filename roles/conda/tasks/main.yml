@@ -1,24 +1,14 @@
 ---
 - block:
-    - name: create required directories
-      file:
-        path: '{{ item }}'
-        state: directory
-      with_items:
-        - /opt/conda
     - name: download installer
       get_url:
         url: '{{ conda_config.url }}/{{ conda_config.script }}'
-        dest: /opt
+        dest: '/tmp/{{ conda_config.script }}'
         mode: 0644
     - name: install conda
-      shell: bash /opt/{{ conda_config.script }} -b -u -p /opt/conda
+      shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.script }} -b -u -p {{ user_config.conda_dir }}'
       args:
-        creates: /opt/conda/bin/activate
-    - name: install deploy environment
-      shell: /opt/conda/bin/conda create -n deploy -y
-      args:
-        creates: /opt/conda/envs/deploy
-  become: true
+        creates: '{{ user_config.conda_dir }}/bin/activate'
+  become: '{{ systemd_scope == "system" }}'
   tags:
     - conda
