@@ -1,2 +1,2 @@
 [example]
-server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root"
+server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root" systemd_scope="system"
