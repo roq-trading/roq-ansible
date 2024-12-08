@@ -134,7 +134,7 @@ roq:
       client_listen_address:
         type: tcp
         port: 1234
-        interface: localhost
+        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
       dependencies:
         - deribit
       flags:
@@ -173,7 +173,7 @@ roq:
       client_listen_address:
         type: tcp
         port: 2345
-        interface: localhost
+        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
       flags:
         shared:
           - log

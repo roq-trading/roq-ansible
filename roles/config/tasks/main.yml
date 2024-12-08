@@ -3,7 +3,7 @@
     - name: get passwd
       getent:
         database: passwd
-    # - name: debug
+    #- name: debug
     #  debug:
     #    var: ansible_facts
     - name: debug
