@@ -15,8 +15,10 @@ StartLimitBurst=2
 
 [Service]
 Type=notify
+{% if systemd_scope == "system" %}
 User={{ systemd_config.user }}
 Group={{ systemd_config.group }}
+{% endif %}
 Restart={{ roq_config.systemd.services.restart }}
 RestartSec=10
 TimeoutStopSec=10

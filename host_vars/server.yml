@@ -179,5 +179,5 @@ roq:
           - log
         custom:
           # log_verbosity: 1
-          scope: '{{ systemd_config.scope }}'
+          systemd_scope: '{{ systemd_config.scope }}'
       config: {}  # note! special

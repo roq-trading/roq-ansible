@@ -20,8 +20,8 @@
         src: templates/systemd.service
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.service'
         mode: 0644
-        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
-        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+        owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
+        group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
       with_items: '{{ services }}'
     - name: create required directories
       file:
@@ -52,8 +52,8 @@
         src: templates/systemd.timer
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
         mode: 0644
-        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
-        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+        owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
+        group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
       with_items: '{{ services }}'
       when: '"start" in roq_config.systemd.timers'
     - name: remove systemd start timer files
@@ -67,8 +67,8 @@
         src: templates/systemd-stop.service
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
         mode: 0644
-        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
-        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+        owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
+        group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
       with_items: '{{ services }}'
       when: '"stop" in roq_config.systemd.timers'
     - name: remove systemd stop service files
@@ -82,8 +82,8 @@
         src: templates/systemd-stop.timer
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
         mode: 0644
-        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
-        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+        owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
+        group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
       with_items: '{{ services }}'
       when: '"stop" in roq_config.systemd.timers'
     - name: remove systemd stop timer files
