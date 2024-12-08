@@ -4,15 +4,18 @@ roq:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
   systemd:
-    start: '*-*-* 00:01:00'
-    stop: '*-*-* 23:59:00'
-    restart: 'on-failure'
+    services:
+      restart: on-failure
+      enabled: false
+    timers:
+      stop: '*-*-* 23:59:00'
+      start: '*-*-* 00:01:00'
   conda:
     envs:
       stable:
-        - 'https://roq-trading.com/conda/stable'
+        - https://roq-trading.com/conda/stable
       unstable:
-        - 'https://roq-trading.com/conda/unstable'
+        - https://roq-trading.com/conda/unstable
   flags:
     shared:
       log:
@@ -30,8 +33,6 @@ roq:
         event_log_symlink: true
   services:
     deribit:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-deribit
@@ -66,8 +67,6 @@ roq:
             accounts: A1
             symbols: BTC-PERPETUAL
     bybit:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-bybit
@@ -102,8 +101,6 @@ roq:
             accounts: A1
             symbols: BTCUSDT
     algo-1:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-cpp-algo-template
@@ -131,15 +128,13 @@ roq:
             symbol: BTCUSD
             time_in_force: gtc
     fix-bridge:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-fix-bridge
       client_listen_address:
         type: tcp
         port: 1234
-        interface: localhost
+        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
       dependencies:
         - deribit
       flags:
@@ -152,7 +147,7 @@ roq:
           init_missing_md_entry_type_to_zero: true
       config:
         symbols:
-          - [USD.*, BTC.*]
+          - [USD.*, BTC.*]  # XXX FIXME TODO not supported by json/toml conversion
           - deribit:
               - BTC-PERPETUAL
               - ETH-PERPETUAL
@@ -172,22 +167,20 @@ roq:
             fix_md_entry_type: SETTLEMENT_PRICE
             default_value: -1.23
     service-manager:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-service-manager
       client_listen_address:
         type: tcp
         port: 2345
-        interface: localhost
+        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
       flags:
         shared:
           - log
         custom:
           # log_verbosity: 1
-          scope: '{{ systemd_config.scope }}'
-      config: {}
+          systemd_scope: '{{ systemd_config.scope }}'
+      config: {}  # note! special
 
 container:
   solution: docker
