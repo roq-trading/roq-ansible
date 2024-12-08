@@ -23,13 +23,6 @@
         owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
       with_items: '{{ services }}'
-    - name: enable/disable systemd services
-      systemd:
-        name: '{{ item }}.service'
-        scope: '{{ systemd_scope }}'
-        enabled: '{{ roq_config.services[item].systemd.enabled }}'
-        daemon_reload: true
-      with_items: '{{ services }}'
     - name: create required directories
       file:
         path: '{{ user_config.config_dir }}/services/{{ item }}'
@@ -54,7 +47,7 @@
         owner: '{{ systemd_config.user }}'
         group: '{{ systemd_config.group }}'
       with_items: '{{ services }}'
-    - name: create systemd timer files
+    - name: create systemd start timer files
       template:
         src: templates/systemd.timer
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
@@ -62,14 +55,13 @@
         owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
       with_items: '{{ services }}'
-    - name: enable systemd timers
-      systemd:
-        name: '{{ item }}.timer'
-        scope: '{{ systemd_scope }}'
-        state: started
-        enabled: true
-        daemon_reload: true
+      when: '"start" in roq_config.systemd.timers'
+    - name: remove systemd start timer files
+      file:
+        path: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
+        state: absent
       with_items: '{{ services }}'
+      when: '"start" not in roq_config.systemd.timers'
     - name: create systemd stop service files
       template:
         src: templates/systemd-stop.service
@@ -78,13 +70,13 @@
         owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
       with_items: '{{ services }}'
-    - name: disable systemd stop services
-      systemd:
-        name: '{{ item }}-stop.service'
-        scope: '{{ systemd_scope }}'
-        enabled: false
-        daemon_reload: true
+      when: '"stop" in roq_config.systemd.timers'
+    - name: remove systemd stop service files
+      file:
+        path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
+        state: absent
       with_items: '{{ services }}'
+      when: '"stop" not in roq_config.systemd.timers'
     - name: create systemd stop timer files
       template:
         src: templates/systemd-stop.timer
@@ -93,7 +85,38 @@
         owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
       with_items: '{{ services }}'
-    - name: enable systemd timers
+      when: '"stop" in roq_config.systemd.timers'
+    - name: remove systemd stop timer files
+      file:
+        path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
+        state: absent
+      with_items: '{{ services }}'
+      when: '"stop" not in roq_config.systemd.timers'
+    - name: enable/disable systemd services
+      systemd:
+        name: '{{ item }}.service'
+        scope: '{{ systemd_scope }}'
+        enabled: '{{ roq_config.systemd.services.enabled }}'
+        daemon_reload: true
+      with_items: '{{ services }}'
+    - name: enable systemd start timers
+      systemd:
+        name: '{{ item }}.timer'
+        scope: '{{ systemd_scope }}'
+        state: started
+        enabled: true
+        daemon_reload: true
+      with_items: '{{ services }}'
+      when: '"start" in roq_config.systemd.timers'
+    - name: disable systemd stop services
+      systemd:
+        name: '{{ item }}-stop.service'
+        scope: '{{ systemd_scope }}'
+        enabled: false
+        daemon_reload: true
+      with_items: '{{ services }}'
+      when: '"stop" in roq_config.systemd.timers'
+    - name: enable systemd stop timers
       systemd:
         name: '{{ item }}-stop.timer'
         scope: '{{ systemd_scope }}'
@@ -101,6 +124,7 @@
         enabled: true
         daemon_reload: true
       with_items: '{{ services }}'
+      when: '"stop" in roq_config.systemd.timers'
   become: '{{ systemd_scope == "system" }}'
   tags:
     - services

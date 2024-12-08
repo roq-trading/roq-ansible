@@ -1,23 +1,5 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
-{% if roq_config.services[item].config.symbols is defined %}
-{{ roq_config.services[item].config.symbols | roq_toml_symbols }}
-
-{%- endif %}
-{% if roq_config.services[item].config.accounts is defined %}
-
-{{ roq_config.services[item].config.accounts | roq_toml_accounts }}
-{%- endif %}
-{% if roq_config.services[item].config.users is defined %}
-
-{{ roq_config.services[item].config.users | roq_toml_users }}
-{%- endif %}
-{% if roq_config.services[item].config.statistics is defined %}
-
-{{ roq_config.services[item].config.statistics | roq_toml_statistics }}
-{%- endif %}
 {% if roq_config.services[item].conda.package == 'roq-service-manager' %}
-
-[services]
 {% for name in services %}
 {% if roq_config.services[name].conda.package != 'roq-service-manager' %}
 
@@ -25,8 +7,11 @@
 service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"
 {% endif %}
 {% endfor %}
-{%- endif %}
-{% if roq_config.services[item].config.strategy_id is defined %}
+{% elif roq_config.services[item].conda.package == 'roq-fix-bridge' %}
+{{ roq_config.services[item].config.symbols | roq_toml_symbols }}
+
+{{ roq_config.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
+{% else %}
 
 {{ roq_config.services[item].config | roq_toml }}
 {%- endif %}

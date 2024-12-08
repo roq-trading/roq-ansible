@@ -13,9 +13,10 @@ roq_defaults:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
   systemd:
-    start: '*-*-* 00:01:00'
-    stop: '*-*-* 23:59:00'
-    restart: 'on-failure'
+    services:
+      restart: 'on-failure'
+      enabled: false
+    timers: {}
   conda:
     envs:
       stable:

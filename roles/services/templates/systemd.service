@@ -7,7 +7,9 @@ Documentation={{ roq_config.services[item].documentation }}
 {% endif %}
 Wants=network.target
 After=network-online.target
+{% if 'stop' in roq_config.systemd.timers %}
 Conflicts={{ item }}-stop.service
+{% endif %}
 StartLimitIntervalSec=60
 StartLimitBurst=2
 
@@ -15,7 +17,7 @@ StartLimitBurst=2
 Type=notify
 User={{ systemd_config.user }}
 Group={{ systemd_config.group }}
-Restart={{ roq_config.systemd.restart }}
+Restart={{ roq_config.systemd.services.restart }}
 RestartSec=10
 TimeoutStopSec=10
 WatchdogSec=10

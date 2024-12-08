@@ -4,9 +4,12 @@ roq:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
   systemd:
-    start: '*-*-* 00:01:00'
-    stop: '*-*-* 23:59:00'
-    restart: 'on-failure'
+    services:
+      restart: 'on-failure'
+      enabled: false
+    timers:
+      stop: '*-*-* 23:59:00'
+      start: '*-*-* 00:01:00'
   conda:
     envs:
       stable:
@@ -30,8 +33,6 @@ roq:
         event_log_symlink: true
   services:
     deribit:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-deribit
@@ -66,8 +67,6 @@ roq:
             accounts: A1
             symbols: BTC-PERPETUAL
     bybit:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-bybit
@@ -102,8 +101,6 @@ roq:
             accounts: A1
             symbols: BTCUSDT
     algo-1:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-cpp-algo-template
@@ -131,8 +128,6 @@ roq:
             symbol: BTCUSD
             time_in_force: gtc
     fix-bridge:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-fix-bridge
@@ -152,7 +147,7 @@ roq:
           init_missing_md_entry_type_to_zero: true
       config:
         symbols:
-          - [USD.*, BTC.*]
+          - [USD.*, BTC.*]  # XXX FIXME TODO not supported by json/toml conversion
           - deribit:
               - BTC-PERPETUAL
               - ETH-PERPETUAL
@@ -172,8 +167,6 @@ roq:
             fix_md_entry_type: SETTLEMENT_PRICE
             default_value: -1.23
     service-manager:
-      systemd:
-        enabled: false
       conda:
         env: unstable
         package: roq-service-manager
@@ -187,4 +180,4 @@ roq:
         custom:
           # log_verbosity: 1
           scope: '{{ systemd_config.scope }}'
-      config: {}
+      config: {}  # note! special
