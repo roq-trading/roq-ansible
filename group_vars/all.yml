@@ -14,15 +14,15 @@ roq_defaults:
     secret_key: YOUR_ROQ_SECRET_KEY
   systemd:
     services:
-      restart: 'on-failure'
+      restart: on-failure
       enabled: false
     timers: {}
   conda:
     envs:
       stable:
-        - 'https://roq-trading.com/conda/stable'
+        - https://roq-trading.com/conda/stable
       unstable:
-        - 'https://roq-trading.com/conda/unstable'
+        - https://roq-trading.com/conda/unstable
   flags:
     shared: {}
   services: {}

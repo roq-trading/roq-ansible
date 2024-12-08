@@ -3,7 +3,7 @@
     - name: download installer
       get_url:
         url: '{{ conda_config.url }}/{{ conda_config.script }}'
-        dest: '/tmp/{{ conda_config.script }}'
+        dest: /tmp/{{ conda_config.script }}
         mode: 0644
     - name: install conda
       shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.script }} -b -u -p {{ user_config.conda_dir }}'
