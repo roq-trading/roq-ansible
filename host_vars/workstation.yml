@@ -40,7 +40,7 @@ roq:
         type: unix
       dependencies: []
       flags:
-        package: prod
+        package: test
         shared:
           - log
           - loop
@@ -74,7 +74,7 @@ roq:
         type: unix
       dependencies: []
       flags:
-        package: prod
+        package: test
         shared:
           - log
           - loop
@@ -100,72 +100,6 @@ roq:
             password: secret
             accounts: A1
             symbols: BTCUSDT
-    algo-1:
-      conda:
-        env: unstable
-        package: roq-cpp-algo-template
-      dependencies:
-        - deribit
-        - bybit
-      flags:
-        shared:
-          - log
-          - loop
-        custom:
-          # log_verbosity: 1
-          loop_cpu_affinity: 3
-      config:
-        strategy_id: 123
-        legs:
-          - source: 0
-            account: A1
-            exchange: deribit
-            symbol: BTC-PERPETUAL
-            time_in_force: gtc
-          - source: 1
-            account: A1
-            exchange: bybit
-            symbol: BTCUSD
-            time_in_force: gtc
-    fix-bridge:
-      conda:
-        env: unstable
-        package: roq-fix-bridge
-      client_listen_address:
-        type: tcp
-        port: 1234
-        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
-      dependencies:
-        - deribit
-      flags:
-        shared:
-          - log
-          - loop
-        custom:
-          # log_verbosity: 1
-          loop_cpu_affinity: 4
-          init_missing_md_entry_type_to_zero: true
-      config:
-        symbols:
-          - [USD.*, BTC.*]  # XXX FIXME TODO not supported by json/toml conversion
-          - deribit:
-              - BTC-PERPETUAL
-              - ETH-PERPETUAL
-        users:
-          md1:
-            component: test
-            username: md1
-          oe1:
-            component: test
-            username: oe1
-            password: secret
-            account: A1
-        statistics:
-          FUNDING_RATE:
-            fix_md_entry_type: PRIOR_SETTLE_PRICE
-          PRE_SETTLEMENT_PRICE:
-            fix_md_entry_type: SETTLEMENT_PRICE
-            default_value: -1.23
     service-manager:
       conda:
         env: unstable

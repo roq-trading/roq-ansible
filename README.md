@@ -4,25 +4,15 @@ Ansible script to install services.
 
 ## Design
 
-### Conda
+### Directories
 
-Install Miniforge3 to `/opt/conda` or `~/.local/share/conda`
-
-### systemd
-
-Install service and start/stop timers to `/etc/systemd/system` or `~/.config/systemd/user`
-
-### Configuration
-
-Gateway configurations installed to `/usr/local/etc/roq` or `~/.config/roq`
-
-### Data
-
-Data saved to `/var/lib/roq/data` or `~/.local/share/roq`
-
-### Cache
-
-Data saved to `/var/lib/roq/cache` or `~/.local/state/roq`
+|what||system|user|
+|---|---|---|
+|Miniforge3|`/opt/conda`|`~/.local/share/conda`|
+|systemd units|`/etc/systemd/system`|`~/.config/systemd/user`|
+|config|`/usr/local/etc/roq`|`~/.config/roq`|
+|data|`/var/lib/roq/data`|`~/.local/share/roq`|
+|cache|`/var/lib/roq/cache`|`~/.local/state/roq`|
 
 
 ## Dedendencies
@@ -36,6 +26,8 @@ Data saved to `/var/lib/roq/cache` or `~/.local/state/roq`
 
 ### Ansible
 
+You need ansible to run the playbook.
+
 If using conda, you can install ansible (on your local machine) like this
 
 ```bash
@@ -46,21 +38,23 @@ conda install --freeze-installed -y ansible
 
 This is the server you will install to.
 
-It is identified by an IP address ("a.b.c.d") and you must be able to log on with ssh and an `ansible_user`.
+It is identified by an IPv4 address (`a.b.c.d`) and you must be able to log on with ssh and your `ansible_user`.
 
 
 ### Inventory File
 
-Ansible requires an inventory file (name is not important, but let's name it "example")
+Ansible requires an inventory file (name is not important, we will name it "example")
 
 ```
 [example]
-server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root" systemd_scope="system"
+server ansible_host="a.b.c.d" ansible_user="ansible" systemd_scope="system" become_user="root"
 ```
 
 > We're using the label `server`.
 
-Alternatively, we could also use the script to install the services on our workstation
+> We need a `become_user` (elevated rights) when `systemd_scope="system"`.
+
+Alternatively, we can also use the script to install the services on our workstation
 
 ```
 [example]
@@ -68,6 +62,8 @@ workstation ansible_host="a.b.c.d" ansible_user="ansible" systemd_scope="user"
 ```
 
 > We're using the label `workstation`.
+
+> We don't need a `become_user`.
 
 ### Host Variables
 
@@ -101,13 +97,14 @@ You don't need this when installing on your workstations (`systemd_scope="user"`
 ansible-playbook -i example site.yml
 ```
 
+
 ## Using
 
 > You will need elevated permissions (`sudo`) if using systemctl on a server
 
 > You will need to use `systemctl --user` (**no** `sudo`) when using systemctl on your workstation
 
-> These following steps can also be achieved through Roq's service manager
+> These following steps to start/stop services can also be achieved through Roq's service manager
 
 Start gateway
 
