@@ -6,13 +6,13 @@ Ansible script to install services.
 
 ### Directories
 
-|what||system|user|
-|---|---|---|
-|Miniforge3|`/opt/conda`|`~/.local/share/conda`|
-|systemd units|`/etc/systemd/system`|`~/.config/systemd/user`|
-|config|`/usr/local/etc/roq`|`~/.config/roq`|
-|data|`/var/lib/roq/data`|`~/.local/share/roq`|
-|cache|`/var/lib/roq/cache`|`~/.local/state/roq`|
+| what | system | user |
+| --- | --- | --- |
+| Miniforge3 | `/opt/conda` | `~/.local/share/conda` |
+| systemd units | `/etc/systemd/system` | `~/.config/systemd/user` |
+| config | `/usr/local/etc/roq` | `~/.config/roq` |
+| data | `/var/lib/roq/data` | `~/.local/share/roq` |
+| cache | `/var/lib/roq/cache` | `~/.local/state/roq` |
 
 
 ## Dedendencies
