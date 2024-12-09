@@ -6,15 +6,23 @@ Ansible script to install services.
 
 ### Conda
 
-Install Miniforge3 to /opt/conda
+Install Miniforge3 to `/opt/conda` or `~/.local/share/conda`
 
 ### systemd
 
-Install service and start/stop timers to /etc/systemd/system
+Install service and start/stop timers to `/etc/systemd/system` or `~/.config/systemd/user`
 
 ### Configuration
 
-Gateway configurations installed to /usr/local/etc/roq
+Gateway configurations installed to `/usr/local/etc/roq` or `~/.config/roq`
+
+### Data
+
+Data saved to `/var/lib/roq/data` or `~/.local/share/roq`
+
+### Cache
+
+Data saved to `/var/lib/roq/cache` or `~/.local/state/roq`
 
 
 ## Dedendencies
@@ -37,8 +45,9 @@ conda install --freeze-installed -y ansible
 ### Remote Host
 
 This is the server you will install to.
-It is identified by an IP address ("a.b.c.d") and you can log on with a user
-("ansible") having sudo access.
+
+It is identified by an IP address ("a.b.c.d") and you must be able to log on with ssh and an `ansible_user`.
+
 
 ### Inventory File
 
@@ -46,18 +55,27 @@ Ansible requires an inventory file (name is not important, but let's name it "ex
 
 ```
 [example]
-server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root"
+server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root" systemd_scope="system"
 ```
 
-> We're using the label "server".
+> We're using the label `server`.
+
+Alternatively, we could also use the script to install the services on our workstation
+
+```
+[example]
+workstation ansible_host="a.b.c.d" ansible_user="ansible" systemd_scope="user"
+```
+
+> We're using the label `workstation`.
 
 ### Host Variables
 
-If created, host specific variable will be imported from `host_vars/server.yml`.
+This is the place to configure your specific services.
 
-> The filename is automatically matched to the label "server" from the inventory file.
+Host specific variable will be imported from `host_vars/server.yml` or `host_vars/workstation.yml`.
 
-This is the place to configure the services.
+> The filename is automatically matched to the label `server` or `workstation` that you specified in your inventory file.
 
 ### Group Variables
 
@@ -70,11 +88,26 @@ This file contains all the defaults.
 
 ## Running
 
+When installing to `systemd_scope="system"`, you need the `become_user` (typically `root`) and you then you often need to
+specify a password to gain elevated permissions
+
 ```bash
 ansible-playbook -i example site.yml --ask-become-pass
 ```
 
+You don't need this when installing on your workstations (`systemd_scope="user"`)
+
+```bash
+ansible-playbook -i example site.yml
+```
+
 ## Using
+
+> You will need elevated permissions (`sudo`) if using systemctl on a server
+
+> You will need to use `systemctl --user` (**no** `sudo`) when using systemctl on your workstation
+
+> These following steps can also be achieved through Roq's service manager
 
 Start gateway
 
