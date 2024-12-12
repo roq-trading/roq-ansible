@@ -177,9 +177,5 @@ roq:
       flags:
         shared:
           - log
-        custom:
-          # log_verbosity: 1
-          systemd_scope: '{{ systemd_config.scope }}'
-          web_dir: '{{ user_config.conda_dir }}/envs/unstable/share/roq/www'
-          url_prefix: '/roq'
+        custom: {}
       config: {}  # note! special
