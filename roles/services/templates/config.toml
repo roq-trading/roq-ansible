@@ -1,11 +1,9 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 {% if roq_config.services[item].conda.package == 'roq-service-manager' %}
-{% for name in services %}
-{% if roq_config.services[name].conda.package != 'roq-service-manager' %}
+{% for name in user_services %}
 
 [services.{{ name }}]
 service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"
-{% endif %}
 {% endfor %}
 {% elif roq_config.services[item].conda.package == 'roq-fix-bridge' %}
 {{ roq_config.services[item].config.symbols | roq_toml_symbols }}

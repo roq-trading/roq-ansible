@@ -1,12 +1,5 @@
 ---
 - block:
-    - name: find list of services
-      set_fact:
-        services: '{{ roq_config.services.keys() }}'
-    - name: find conda packages per environment
-      set_fact:
-        packages: '{{ ( packages | default({}) ) | combine({ roq_config.services[item].conda.env: [roq_config.services[item].conda.package] }, recursive=true, list_merge="append") }}'
-      loop: '{{ services }}'
     - name: create conda environments
       shell: '{{ user_config.conda_dir }}/bin/conda create -n {{ item.key }} -y'
       args:
@@ -15,6 +8,7 @@
     - name: install conda packages
       shell: '{{ user_config.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ roq_config.conda.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
       loop: '{{ packages | dict2items }}'
+    # all services
     - name: create systemd service files
       template:
         src: templates/systemd.service
@@ -22,7 +16,7 @@
         mode: 0644
         owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ all_services }}'
     - name: create required directories
       file:
         path: '{{ user_config.config_dir }}/services/{{ item }}'
@@ -30,7 +24,7 @@
         mode: 0755
         owner: '{{ systemd_config.user }}'
         group: '{{ systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ all_services }}'
     - name: create flags files
       template:
         src: templates/flags.cfg
@@ -38,7 +32,7 @@
         mode: 0644
         owner: '{{ systemd_config.user }}'
         group: '{{ systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ all_services }}'
     - name: create config files
       template:
         src: '{{ "templates/config.toml" if item == "service-manager" else "templates/config.toml" }}'
@@ -46,7 +40,8 @@
         mode: 0644
         owner: '{{ systemd_config.user }}'
         group: '{{ systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ all_services }}'
+    # user services
     - name: create systemd start timer files
       template:
         src: templates/systemd.timer
@@ -54,13 +49,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"start" in roq_config.systemd.timers'
     - name: remove systemd start timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
         state: absent
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"start" not in roq_config.systemd.timers'
     - name: create systemd stop service files
       template:
@@ -69,13 +64,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" in roq_config.systemd.timers'
     - name: remove systemd stop service files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
         state: absent
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" not in roq_config.systemd.timers'
     - name: create systemd stop timer files
       template:
@@ -84,13 +79,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_scope == "system" else systemd_config.user }}'
         group: '{{ "root" if systemd_scope == "system" else systemd_config.group }}'
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" in roq_config.systemd.timers'
     - name: remove systemd stop timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
         state: absent
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" not in roq_config.systemd.timers'
     - name: enable/disable systemd services
       systemd:
@@ -98,7 +93,7 @@
         scope: '{{ systemd_scope }}'
         enabled: '{{ roq_config.systemd.services.enabled }}'
         daemon_reload: true
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
     - name: enable systemd start timers
       systemd:
         name: '{{ item }}.timer'
@@ -106,7 +101,7 @@
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"start" in roq_config.systemd.timers'
     - name: disable systemd stop services
       systemd:
@@ -114,7 +109,7 @@
         scope: '{{ systemd_scope }}'
         enabled: false
         daemon_reload: true
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" in roq_config.systemd.timers'
     - name: enable systemd stop timers
       systemd:
@@ -123,8 +118,17 @@
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ services }}'
+      with_items: '{{ user_services }}'
       when: '"stop" in roq_config.systemd.timers'
+    # service-manager services
+    - name: enable/disable systemd services
+      systemd:
+        name: '{{ item }}.service'
+        scope: '{{ systemd_scope }}'
+        enabled: true
+        daemon_reload: true
+        state: 'started'
+      with_items: '{{ service_manager_services }}'
   become: '{{ systemd_scope == "system" }}'
   tags:
     - services
