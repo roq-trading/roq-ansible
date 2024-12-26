@@ -59,9 +59,8 @@ roq:
             symbols: .*
             master: true
         users:
-          test:
+          service-manager:
             password: '1234'
-            symbols: .*
           trader:
             password: secret
             accounts: A1
@@ -93,9 +92,8 @@ roq:
             symbols: .*
             master: true
         users:
-          test:
+          service-manager:
             password: '1234'
-            symbols: .*
           trader:
             password: secret
             accounts: A1
