@@ -122,7 +122,12 @@ Tail logs
 
 ```bash
 journalctl -f -u deribit
+
+
+## Service Manager
 ```
+
+![Design](/static/images/service-manager.png)
 
 
 ## License
