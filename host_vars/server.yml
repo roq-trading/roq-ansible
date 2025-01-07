@@ -1,13 +1,12 @@
 ---
 systemd:
   scope: user
+  profiles: {}
 container:
   solution: podman
   services:
     node-exporter:
-      systemd:
-        restart: on-failure
-        enabled: true
+      systemd: simple
       image: node-exporter
       options:
         volume:
@@ -16,40 +15,35 @@ container:
           - 9100:9100
       args:
         - --path.rootfs=/host
-conda:
-  reset: true
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
+  flags:
+    log:
+      log_verbosity: 0
+    loop:
+      loop_sleep: 500ns
+      loop_timer_freq: 2500ns
+    gateway:
+      auth_keys_file: '{{ user_config.config_dir }}/shared/keys.json'
+      cache_all_reference_data: true
+      cache_dir: '{{ user_config.cache_dir }}'
+      cache_mbp_checksum: false
+      event_log_dir: '{{ user_config.data_dir }}'
+      event_log_iso_week: false
+      event_log_symlink: true
   systemd:
-    services:
-      restart: on-failure
-      enabled: false
     timers:
       stop: '*-*-* 23:59:00'
       start: '*-*-* 00:01:00'
   conda:
+    reset: true
     envs:
       stable:
         - https://roq-trading.com/conda/stable
       unstable:
         - https://roq-trading.com/conda/unstable
-  flags:
-    shared:
-      log:
-        log_verbosity: 0
-      loop:
-        loop_sleep: 500ns
-        loop_timer_freq: 2500ns
-      gateway:
-        auth_keys_file: '{{ user_config.config_dir }}/shared/keys.json'
-        cache_all_reference_data: true
-        cache_dir: '{{ user_config.cache_dir }}'
-        cache_mbp_checksum: false
-        event_log_dir: '{{ user_config.data_dir }}'
-        event_log_iso_week: false
-        event_log_symlink: true
   services:
     deribit:
       conda:

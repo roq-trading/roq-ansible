@@ -1,6 +1,15 @@
 ---
 systemd_defaults:
   scope: system
+  profiles:
+    simple:
+      type: simple
+      restart: on-failure
+      enabled: true
+    notify:
+      type: notify
+      restart: on-failure
+      enabled: false
 container_defaults:
   solution: podman
   network: roq-network
@@ -9,9 +18,6 @@ container_defaults:
       registry: docker.io
       name: prom/node-exporter
       tag: latest
-  systemd:
-    restart: on-failure
-    enabled: true
   services: {}
 conda_defaults:
   url: https://github.com/conda-forge/miniforge/releases/latest/download
@@ -23,10 +29,9 @@ roq_defaults:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
+  flags: {}
   systemd:
-    services:
-      restart: on-failure
-      enabled: false
+    profile: notify
     timers: {}
   conda:
     envs:
@@ -34,6 +39,4 @@ roq_defaults:
         - https://roq-trading.com/conda/stable
       unstable:
         - https://roq-trading.com/conda/unstable
-  flags:
-    shared: {}
   services: {}

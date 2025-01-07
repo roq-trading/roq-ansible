@@ -46,7 +46,7 @@
         mode: 0644
         owner: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
-      with_items: '{{ roq_config.flags.shared | dict2items }}'
+      with_items: '{{ roq_config.flags | dict2items }}'
       # XXX FIXME TODO when roq_config.services non-empty
   become: '{{ systemd_config.scope == "system" }}'
   tags:

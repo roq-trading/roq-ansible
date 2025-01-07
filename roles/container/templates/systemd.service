@@ -4,10 +4,13 @@
 Description={{ container_config.services[item]['description'] | default(item) }}
 Wants=network.target                                                                                             
 After=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=2
 
 [Service]
+Type={{ systemd_config.profiles[container_config.services[item].systemd].type }}
 TimeoutStartSec=0
-Restart=always
+Restart={{ systemd_config.profiles[container_config.services[item].systemd].restart }}
 ExecStop=-/usr/bin/{{ container_config.solution }} stop %n
 ExecStartPre=-/usr/bin/{{ container_config.solution }} stop %n
 ExecStartPre=-/usr/bin/{{ container_config.solution }} rm %n

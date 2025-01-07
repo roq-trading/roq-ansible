@@ -14,12 +14,12 @@ StartLimitIntervalSec=60
 StartLimitBurst=2
 
 [Service]
-Type=notify
+Type={{ systemd_config.profiles[roq_config.systemd.profile].type }}
 {% if systemd_config.scope == "system" %}
 User={{ ansible_user }}
 Group={{ ansible_user }}
 {% endif %}
-Restart={{ roq_config.systemd.services.restart }}
+Restart={{ systemd_config.profiles[roq_config.systemd.profile].restart }}
 RestartSec=10
 TimeoutStopSec=10
 WatchdogSec=10
