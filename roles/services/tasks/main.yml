@@ -6,7 +6,7 @@
         creates: '{{ user_config.conda_dir }}/envs/{{ item.key }}'
       loop: '{{ packages | dict2items }}'
     - name: install conda packages
-      shell: '{{ user_config.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ roq_config.conda.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
+      shell: '{{ user_config.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ conda_config.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
       loop: '{{ packages | dict2items }}'
     # all services
     - name: create systemd service files
@@ -50,13 +50,13 @@
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
       with_items: '{{ user_services }}'
-      when: '"start" in roq_config.systemd.timers'
+      when: '"start" in conda_config.systemd.timers'
     - name: remove systemd start timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
         state: absent
       with_items: '{{ user_services }}'
-      when: '"start" not in roq_config.systemd.timers'
+      when: '"start" not in conda_config.systemd.timers'
     - name: create systemd stop service files
       template:
         src: templates/systemd-stop.service
@@ -65,13 +65,13 @@
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
       with_items: '{{ user_services }}'
-      when: '"stop" in roq_config.systemd.timers'
+      when: '"stop" in conda_config.systemd.timers'
     - name: remove systemd stop service files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
         state: absent
       with_items: '{{ user_services }}'
-      when: '"stop" not in roq_config.systemd.timers'
+      when: '"stop" not in conda_config.systemd.timers'
     - name: create systemd stop timer files
       template:
         src: templates/systemd-stop.timer
@@ -80,18 +80,18 @@
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
       with_items: '{{ user_services }}'
-      when: '"stop" in roq_config.systemd.timers'
+      when: '"stop" in conda_config.systemd.timers'
     - name: remove systemd stop timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
         state: absent
       with_items: '{{ user_services }}'
-      when: '"stop" not in roq_config.systemd.timers'
+      when: '"stop" not in conda_config.systemd.timers'
     - name: enable/disable systemd services
       systemd:
         name: '{{ item }}.service'
         scope: '{{ systemd_config.scope }}'
-        enabled: '{{ systemd_config.profiles[roq_config.systemd.profile].enabled }}'
+        enabled: '{{ systemd_config.profiles[conda_config.systemd.profile].enabled }}'
         daemon_reload: true
       with_items: '{{ user_services }}'
     - name: enable systemd start timers
@@ -102,7 +102,7 @@
         enabled: true
         daemon_reload: true
       with_items: '{{ user_services }}'
-      when: '"start" in roq_config.systemd.timers'
+      when: '"start" in conda_config.systemd.timers'
     - name: disable systemd stop services
       systemd:
         name: '{{ item }}-stop.service'
@@ -110,7 +110,7 @@
         enabled: false
         daemon_reload: true
       with_items: '{{ user_services }}'
-      when: '"stop" in roq_config.systemd.timers'
+      when: '"stop" in conda_config.systemd.timers'
     - name: enable systemd stop timers
       systemd:
         name: '{{ item }}-stop.timer'
@@ -119,7 +119,7 @@
         enabled: true
         daemon_reload: true
       with_items: '{{ user_services }}'
-      when: '"stop" in roq_config.systemd.timers'
+      when: '"stop" in conda_config.systemd.timers'
     # service-manager services
     - name: enable/disable systemd services
       systemd:

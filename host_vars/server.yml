@@ -2,19 +2,22 @@
 systemd:
   scope: user
   profiles: {}
+images: {}
 container:
   solution: podman
   services:
     node-exporter:
-      systemd: simple
-      image: node-exporter
-      options:
-        volume:
-          - /:/host:ro,rslave
-        publish:
-          - 9100:9100
-      args:
-        - --path.rootfs=/host
+      systemd:
+        profile: simple
+      container:
+        image: node-exporter
+        options:
+          volume:
+            - /:/host:ro,rslave
+          publish:
+            - 9100:9100
+        args:
+          - --path.rootfs=/host
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
@@ -33,17 +36,16 @@ roq:
       event_log_dir: '{{ user_config.data_dir }}'
       event_log_iso_week: false
       event_log_symlink: true
+conda:
+  envs:
+    stable:
+      - https://roq-trading.com/conda/stable
+    unstable:
+      - https://roq-trading.com/conda/unstable
   systemd:
     timers:
       stop: '*-*-* 23:59:00'
       start: '*-*-* 00:01:00'
-  conda:
-    reset: true
-    envs:
-      stable:
-        - https://roq-trading.com/conda/stable
-      unstable:
-        - https://roq-trading.com/conda/unstable
   services:
     deribit:
       conda:

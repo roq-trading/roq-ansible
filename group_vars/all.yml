@@ -10,33 +10,33 @@ systemd_defaults:
       type: notify
       restart: on-failure
       enabled: false
+images_defaults:
+  node-exporter:
+    registry: docker.io
+    name: prom/node-exporter
+    tag: latest
 container_defaults:
   solution: podman
   network: roq-network
-  images:
-    node-exporter:
-      registry: docker.io
-      name: prom/node-exporter
-      tag: latest
   services: {}
 conda_defaults:
-  url: https://github.com/conda-forge/miniforge/releases/latest/download
-  script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh
-  sources:
-    - conda-forge
+  miniforge:
+    url: https://github.com/conda-forge/miniforge/releases/latest/download
+    script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh
+    sources:
+      - conda-forge
   reset: true
+  envs:
+    stable:
+      - https://roq-trading.com/conda/stable
+    unstable:
+      - https://roq-trading.com/conda/unstable
+  systemd:
+    profile: notify
+    timers: {}
+  services: {}
 roq_defaults:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
     secret_key: YOUR_ROQ_SECRET_KEY
   flags: {}
-  systemd:
-    profile: notify
-    timers: {}
-  conda:
-    envs:
-      stable:
-        - https://roq-trading.com/conda/stable
-      unstable:
-        - https://roq-trading.com/conda/unstable
-  services: {}

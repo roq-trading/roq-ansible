@@ -1,57 +1,59 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 
 [Unit]
-Description={{ roq_config.services[item]['description'] | default(item) }}
-{% if 'documentation' in roq_config.services[item] %}
-Documentation={{ roq_config.services[item].documentation }}
+{% if 'systemd' in conda_config.services[item] %}
+Description={{ conda_config.services[item].systemd['description'] | default(item) }}
+{% if 'documentation' in conda_config.services[item].systemd %}
+Documentation={{ conda_config.services[item].systemd.documentation }}
+{% endif %}
 {% endif %}
 Wants=network.target
 After=network-online.target
-{% if 'stop' in roq_config.systemd.timers %}
+{% if 'stop' in conda_config.systemd.timers %}
 Conflicts={{ item }}-stop.service
 {% endif %}
 StartLimitIntervalSec=60
 StartLimitBurst=2
 
 [Service]
-Type={{ systemd_config.profiles[roq_config.systemd.profile].type }}
+Type={{ systemd_config.profiles[conda_config.systemd.profile].type }}
 {% if systemd_config.scope == "system" %}
 User={{ ansible_user }}
 Group={{ ansible_user }}
 {% endif %}
-Restart={{ systemd_config.profiles[roq_config.systemd.profile].restart }}
+Restart={{ systemd_config.profiles[conda_config.systemd.profile].restart }}
 RestartSec=10
 TimeoutStopSec=10
 WatchdogSec=10
 ExecStartPre=+/bin/mkdir -p {{ user_config.run_dir }}/client {{ user_config.run_dir }}/service
 ExecStartPre=+/bin/chmod -R 0770 {{ user_config.run_dir }}
 ExecStartPre=+/bin/mkdir -p {{ user_config.cache_dir }} {{ user_config.data_dir }}
-ExecStart={{ user_config.conda_dir }}/envs/{{ roq_config.services[item].conda.env }}/bin/{{ roq_config.services[item].conda.package }} \
-{% if 'dependencies' in roq_config.services[item] %}
-{% for name in roq_config.services[item].dependencies %}
-{% if roq_config.services[name].client_listen_address.type == 'unix' %}
+ExecStart={{ user_config.conda_dir }}/envs/{{ conda_config.services[item].conda.env }}/bin/{{ conda_config.services[item].conda.package }} \
+{% if 'dependencies' in conda_config.services[item] %}
+{% for name in conda_config.services[item].dependencies %}
+{% if conda_config.services[name].client_listen_address.type == 'unix' %}
   {{ user_config.run_dir }}/client/{{ name }}.sock \
 {% else %}
 {{ 0/0 }}
 {% endif %}
 {% endfor %}
 {%- endif %}
-{% if 'package' in roq_config.services[item].flags %}
-  --flagfile {{ user_config.conda_dir }}/envs/{{ roq_config.services[item].conda.env }}/share/{{ roq_config.services[item].conda.package }}/flags/{{ roq_config.services[item].flags.package }}/flags.cfg \
+{% if 'package' in conda_config.services[item].flags %}
+  --flagfile {{ user_config.conda_dir }}/envs/{{ conda_config.services[item].conda.env }}/share/{{ conda_config.services[item].conda.package }}/flags/{{ conda_config.services[item].flags.package }}/flags.cfg \
 {% endif %}
-{% for name in roq_config.services[item].flags.shared %}
+{% for name in conda_config.services[item].flags.shared %}
   --flagfile {{ user_config.config_dir }}/shared/{{ name }}.cfg \
 {% endfor %}
   --flagfile {{ user_config.config_dir }}/services/{{ item }}/flags.cfg \
-{% if 'config' in roq_config.services[item] %}
+{% if 'config' in conda_config.services[item] %}
   --config_file {{ user_config.config_dir }}/services/{{ item }}/config.toml \
 {% endif %}
   --service_listen_address unix://{{ user_config.run_dir }}/service/{{ item }}.sock \
-{% if 'client_listen_address' in roq_config.services[item] %}
-{% if roq_config.services[item].client_listen_address.type == 'unix' %}
+{% if 'client_listen_address' in conda_config.services[item] %}
+{% if conda_config.services[item].client_listen_address.type == 'unix' %}
   --client_listen_address unix://{{ user_config.run_dir }}/client/{{ item }}.sock \
-{% elif roq_config.services[item].client_listen_address.type == 'tcp' %}
-  --client_listen_address tcp://{{ roq_config.services[item].client_listen_address.interface }}:{{ roq_config.services[item].client_listen_address.port }} \
+{% elif conda_config.services[item].client_listen_address.type == 'tcp' %}
+  --client_listen_address tcp://{{ conda_config.services[item].client_listen_address.interface }}:{{ conda_config.services[item].client_listen_address.port }} \
 {% else %}
 {{ 0/0 }}
 {% endif %}

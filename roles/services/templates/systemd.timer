@@ -4,7 +4,7 @@
 Description={{ item }} timer
 
 [Timer]
-OnCalendar={{ roq_config.systemd.timers.start }}
+OnCalendar={{ conda_config.systemd.timers.start }}
 
 [Install]
 WantedBy=multi-user.target

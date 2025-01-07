@@ -2,8 +2,8 @@
 - block:
     - name: download installer
       get_url:
-        url: '{{ conda_config.url }}/{{ conda_config.script }}'
-        dest: /tmp/{{ conda_config.script }}
+        url: '{{ conda_config.miniforge.url }}/{{ conda_config.miniforge.script }}'
+        dest: /tmp/{{ conda_config.miniforge.script }}
         mode: 0644
     # XXX FIXME TOD keep old as backup
     - name: remove old conda
@@ -11,7 +11,7 @@
         path: '{{ user_config.conda_dir }}'
         state: absent
     - name: install conda
-      shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.script }} -b -u -p {{ user_config.conda_dir }}'
+      shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.miniforge.script }} -b -u -p {{ user_config.conda_dir }}'
       args:
         creates: '{{ user_config.conda_dir }}/bin/activate'
   become: '{{ systemd_config.scope == "system" }}'

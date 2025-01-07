@@ -1,16 +1,18 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 
 [Unit]
-Description={{ container_config.services[item]['description'] | default(item) }}
+{% if 'systemd' in container_config.services[item] %}
+Description={{ container_config.services[item].systemd['description'] | default(item) }}
+{% endif %}
 Wants=network.target                                                                                             
 After=network-online.target
 StartLimitIntervalSec=60
 StartLimitBurst=2
 
 [Service]
-Type={{ systemd_config.profiles[container_config.services[item].systemd].type }}
+Type={{ systemd_config.profiles[container_config.services[item].systemd.profile].type }}
 TimeoutStartSec=0
-Restart={{ systemd_config.profiles[container_config.services[item].systemd].restart }}
+Restart={{ systemd_config.profiles[container_config.services[item].systemd.profile].restart }}
 ExecStop=-/usr/bin/{{ container_config.solution }} stop %n
 ExecStartPre=-/usr/bin/{{ container_config.solution }} stop %n
 ExecStartPre=-/usr/bin/{{ container_config.solution }} rm %n
@@ -19,19 +21,19 @@ ExecStart=/usr/bin/{{ container_config.solution }} run --rm --name %n \
   --cgroup-manager=cgroupfs \
 {% endif %}
   --network {{ container_config.network }} \
-{% if 'volume' in container_config.services[item].options %}
-{% for value in container_config.services[item].options.volume %}
+{% if 'volume' in container_config.services[item].container.options %}
+{% for value in container_config.services[item].container.options.volume %}
   --volume {{ value }} \
 {% endfor %}
 {%- endif %}
-{% if 'publish' in container_config.services[item].options %}
-{% for value in container_config.services[item].options.publish %}
+{% if 'publish' in container_config.services[item].container.options %}
+{% for value in container_config.services[item].container.options.publish %}
   --publish {{ value }} \
 {% endfor %}
 {%- endif %}
-  {{ container_config.images[item].registry }}/{{ container_config.images[item].name }}:{{ container_config.images[item].tag }}{{ " \\" if 'args' in container_config.services[item] else "" }}
-{% if 'args' in container_config.services[item] %}
-{% for value in container_config.services[item].args %}
+  {{ images_config[container_config.services[item].container.image].registry }}/{{ images_config[container_config.services[item].container.image].name }}:{{ images_config[container_config.services[item].container.image].tag }}{{ " \\" if 'args' in container_config.services[item].container else "" }}
+{% if 'args' in container_config.services[item].container %}
+{% for value in container_config.services[item].container.args %}
   {{ value }}{{ "" if loop.last else " \\" }}
 {% endfor %}
 {%- endif %}

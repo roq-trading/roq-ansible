@@ -36,7 +36,7 @@
       systemd:
         name: '{{ item }}.service'
         scope: '{{ systemd_config.scope }}'
-        enabled: '{{ systemd_config.profiles[container_config.services[item].systemd].enabled }}'
+        enabled: '{{ systemd_config.profiles[container_config.services[item].systemd.profile].enabled }}'
         daemon_reload: true
       with_items: '{{ container_services }}'
   become: '{{ systemd_config.scope == "system" }}'

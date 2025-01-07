@@ -1,15 +1,15 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
-{% if roq_config.services[item].conda.package == 'roq-service-manager' %}
+{% if conda_config.services[item].conda.package == 'roq-service-manager' %}
 {% for name in user_services %}
 
 [services.{{ name }}]
 service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"
 {% endfor %}
-{% elif roq_config.services[item].conda.package == 'roq-fix-bridge' %}
-{{ roq_config.services[item].config.symbols | roq_toml_symbols }}
+{% elif conda_config.services[item].conda.package == 'roq-fix-bridge' %}
+{{ conda_config.services[item].config.symbols | roq_toml_symbols }}
 
-{{ roq_config.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
+{{ conda_config.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
 {% else %}
 
-{{ roq_config.services[item].config | roq_toml }}
+{{ conda_config.services[item].config | roq_toml }}
 {%- endif %}
