@@ -1,22 +1,32 @@
 ---
 - block:
-    - name: get passwd
-      getent:
-        database: passwd
+    ###
+    # debug
+    ###
     #- name: debug
     #  debug:
     #    var: ansible_facts
     - name: debug
       debug:
         var: ansible_env
+    ###
+    # systemd
+    ###
     - name: create systemd config
       set_fact:
         systemd_config: >
           {{ systemd_defaults | combine(systemd | default({}), recursive=True) }}
         cacheable: true
-    - name: debug
-      debug:
-        var: systemd_config
+    ###
+    # passwd database
+    ###
+    - name: get passwd
+      getent:
+        database: passwd
+      when: systemd_config.scope == "user"
+    ###
+    # location (directories)
+    ###
     - name: create user config (systemd scope is user)
       set_fact:
         user_config:
@@ -27,7 +37,7 @@
           run_dir: /run/user/{{ getent_passwd[ansible_user].1 }}/roq
           systemd_unit_dir: '{{ ansible_env.HOME }}/.config/systemd/user'
         cacheable: true
-      when: systemd_scope == "user"
+      when: systemd_config.scope == "user"
     - name: create user config (systemd scope is system)
       set_fact:
         user_config:
@@ -38,15 +48,24 @@
           run_dir: /run/roq
           systemd_unit_dir: /etc/systemd/system
         cacheable: true
-      when: systemd_scope == "system"
+      when: systemd_config.scope == "system"
     - name: debug
       debug:
         var: user_config
+    - name: debug
+      debug:
+        var: systemd_config
+    ###
+    # conda
+    ###
     - name: create conda config
       set_fact:
         conda_config: >
           {{ conda_defaults | combine(conda | default({}), recursive=True) }}
         cacheable: true
+    ###
+    # roq
+    ###
     - name: create roq config
       set_fact:
         roq_config: >

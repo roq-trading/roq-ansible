@@ -14,6 +14,6 @@
       shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.script }} -b -u -p {{ user_config.conda_dir }}'
       args:
         creates: '{{ user_config.conda_dir }}/bin/activate'
-  become: '{{ systemd_scope == "system" }}'
+  become: '{{ systemd_config.scope == "system" }}'
   tags:
     - conda

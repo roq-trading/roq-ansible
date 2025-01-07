@@ -1,8 +1,6 @@
 ---
 systemd_defaults:
   scope: system
-  user: '{{ ansible_user }}'
-  group: '{{ ansible_user }}'
 conda_defaults:
   url: https://github.com/conda-forge/miniforge/releases/latest/download
   script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh

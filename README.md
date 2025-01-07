@@ -47,23 +47,24 @@ Ansible requires an inventory file (name is not important, we will name it "exam
 
 ```
 [example]
-server ansible_host="a.b.c.d" ansible_user="ansible" systemd_scope="system" become_user="root"
+server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root"
 ```
 
 > We're using the label `server`.
 
-> We need a `become_user` (elevated rights) when `systemd_scope="system"`.
+> We need a `become_user` (elevated rights) if we have configured `systemd.scope == "system"` (the default).
 
 Alternatively, we can also use the script to install the services on our workstation
 
 ```
 [example]
-workstation ansible_host="a.b.c.d" ansible_user="ansible" systemd_scope="user"
+workstation ansible_host="a.b.c.d" ansible_user="ansible"
 ```
 
 > We're using the label `workstation`.
 
-> We don't need a `become_user`.
+> We do **not** need a `become_user` if we have configured `systemd.scope == "user"`.
+
 
 ### Host Variables
 
@@ -84,14 +85,14 @@ This file contains all the defaults.
 
 ## Running
 
-When installing to `systemd_scope="system"`, you need the `become_user` (typically `root`) and you then you often need to
+When installing to `systemd.scope == "system"`, you need the `become_user` (typically `root`) and you then you often need to
 specify a password to gain elevated permissions
 
 ```bash
 ansible-playbook -i example site.yml --ask-become-pass
 ```
 
-You don't need this when installing on your workstations (`systemd_scope="user"`)
+You don't need this when installing on your workstations (`systemd.scope == "user"`)
 
 ```bash
 ansible-playbook -i example site.yml

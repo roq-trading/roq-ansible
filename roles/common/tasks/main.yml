@@ -14,14 +14,14 @@
         mode: 0755
       with_items:
         - '{{ user_config.systemd_unit_dir }}'
-      when: systemd_scope == "user"
+      when: systemd_config.scope == "user"
     - name: create required directories (user access)
       file:
         path: '{{ item }}'
         state: directory
         mode: 0755
-        owner: '{{ systemd_config.user }}'
-        group: '{{ systemd_config.group }}'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
       with_items:
         - '{{ user_config.run_dir }}/client'
         - '{{ user_config.run_dir }}/service'
@@ -34,16 +34,16 @@
         src: templates/keys.json
         dest: '{{ user_config.config_dir }}/shared/keys.json'
         mode: 0644
-        owner: '{{ systemd_config.user }}'
-        group: '{{ systemd_config.group }}'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
     - name: create shared flags
       template:
         src: templates/flags.cfg
         dest: '{{ user_config.config_dir }}/shared/{{ item.key }}.cfg'
         mode: 0644
-        owner: '{{ "root" if systemd_scope =="system" else systemd_config.user }}'
-        group: '{{ "root" if systemd_scope =="system" else systemd_config.group }}'
+        owner: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
+        group: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
       with_items: '{{ roq_config.flags.shared | dict2items }}'
-  become: '{{ systemd_scope == "system" }}'
+  become: '{{ systemd_config.scope == "system" }}'
   tags:
     - common

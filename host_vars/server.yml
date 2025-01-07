@@ -1,4 +1,6 @@
 ---
+systemd:
+  scope: user
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
