@@ -7,6 +7,7 @@
         mode: 0755
       with_items:
         - '{{ user_config.conda_dir }}'
+      # XXX FIXME TODO when roq_config.services non-empty
     - name: create required directories (default access)
       file:
         path: '{{ item }}'
@@ -29,6 +30,7 @@
         - '{{ user_config.config_dir }}/shared'
         - '{{ user_config.cache_dir }}'
         - '{{ user_config.data_dir }}'
+      # XXX FIXME TODO when roq_config.services non-empty
     - name: create auth-keys file (user access)
       template:
         src: templates/keys.json
@@ -36,6 +38,7 @@
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
+      # XXX FIXME TODO when roq_config.services non-empty
     - name: create shared flags
       template:
         src: templates/flags.cfg
@@ -44,6 +47,7 @@
         owner: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
       with_items: '{{ roq_config.flags.shared | dict2items }}'
+      # XXX FIXME TODO when roq_config.services non-empty
   become: '{{ systemd_config.scope == "system" }}'
   tags:
     - common

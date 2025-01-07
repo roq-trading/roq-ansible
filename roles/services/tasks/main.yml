@@ -127,7 +127,7 @@
         scope: '{{ systemd_config.scope }}'
         enabled: true
         daemon_reload: true
-        state: 'started'
+        state: started
       with_items: '{{ service_manager_services }}'
   become: '{{ systemd_config.scope == "system" }}'
   tags:

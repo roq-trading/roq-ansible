@@ -1,11 +1,24 @@
 ---
 systemd_defaults:
   scope: system
+container_defaults:
+  solution: podman
+  network: roq-network
+  images:
+    node-exporter:
+      registry: docker.io
+      name: prom/node-exporter
+      tag: latest
+  systemd:
+    restart: on-failure
+    enabled: true
+  services: {}
 conda_defaults:
   url: https://github.com/conda-forge/miniforge/releases/latest/download
   script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh
   sources:
     - conda-forge
+  reset: true
 roq_defaults:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY

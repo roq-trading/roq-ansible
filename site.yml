@@ -1,7 +1,8 @@
 ---
 - hosts: all
   roles:
-    - config
-    - common
-    - conda
-    - services
+    - config  # create configurations (merge with defaults)
+    - common  # create directories
+    - container  # install containers
+    - conda  # install conda
+    - services  # install roq services

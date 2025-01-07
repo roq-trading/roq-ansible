@@ -1,0 +1,37 @@
+# !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
+
+[Unit]
+Description={{ container_config.services[item]['description'] | default(item) }}
+Wants=network.target                                                                                             
+After=network-online.target
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStop=-/usr/bin/{{ container_config.solution }} stop %n
+ExecStartPre=-/usr/bin/{{ container_config.solution }} stop %n
+ExecStartPre=-/usr/bin/{{ container_config.solution }} rm %n
+ExecStart=/usr/bin/{{ container_config.solution }} run --rm --name %n \
+{% if container_config.solution == 'podman' %}
+  --cgroup-manager=cgroupfs \
+{% endif %}
+  --network {{ container_config.network }} \
+{% if 'volume' in container_config.services[item].options %}
+{% for value in container_config.services[item].options.volume %}
+  --volume {{ value }} \
+{% endfor %}
+{%- endif %}
+{% if 'publish' in container_config.services[item].options %}
+{% for value in container_config.services[item].options.publish %}
+  --publish {{ value }} \
+{% endfor %}
+{%- endif %}
+  {{ container_config.images[item].registry }}/{{ container_config.images[item].name }}:{{ container_config.images[item].tag }}{{ " \\" if 'args' in container_config.services[item] else "" }}
+{% if 'args' in container_config.services[item] %}
+{% for value in container_config.services[item].args %}
+  {{ value }}{{ "" if loop.last else " \\" }}
+{% endfor %}
+{%- endif %}
+
+[Install]
+WantedBy=multi-user.target

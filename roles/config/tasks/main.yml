@@ -17,6 +17,24 @@
         systemd_config: >
           {{ systemd_defaults | combine(systemd | default({}), recursive=True) }}
         cacheable: true
+    - name: debug
+      debug:
+        var: systemd_config
+    ###
+    # container
+    ###
+    - name: create container config
+      set_fact:
+        container_config: >
+          {{ container_defaults | combine(container | default({}), recursive=True) }}
+        cacheable: true
+    - name: debug
+      debug:
+        var: container_config
+    - name: find list of container services
+      set_fact:
+        container_services: '{{ (container_services | default([])) + [item, ] }}'
+      loop: '{{ container_config.services.keys() }}'
     ###
     # passwd database
     ###
@@ -52,9 +70,6 @@
     - name: debug
       debug:
         var: user_config
-    - name: debug
-      debug:
-        var: systemd_config
     ###
     # conda
     ###
@@ -63,6 +78,9 @@
         conda_config: >
           {{ conda_defaults | combine(conda | default({}), recursive=True) }}
         cacheable: true
+    - name: debug
+      debug:
+        var: conda_config
     ###
     # roq
     ###

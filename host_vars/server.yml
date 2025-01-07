@@ -1,6 +1,23 @@
 ---
 systemd:
   scope: user
+container:
+  solution: podman
+  services:
+    node-exporter:
+      systemd:
+        restart: on-failure
+        enabled: true
+      image: node-exporter
+      options:
+        volume:
+          - /:/host:ro,rslave
+        publish:
+          - 9100:9100
+      args:
+        - --path.rootfs=/host
+conda:
+  reset: true
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY
