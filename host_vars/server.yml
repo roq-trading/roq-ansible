@@ -48,6 +48,8 @@ conda:
       start: '*-*-* 00:01:00'
   services:
     deribit:
+      systemd:
+        description: deribit gateway
       conda:
         env: unstable
         package: roq-deribit
@@ -81,6 +83,8 @@ conda:
             accounts: A1
             symbols: BTC-PERPETUAL
     bybit:
+      systemd:
+        description: bybit gateway
       conda:
         env: unstable
         package: roq-bybit
@@ -114,6 +118,8 @@ conda:
             accounts: A1
             symbols: BTCUSDT
     algo-1:
+      systemd:
+        description: 'algo # 1'
       conda:
         env: unstable
         package: roq-cpp-algo-template
@@ -141,6 +147,8 @@ conda:
             symbol: BTCUSD
             time_in_force: gtc
     fix-bridge:
+      systemd:
+        description: fix bridge
       conda:
         env: unstable
         package: roq-fix-bridge
@@ -180,6 +188,8 @@ conda:
             fix_md_entry_type: SETTLEMENT_PRICE
             default_value: -1.23
     service-manager:
+      systemd:
+        description: service manager
       conda:
         env: unstable
         package: roq-service-manager

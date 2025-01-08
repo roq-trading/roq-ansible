@@ -1,11 +1,9 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 
 [Unit]
-{% if 'systemd' in conda_config.services[item] %}
 Description={{ conda_config.services[item].systemd['description'] | default(item) }}
 {% if 'documentation' in conda_config.services[item].systemd %}
 Documentation={{ conda_config.services[item].systemd.documentation }}
-{% endif %}
 {% endif %}
 Wants=network.target
 After=network-online.target
