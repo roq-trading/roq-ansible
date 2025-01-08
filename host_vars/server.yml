@@ -78,6 +78,10 @@ conda:
         users:
           service-manager:
             password: '1234'
+          fix-bridge:
+            password: secret
+            accounts: A1
+            symbols: BTC-PERPETUAL
           trader:
             password: secret
             accounts: A1
@@ -161,7 +165,6 @@ conda:
       flags:
         shared:
           - log
-          - loop
         custom:
           # log_verbosity: 1
           loop_cpu_affinity: 4
