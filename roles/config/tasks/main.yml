@@ -21,17 +21,6 @@
       debug:
         var: systemd_config
     ###
-    # images
-    ###
-    - name: create images config
-      set_fact:
-        images_config: >
-          {{ images_defaults | combine(images | default({}), recursive=True) }}
-        cacheable: true
-    - name: debug
-      debug:
-        var: images_config
-    ###
     # container
     ###
     - name: create container config

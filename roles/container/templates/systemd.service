@@ -20,23 +20,26 @@ ExecStart=/usr/bin/{{ container_config.solution }} run --rm --name %n \
 {% if container_config.solution == 'podman' %}
   --cgroup-manager=cgroupfs \
 {% endif %}
-  --network {{ container_config.network }} \
-{% if 'volume' in container_config.services[item].container.options %}
-{% for value in container_config.services[item].container.options.volume %}
-  --volume {{ value }} \
+{% for k,v in container_config.services[item].container.options.items() %}
+{% if v is iterable and v is not string and v is not mapping %}
+{% for v2 in v %}
+  --{{ k }} {{ v2 }} \
 {% endfor %}
-{%- endif %}
-{% if 'publish' in container_config.services[item].container.options %}
-{% for value in container_config.services[item].container.options.publish %}
-  --publish {{ value }} \
+{% else %}
+  --{{ k }} {{ v }} \
+{% endif %}
 {% endfor %}
-{%- endif %}
-  {{ images_config[container_config.services[item].container.image].registry }}/{{ images_config[container_config.services[item].container.image].name }}:{{ images_config[container_config.services[item].container.image].tag }}{{ " \\" if 'args' in container_config.services[item].container else "" }}
-{% if 'args' in container_config.services[item].container %}
-{% for value in container_config.services[item].container.args %}
-  {{ value }}{{ "" if loop.last else " \\" }}
+  {{ container_config.images[container_config.services[item].container.image].registry }}/{{ container_config.images[container_config.services[item].container.image].name }}:{{ container_config.images[container_config.services[item].container.image].tag }}{{ "" if container_config.services[item].container.args | length == 0 else " \\" }}
+{% for k,v in container_config.services[item].container.args.items() %}
+{% if v is iterable and v is not string and v is not mapping %}
+{% set outer_loop = loop %}
+{% for v2 in v %}
+  --{{ k }}={{ v2 }}{{ "" if outer_loop.last and loop.last else " \\" }}
 {% endfor %}
-{%- endif %}
+{% else %}
+  --{{ k }}={{ v }}{{ "" if loop.last else " \\" }}
+{% endif %}
+{% endfor %}
 
 [Install]
 WantedBy=multi-user.target

@@ -1,29 +1,5 @@
 ---
 - block:
-    - name: test if podman container network exists
-      shell: '{{ container_config.solution }} network inspect {{ container_config.network }}'
-      register: network_exists
-      failed_when: network_exists.rc != 0 and network_exists.rc != 125
-    - name: create podman container network
-      shell: '{{ container_config.solution }} network create {{ container_config.network }}'
-      when: network_exists.rc == 125
-  when: container_config.solution == 'podman'
-  become: '{{ systemd_config.scope == "system" }}'
-  tags:
-    - container
-- block:
-    - name: test if docker container network exists
-      shell: '{{ container_config.solution }} network inspect {{ container_config.network }}'
-      register: network_exists
-      failed_when: network_exists.rc != 0 and network_exists.rc != 1
-    - name: create docker container network
-      shell: '{{ container_config.solution }} network create {{ container_config.network }}'
-      when: network_exists.rc == 1
-  when: container_config.solution == 'docker'
-  become: '{{ systemd_config.scope == "system" }}'
-  tags:
-    - container
-- block:
     - name: create systemd service files
       template:
         src: templates/systemd.service

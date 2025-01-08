@@ -2,9 +2,9 @@
 systemd:
   scope: user
   profiles: {}
-images: {}
 container:
   solution: podman
+  images: {}
   services:
     node-exporter:
       systemd:
@@ -17,7 +17,7 @@ container:
           publish:
             - 9100:9100
         args:
-          - --path.rootfs=/host
+          path.rootfs: /host
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY

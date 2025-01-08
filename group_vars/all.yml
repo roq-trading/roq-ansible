@@ -10,14 +10,33 @@ systemd_defaults:
       type: notify
       restart: on-failure
       enabled: false
-images_defaults:
-  node-exporter:
-    registry: docker.io
-    name: prom/node-exporter
-    tag: latest
 container_defaults:
   solution: podman
-  network: roq-network
+  images:
+    node-exporter:
+      registry: docker.io
+      name: prom/node-exporter
+      tag: latest
+    prometheus:
+      registry: docker.io
+      name: prom/prometheus
+      tag: latest
+    alertmanager:
+      registry: docker.io
+      name: prom/alertmanager
+      tag: latest
+    grafana:
+      registry: docker.io
+      name: grafana/grafana
+      tag: latest
+    clickhouse:
+      registry: docker.io
+      name: clickhouse/clickhouse-server
+      tag: latest
+    nginx:
+      registry: docker.io
+      name: library/nginx
+      tag: latest
   services: {}
 conda_defaults:
   miniforge:
