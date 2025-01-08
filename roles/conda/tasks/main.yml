@@ -34,7 +34,7 @@
         mode: 0644
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ all_services }}'
+      with_items: '{{ conda_all_services }}'
     - name: create required directories
       file:
         path: '{{ user_config.config_dir }}/services/{{ item }}'
@@ -42,7 +42,7 @@
         mode: 0755
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ all_services }}'
+      with_items: '{{ conda_all_services }}'
     - name: create flags files
       template:
         src: templates/flags.cfg
@@ -50,7 +50,7 @@
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ all_services }}'
+      with_items: '{{ conda_all_services }}'
     - name: create config files
       template:
         src: '{{ "templates/config.toml" if item == "service-manager" else "templates/config.toml" }}'
@@ -58,7 +58,7 @@
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ all_services }}'
+      with_items: '{{ conda_all_services }}'
     # user services
     - name: create systemd start timer files
       template:
@@ -67,13 +67,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"start" in conda_config.systemd.timers'
     - name: remove systemd start timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
         state: absent
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"start" not in conda_config.systemd.timers'
     - name: create systemd stop service files
       template:
@@ -82,13 +82,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" in conda_config.systemd.timers'
     - name: remove systemd stop service files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
         state: absent
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" not in conda_config.systemd.timers'
     - name: create systemd stop timer files
       template:
@@ -97,13 +97,13 @@
         mode: 0644
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" in conda_config.systemd.timers'
     - name: remove systemd stop timer files
       file:
         path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
         state: absent
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" not in conda_config.systemd.timers'
     - name: enable/disable systemd services
       systemd:
@@ -111,7 +111,7 @@
         scope: '{{ systemd_config.scope }}'
         enabled: '{{ systemd_config.profiles[conda_config.systemd.profile].enabled }}'
         daemon_reload: true
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
     - name: enable systemd start timers
       systemd:
         name: '{{ item }}.timer'
@@ -119,7 +119,7 @@
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"start" in conda_config.systemd.timers'
     - name: disable systemd stop services
       systemd:
@@ -127,7 +127,7 @@
         scope: '{{ systemd_config.scope }}'
         enabled: false
         daemon_reload: true
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" in conda_config.systemd.timers'
     - name: enable systemd stop timers
       systemd:
@@ -136,7 +136,7 @@
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ user_services }}'
+      with_items: '{{ conda_user_services }}'
       when: '"stop" in conda_config.systemd.timers'
     # service-manager services
     - name: enable/disable systemd services
@@ -146,7 +146,7 @@
         enabled: true
         daemon_reload: true
         state: started
-      with_items: '{{ service_manager_services }}'
+      with_items: '{{ conda_service_manager_services }}'
   become: '{{ systemd_config.scope == "system" }}'
   tags:
     - conda

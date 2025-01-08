@@ -1,6 +1,6 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
 {% if conda_config.services[item].conda.package == 'roq-service-manager' %}
-{% for name in user_services %}
+{% for name in conda_user_services %}
 
 [services.{{ name }}]
 service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"

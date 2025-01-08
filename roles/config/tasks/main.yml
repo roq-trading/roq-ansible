@@ -102,30 +102,30 @@
         var: conda_config
     - name: find list of user services
       set_fact:
-        user_services: '{{ (user_services | default([])) + [item, ] }}'
+        conda_user_services: '{{ (conda_user_services | default([])) + [item, ] }}'
       loop: '{{ conda_config.services.keys() }}'
       when: conda_config.services[item].conda.package != 'roq-service-manager'
     - name: debug
       debug:
-        var: user_services
+        var: conda_user_services
     - name: find list of service-manager services
       set_fact:
-        service_manager_services: '{{ (service_manager_services | default([])) + [item, ] }}'
+        conda_service_manager_services: '{{ (conda_service_manager_services | default([])) + [item, ] }}'
       loop: '{{ conda_config.services.keys() }}'
       when: conda_config.services[item].conda.package == 'roq-service-manager'
     - name: debug
       debug:
-        var: service_manager_services
+        var: conda_service_manager_services
     - name: find list of all services
       set_fact:
-        all_services: '{{ user_services + service_manager_services }}'
+        conda_all_services: '{{ conda_user_services + conda_service_manager_services }}'
     - name: debug
       debug:
-        var: all_services
+        var: conda_all_services
     - name: find conda packages per environment
       set_fact:
         packages: '{{ ( packages | default({}) ) | combine({ conda_config.services[item].conda.env: [conda_config.services[item].conda.package] }, recursive=true, list_merge="append") }}'
-      loop: '{{ all_services }}'
+      loop: '{{ conda_all_services }}'
     - name: debug
       debug:
         var: packages
