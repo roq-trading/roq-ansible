@@ -10,6 +10,8 @@ Ansible script to install and control systemd services.
 
 ### Directories
 
+Install location depends on `systemd.scope` (can be `system` or `user`)
+
 | what | system | user |
 | --- | --- | --- |
 | Miniforge3 | `/opt/conda` | `~/.local/share/conda` |
@@ -19,7 +21,7 @@ Ansible script to install and control systemd services.
 | cache | `/var/lib/roq/cache` | `~/.local/state/roq` |
 
 
-## Dedendencies
+## Dependencies
 
 * [Ansible](https://www.ansible.com/)
 * [Miniforge3](https://github.com/conda-forge/miniforge)
