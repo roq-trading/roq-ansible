@@ -177,6 +177,12 @@ Why does the playbook not restart services after configuration update?
 This is not desirable due to potential live trading.
 
 
+Why is the conda directory always re-installed?
+
+To ensure installation of the latest packages.
+This is particularly an issue when you're using Roq's unstable channel where the version number doesn't change for daily builds.
+
+
 ## License
 
 The project is released under the terms of the MIT license.
