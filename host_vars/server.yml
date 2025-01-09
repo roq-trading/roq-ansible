@@ -216,7 +216,7 @@ conda:
         package: roq-service-manager
       client_listen_address:
         type: tcp
-        port: 2345
+        port: 2345  # you can configure prometheus to scrape this port (remember there is a url-prefix)
         interface: '{{ ansible_facts.default_ipv4.address }}'
       flags:
         shared:

@@ -29,7 +29,7 @@ Install location depends on `systemd.scope` (can be `system` or `user`)
 * [Podman](https://podman.io/) [optional]
 * [Docker](https://www.docker.com/) [optional]
 
-> You can use either podman or docker for the container based services, e.g. node-exporter (from prometheus).
+> You can use either podman or docker for the container based services, e.g. prometheus' node-exporter.
 
 
 ## Prerequisites
@@ -155,6 +155,14 @@ Tail logs
 ```bash
 journalctl -f -u deribit
 ```
+
+
+## FAQ
+
+Why does the playbook not install prometheus, grafana or clickhouse?
+
+These auxiliary services can indeed be used with the services installed by this playbook.
+However, we recommend that you use your cloud provider's managed services rather than installing and maintaining these yourself.
 
 
 ## License
