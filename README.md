@@ -150,6 +150,12 @@ Status
 systemctl status deribit
 ```
 
+Reset after failure
+
+```bash
+systemctl reset-failed deribit
+```
+
 Tail logs
 
 ```bash
@@ -181,6 +187,11 @@ Why is the conda directory always re-installed?
 
 To ensure installation of the latest packages.
 This is particularly an issue when you're using Roq's unstable channel where the version number doesn't change for daily builds.
+
+Why can't the service-manager handle `reset-failed`?
+
+This is an exceptional situation often caused by mis-configuration of the playbook.
+The service-manager can not be used to change this situation and the control is therefore not made available.
 
 
 ## License
