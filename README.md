@@ -1,8 +1,12 @@
 # roq-services
 
-Ansible script to install services.
+Ansible script to install and control systemd services.
+
 
 ## Design
+
+![UI](/static/images/service-manager.png)
+
 
 ### Directories
 
@@ -144,12 +148,7 @@ Tail logs
 
 ```bash
 journalctl -f -u deribit
-
-
-## Service Manager
 ```
-
-![Design](/static/images/service-manager.png)
 
 
 ## License
