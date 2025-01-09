@@ -24,9 +24,23 @@ Ansible script to install services.
 
 ## Prerequisites
 
+### Container
+
+If you want to use Podman and it's not already installed on the host
+
+```bash
+sudo apt install podman
+```
+
+If you want to use Docker and it's not already installed on the host
+
+```bash
+sudo apt install docker.io
+```
+
 ### Ansible
 
-You need ansible to run the playbook.
+You need ansible to run this playbook.
 
 If using conda, you can install ansible (on your local machine) like this
 
@@ -34,16 +48,25 @@ If using conda, you can install ansible (on your local machine) like this
 conda install --freeze-installed -y ansible
 ```
 
+Alternatively, you can install ansible on the host
+
+```bash
+sudo apt install ansible
+```
+
 ### Remote Host
 
 This is the server you will install to.
 
-It is identified by an IPv4 address (`a.b.c.d`) and you must be able to log on with ssh and your `ansible_user`.
+It is identified by an IPv4 address (`a.b.c.d` in the following) and you must be able to log on with ssh and your `ansible_user`.
 
 
 ### Inventory File
 
 Ansible requires an inventory file (name is not important, we will name it "example")
+
+In the following examples we use `server` to identify the target host.
+This could be a remote host or simply `localhost` if you want to test with your user account (no root access required).
 
 ```
 [example]
@@ -54,14 +77,12 @@ server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root"
 
 > We need a `become_user` (elevated rights) if we have configured `systemd.scope == "system"` (the default).
 
-Alternatively, we can also use the script to install the services on our workstation
+Alternatively
 
 ```
 [example]
-workstation ansible_host="a.b.c.d" ansible_user="ansible"
+server ansible_host="localhost" ansible_user="my_user_id"
 ```
-
-> We're using the label `workstation`.
 
 > We do **not** need a `become_user` if we have configured `systemd.scope == "user"`.
 
@@ -72,7 +93,7 @@ This is the place to configure your specific services.
 
 Host specific variable will be imported from `host_vars/server.yml` or `host_vars/workstation.yml`.
 
-> The filename is automatically matched to the label `server` or `workstation` that you specified in your inventory file.
+> The filename is automatically matched to the label `server` that you specified in your inventory file.
 
 ### Group Variables
 
@@ -103,7 +124,7 @@ ansible-playbook -i example site.yml
 
 > You will need elevated permissions (`sudo`) if using systemctl on a server
 
-> You will need to use `systemctl --user` (**no** `sudo`) when using systemctl on your workstation
+> You will need to use `systemctl --user` (**without** `sudo`) when using systemctl on your workstation
 
 > These following steps to start/stop services can also be achieved through Roq's service manager
 

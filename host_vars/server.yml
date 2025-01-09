@@ -1,6 +1,6 @@
 ---
 systemd:
-  scope: user
+  scope: user  # note! system or user
   profiles: {}
 container:
   solution: podman
@@ -9,19 +9,20 @@ container:
     node-exporter:
       systemd:
         profile: simple
+        description: node-exporter
       container:
         image: node-exporter
         options:
           volume:
             - /:/host:ro,rslave
           publish:
-            - 9100:9100
+            - 9100:9100  # you can configure prometheus to scrape this port
         args:
           path.rootfs: /host
 roq:
   auth:
-    public_key: YOUR_ROQ_PUBLIC_KEY
-    secret_key: YOUR_ROQ_SECRET_KEY
+    public_key: YOUR_ROQ_PUBLIC_KEY  # FIXME
+    secret_key: YOUR_ROQ_SECRET_KEY  # FIXME
   flags:
     log:
       log_verbosity: 0
@@ -37,15 +38,8 @@ roq:
       event_log_iso_week: false
       event_log_symlink: true
 conda:
-  envs:
-    stable:
-      - https://roq-trading.com/conda/stable
-    unstable:
-      - https://roq-trading.com/conda/unstable
-  systemd:
-    timers:
-      stop: '*-*-* 23:59:00'
-      start: '*-*-* 00:01:00'
+  envs: {}
+  systemd: {}
   services:
     deribit:
       systemd:
@@ -57,7 +51,7 @@ conda:
         type: unix
       dependencies: []
       flags:
-        package: prod
+        package: test
         shared:
           - log
           - loop
@@ -71,18 +65,21 @@ conda:
           - ^ETH(_USD[A-Z]?)?-PERPETUAL$
         accounts:
           A1:
-            login: YOUR_DERIBIT_PUBLIC_KEY
-            secret: YOUR_DERIBIT_SECRET_KEY
+            login: YOUR_DERIBIT_PUBLIC_KEY  # FIXME
+            secret: YOUR_DERIBIT_SECRET_KEY  # FIXME
             symbols: .*
             master: true
         users:
           service-manager:
-            password: '1234'
+            password: secret
+          position-manager:
+            password: secret
+            drop_copy: true
           fix-bridge:
             password: secret
             accounts: A1
             symbols: BTC-PERPETUAL
-          trader:
+          algo-1:
             password: secret
             accounts: A1
             symbols: BTC-PERPETUAL
@@ -96,7 +93,7 @@ conda:
         type: unix
       dependencies: []
       flags:
-        package: prod
+        package: test
         shared:
           - log
           - loop
@@ -110,17 +107,37 @@ conda:
           - ^ETHUSD[A-Z]?$
         accounts:
           A1:
-            login: YOUR_BYBIT_PUBLIC_KEY
-            secret: YOUR_BYBIT_SECRET_KEY
+            login: YOUR_BYBIT_PUBLIC_KEY  # FIXME
+            secret: YOUR_BYBIT_SECRET_KEY  # FIXME
             symbols: .*
             master: true
         users:
           service-manager:
-            password: '1234'
-          trader:
+            password: secret
+          algo-1:
             password: secret
             accounts: A1
             symbols: BTCUSDT
+    position-manager:
+      systemd:
+        description: position manager
+      conda:
+        env: unstable
+        package: roq-position-manager
+      dependencies:
+        - deribit
+      flags:
+        shared:
+          - log
+        custom:
+          database_uri: http://192.168.188.100:8123
+          database_name: roq
+          database_create_if_not_exists: true
+          enable_portfolio: true
+      config:
+        symbols:
+          - ^BTC(_USD[A-Z]?)?-PERPETUAL$
+          - ^ETH(_USD[A-Z]?)?-PERPETUAL$
     algo-1:
       systemd:
         description: 'algo # 1'
@@ -165,6 +182,7 @@ conda:
       flags:
         shared:
           - log
+          # - loop
         custom:
           # log_verbosity: 1
           loop_cpu_affinity: 4
@@ -199,7 +217,7 @@ conda:
       client_listen_address:
         type: tcp
         port: 2345
-        interface: '{{ ansible_facts.default_ipv4.address }}'  # note! localhost would be safer
+        interface: '{{ ansible_facts.default_ipv4.address }}'
       flags:
         shared:
           - log
