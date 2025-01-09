@@ -164,6 +164,18 @@ Why does the playbook not install prometheus, grafana or clickhouse?
 These auxiliary services can indeed be used with the services installed by this playbook.
 However, we recommend that you use your cloud provider's managed services rather than installing and maintaining these yourself.
 
+> You can browse Roq's GitHub repository and find other playbooks to install these auxiliary services.
+
+
+Why is the service-manager running as root when `systemd.scope == system`?
+
+The service-manager needs root access to control other services.
+
+
+Why does the playbook not restart services after configuration update?
+
+This is not desirable due to potential live trading.
+
 
 ## License
 

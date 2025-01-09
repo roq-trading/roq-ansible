@@ -15,7 +15,7 @@ StartLimitBurst=2
 
 [Service]
 Type={{ systemd_config.profiles[conda_config.systemd.profile].type }}
-{% if systemd_config.scope == "system" %}
+{% if systemd_config.scope == "system" and conda_config.services[item].conda.package != 'roq-service-manager' %}
 User={{ ansible_user }}
 Group={{ ansible_user }}
 {% endif %}
