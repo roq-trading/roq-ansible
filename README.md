@@ -26,6 +26,10 @@ Install location depends on `systemd.scope` (can be `system` or `user`)
 * [Ansible](https://www.ansible.com/)
 * [Miniforge3](https://github.com/conda-forge/miniforge)
 * [systemd](https://systemd.io/)
+* [Podman](https://podman.io/) [optional]
+* [Docker](https://www.docker.com/) [optional]
+
+> You can use either podman or docker for the container based services, e.g. node-exporter (from prometheus).
 
 
 ## Prerequisites
