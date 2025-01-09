@@ -28,12 +28,14 @@ roq:
       log_verbosity: 0
     loop:
       loop_sleep: 500ns
-      loop_timer_freq: 2500ns
     gateway:
       auth_keys_file: '{{ user_config.config_dir }}/shared/keys.json'
       cache_all_reference_data: true
       cache_dir: '{{ user_config.cache_dir }}'
       cache_mbp_checksum: false
+      download_trades_lookback: 5m
+      download_trades_lookback_on_restart: 24h
+      enable_portfolio: true
       event_log_dir: '{{ user_config.data_dir }}'
       event_log_iso_week: false
       event_log_symlink: true
@@ -57,7 +59,6 @@ conda:
           - loop
           - gateway
         custom:
-          # log_verbosity: 1
           loop_cpu_affinity: 1
       config:
         symbols:
@@ -99,7 +100,6 @@ conda:
           - loop
           - gateway
         custom:
-          # log_verbosity: 1
           loop_cpu_affinity: 2
       config:
         symbols:
@@ -152,7 +152,6 @@ conda:
           - log
           - loop
         custom:
-          # log_verbosity: 1
           loop_cpu_affinity: 3
       config:
         strategy_id: 123
@@ -182,9 +181,8 @@ conda:
       flags:
         shared:
           - log
-          # - loop
+          - loop
         custom:
-          # log_verbosity: 1
           loop_cpu_affinity: 4
           init_missing_md_entry_type_to_zero: true
       config:
