@@ -1,4 +1,4 @@
-# roq-services
+# roq-ansible
 
 Ansible script to install and control systemd services.
 
