@@ -26,7 +26,7 @@ WatchdogSec=10
 ExecStartPre=+/bin/mkdir -p {{ user_config.run_dir }}/client {{ user_config.run_dir }}/service
 ExecStartPre=+/bin/chmod -R 0770 {{ user_config.run_dir }}
 ExecStartPre=+/bin/mkdir -p {{ user_config.cache_dir }} {{ user_config.data_dir }}
-ExecStart={{ user_config.conda_dir }}/envs/{{ conda_config.services[item].conda.env }}/bin/{{ conda_config.services[item].conda.package }} \
+ExecStart={{ user_config.conda_dir }}/envs/{{ conda_config.services[item].conda.env }}/bin/{{ conda_config.services[item].conda.binary if 'binary' in conda_config.services[item].conda else conda_config.services[item].conda.package }} \
 {% if 'dependencies' in conda_config.services[item] %}
 {% for name in conda_config.services[item].dependencies %}
 {% if conda_config.services[name].client_listen_address.type == 'unix' %}
