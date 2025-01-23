@@ -144,6 +144,7 @@ conda:
       conda:
         env: unstable
         package: roq-cpp-algo-template
+        binary: roq-cpp-algo-template  # note! here you can optionally choose the name of your binary (default is package name)
       dependencies:
         - deribit
         - bybit
