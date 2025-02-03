@@ -101,6 +101,7 @@ conda:
           - gateway
         custom:
           loop_cpu_affinity: 2
+          api: inverse
       config:
         symbols:
           - ^BTCUSD[A-Z]?$
