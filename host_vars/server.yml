@@ -60,6 +60,9 @@ conda:
           - gateway
         custom:
           loop_cpu_affinity: 1
+          enable_portfolio: true
+          download_trades_lookback: 300s
+          download_trades_lookback_on_restart: 3600s
       config:
         symbols:
           - ^BTC(_USD[A-Z]?)?-PERPETUAL$
