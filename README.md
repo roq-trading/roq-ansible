@@ -64,6 +64,14 @@ Alternatively, you can install ansible on the host
 sudo apt install ansible
 ```
 
+### Python
+
+The following packages are required
+
+* `json`
+* `toml`
+
+
 ### Remote Host
 
 This is the server you will install to.
