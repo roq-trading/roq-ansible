@@ -5,7 +5,7 @@
 [services.{{ name }}]
 service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"
 {% endfor %}
-{% elif conda_config.services[item].conda.package == 'roq-fix-bridge' %}
+{% elif conda_config.services[item].conda.package in ('roq-fix-bridge', 'roq-fix-bridge-2', 'roq-sbe-publisher') %}
 {{ conda_config.services[item].config.symbols | roq_toml_symbols }}
 
 {{ conda_config.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
