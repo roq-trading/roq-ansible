@@ -43,7 +43,7 @@ ExecStart={{ user_config.conda_dir }}/envs/{{ conda_config.services[item].conda.
   --flagfile {{ user_config.config_dir }}/shared/{{ name }}.cfg \
 {% endfor %}
   --flagfile {{ user_config.config_dir }}/services/{{ item }}/flags.cfg \
-{% if 'config' in conda_config.services[item] %}
+{% if 'config' in conda_config.services[item] and conda_config.services[item].config %}
   --config_file {{ user_config.config_dir }}/services/{{ item }}/config.toml \
 {% endif %}
   --service_listen_address unix://{{ user_config.run_dir }}/service/{{ item }}.sock \
