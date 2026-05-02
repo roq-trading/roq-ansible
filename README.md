@@ -103,7 +103,11 @@ Alternatively
 
 ```
 [example]
-server ansible_host="localhost" ansible_user="my_user_id"
+ungrouped:
+  hosts:
+    server:
+      ansible_host: localhost
+      ansible_user: my_user_id
 ```
 
 > We do **not** need a `become_user` if we have configured `systemd.scope == "user"`.
