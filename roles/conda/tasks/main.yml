@@ -2,148 +2,148 @@
 - name: Conda
   tags:
     - conda
-  become: '{{ systemd_config.scope == "system" }}'
+  become: '{{ config_systemd.scope == "system" }}'
   block:
     - name: Download installer
       ansible.builtin.get_url:
-        url: '{{ conda_config.miniforge.url }}/{{ conda_config.miniforge.script }}'
-        dest: /tmp/{{ conda_config.miniforge.script }}
+        url: '{{ config_conda.miniforge.url }}/{{ config_conda.miniforge.script }}'
+        dest: /tmp/{{ config_conda.miniforge.script }}
         mode: 0644
     # XXX FIXME TOD keep old as backup
     - name: Remove old conda
       ansible.builtin.file:
-        path: '{{ user_config.conda_dir }}'
+        path: '{{ config_user.conda_dir }}'
         state: absent
     - name: Install conda
-      ansible.builtin.shell: '{{ ansible_env.SHELL }} /tmp/{{ conda_config.miniforge.script }} -b -u -p {{ user_config.conda_dir }}'
+      ansible.builtin.shell: '{{ ansible_facts.env.SHELL }} /tmp/{{ config_conda.miniforge.script }} -b -u -p {{ config_user.conda_dir }}'
       args:
-        creates: '{{ user_config.conda_dir }}/bin/activate'
+        creates: '{{ config_user.conda_dir }}/bin/activate'
     - name: Create conda environments
-      ansible.builtin.shell: '{{ user_config.conda_dir }}/bin/conda create -n {{ item.key }} -y'
+      ansible.builtin.shell: '{{ config_user.conda_dir }}/bin/conda create -n {{ item.key }} -y'
       args:
-        creates: '{{ user_config.conda_dir }}/envs/{{ item.key }}'
-      loop: '{{ packages | dict2items }}'
+        creates: '{{ config_user.conda_dir }}/envs/{{ item.key }}'
+      loop: '{{ config_packages | dict2items }}'
     - name: Install conda packages
-      ansible.builtin.shell: '{{ user_config.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ conda_config.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
-      loop: '{{ packages | dict2items }}'
+      ansible.builtin.shell: '{{ config_user.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ config_conda.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
+      loop: '{{ config_packages | dict2items }}'
     # all services
     - name: Create systemd service files
       ansible.builtin.template:
         src: templates/systemd.service
-        dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.service'
+        dest: '{{ config_user.systemd_unit_dir }}/{{ item }}.service'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ conda_all_services }}'
+        owner: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+        group: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+      with_items: '{{ config_conda_all_services }}'
     - name: Create required directories
       ansible.builtin.file:
-        path: '{{ user_config.config_dir }}/services/{{ item }}'
+        path: '{{ config_user.config_dir }}/services/{{ item }}'
         state: directory
         mode: 0755
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ conda_all_services }}'
+      with_items: '{{ config_conda_all_services }}'
     - name: Create flags files
       ansible.builtin.template:
         src: templates/flags.cfg
-        dest: '{{ user_config.config_dir }}/services/{{ item }}/flags.cfg'
+        dest: '{{ config_user.config_dir }}/services/{{ item }}/flags.cfg'
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ conda_all_services }}'
+      with_items: '{{ config_conda_all_services }}'
     - name: Create config files
       ansible.builtin.template:
         src: '{{ "templates/config.toml" if item == "service-manager" else "templates/config.toml" }}'
-        dest: '{{ user_config.config_dir }}/services/{{ item }}/config.toml'
+        dest: '{{ config_user.config_dir }}/services/{{ item }}/config.toml'
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      with_items: '{{ conda_all_services }}'
+      with_items: '{{ config_conda_all_services }}'
     # user services
     - name: Create systemd start timer files
       ansible.builtin.template:
         src: templates/systemd.timer
-        dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
+        dest: '{{ config_user.systemd_unit_dir }}/{{ item }}.timer'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ conda_user_services }}'
-      when: '"start" in conda_config.systemd.timers'
+        owner: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+        group: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"start" in config_conda.systemd.timers'
     - name: Remove systemd start timer files
       ansible.builtin.file:
-        path: '{{ user_config.systemd_unit_dir }}/{{ item }}.timer'
+        path: '{{ config_user.systemd_unit_dir }}/{{ item }}.timer'
         state: absent
-      with_items: '{{ conda_user_services }}'
-      when: '"start" not in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"start" not in config_conda.systemd.timers'
     - name: Create systemd stop service files
       ansible.builtin.template:
         src: templates/systemd-stop.service
-        dest: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
+        dest: '{{ config_user.systemd_unit_dir }}/{{ item }}-stop.service'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" in conda_config.systemd.timers'
+        owner: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+        group: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" in config_conda.systemd.timers'
     - name: Remove systemd stop service files
       ansible.builtin.file:
-        path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.service'
+        path: '{{ config_user.systemd_unit_dir }}/{{ item }}-stop.service'
         state: absent
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" not in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" not in config_conda.systemd.timers'
     - name: Create systemd stop timer files
       ansible.builtin.template:
         src: templates/systemd-stop.timer
-        dest: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
+        dest: '{{ config_user.systemd_unit_dir }}/{{ item }}-stop.timer'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" in conda_config.systemd.timers'
+        owner: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+        group: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" in config_conda.systemd.timers'
     - name: Remove systemd stop timer files
       ansible.builtin.file:
-        path: '{{ user_config.systemd_unit_dir }}/{{ item }}-stop.timer'
+        path: '{{ config_user.systemd_unit_dir }}/{{ item }}-stop.timer'
         state: absent
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" not in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" not in config_conda.systemd.timers'
     - name: Enable/disable systemd services
       ansible.builtin.systemd:
         name: '{{ item }}.service'
-        scope: '{{ systemd_config.scope }}'
-        enabled: '{{ systemd_config.profiles[conda_config.systemd.profile].enabled }}'
+        scope: '{{ config_systemd.scope }}'
+        enabled: '{{ config_systemd.profiles[config_conda.systemd.profile].enabled }}'
         daemon_reload: true
-      with_items: '{{ conda_user_services }}'
+      with_items: '{{ config_conda_user_services }}'
     - name: Enable systemd start timers
       ansible.builtin.systemd:
         name: '{{ item }}.timer'
-        scope: '{{ systemd_config.scope }}'
+        scope: '{{ config_systemd.scope }}'
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ conda_user_services }}'
-      when: '"start" in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"start" in config_conda.systemd.timers'
     - name: Disable systemd stop services
       ansible.builtin.systemd:
         name: '{{ item }}-stop.service'
-        scope: '{{ systemd_config.scope }}'
+        scope: '{{ config_systemd.scope }}'
         enabled: false
         daemon_reload: true
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" in config_conda.systemd.timers'
     - name: Enable systemd stop timers
       ansible.builtin.systemd:
         name: '{{ item }}-stop.timer'
-        scope: '{{ systemd_config.scope }}'
+        scope: '{{ config_systemd.scope }}'
         state: started
         enabled: true
         daemon_reload: true
-      with_items: '{{ conda_user_services }}'
-      when: '"stop" in conda_config.systemd.timers'
+      with_items: '{{ config_conda_user_services }}'
+      when: '"stop" in config_conda.systemd.timers'
     # service-manager services
     - name: Enable/disable systemd services
       ansible.builtin.systemd:
         name: '{{ item }}.service'
-        scope: '{{ systemd_config.scope }}'
+        scope: '{{ config_systemd.scope }}'
         enabled: true
         daemon_reload: true
         state: started
-      with_items: '{{ conda_service_manager_services }}'
+      with_items: '{{ config_conda_service_manager_services }}'

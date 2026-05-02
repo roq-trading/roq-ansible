@@ -4,7 +4,7 @@
 Description={{ item }} timer
 
 [Timer]
-OnCalendar={{ conda_config.systemd.timers.start }}
+OnCalendar={{ config_conda.systemd.timers.start }}
 
 [Install]
 WantedBy=multi-user.target

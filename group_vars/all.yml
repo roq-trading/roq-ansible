@@ -41,7 +41,7 @@ container_defaults:
 conda_defaults:
   miniforge:
     url: https://github.com/conda-forge/miniforge/releases/latest/download
-    script: Miniforge3-{{ ansible_system }}-{{ ansible_architecture }}.sh
+    script: Miniforge3-{{ ansible_facts["system"] }}-{{ ansible_facts["architecture"] }}.sh
     sources:
       - conda-forge
   reset: true

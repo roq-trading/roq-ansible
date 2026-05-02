@@ -81,14 +81,18 @@ It is identified by an IPv4 address (`a.b.c.d` in the following) and you must be
 
 ### Inventory File
 
-Ansible requires an inventory file (name is not important, we will name it "example")
+Ansible requires an inventory file (name is not important, we will name it "example.yml")
 
 In the following examples we use `server` to identify the target host.
 This could be a remote host or simply `localhost` if you want to test with your user account (no root access required).
 
 ```
-[example]
-server ansible_host="a.b.c.d" ansible_user="ansible" become_user="root"
+ungrouped:
+  hosts:
+    server:
+      ansible_host: a.b.c.d
+      ansible_user: ansible
+      ansible_become_user: root
 ```
 
 > We're using the label `server`.
@@ -128,13 +132,13 @@ When installing to `systemd.scope == "system"`, you need the `become_user` (typi
 specify a password to gain elevated permissions
 
 ```bash
-ansible-playbook -i example site.yml --ask-become-pass
+ansible-playbook -i example.yml site.yml --ask-become-pass
 ```
 
-You don't need this when installing on your workstations (`systemd.scope == "user"`)
+You don't need this when installing on your workstation (`systemd.scope == "user"`)
 
 ```bash
-ansible-playbook -i example site.yml
+ansible-playbook -i example.yml site.yml
 ```
 
 

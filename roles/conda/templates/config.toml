@@ -1,15 +1,15 @@
 # !!! THIS FILE HAS BEEN AUTO-GENERATED !!!
-{% if conda_config.services[item].conda.package == 'roq-service-manager' %}
-{% for name in conda_user_services %}
+{% if config_conda.services[item].conda.package == 'roq-service-manager' %}
+{% for name in config_conda_user_services %}
 
 [services.{{ name }}]
-service_listen_address="unix://{{ user_config.run_dir }}/service/{{ name }}.sock"
+service_listen_address="unix://{{ config_user.run_dir }}/service/{{ name }}.sock"
 {% endfor %}
-{% elif conda_config.services[item].conda.package in ('roq-fix-bridge', 'roq-fix-bridge-2', 'roq-sbe-publisher') %}
-{{ conda_config.services[item].config.symbols | roq_toml_symbols }}
+{% elif config_conda.services[item].conda.package in ('roq-fix-bridge', 'roq-sbe-publisher') %}
+{{ config_conda.services[item].config.symbols | roq_toml_symbols }}
 
-{{ conda_config.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
+{{ config_conda.services[item].config | dict2items | rejectattr("key", "eq", "symbols") | list | items2dict | roq_toml }}
 {% else %}
 
-{{ conda_config.services[item].config | roq_toml }}
+{{ config_conda.services[item].config | roq_toml }}
 {%- endif %}

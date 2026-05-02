@@ -5,20 +5,7 @@ systemd:
 container:
   solution: podman
   images: {}
-  services:
-    node-exporter:
-      systemd:
-        profile: simple
-        description: node-exporter
-      container:
-        image: node-exporter
-        options:
-          volume:
-            - /:/host:ro,rslave
-          publish:
-            - 9100:9100  # you can configure prometheus to scrape this port
-        args:
-          path.rootfs: /host
+  services: {}
 roq:
   auth:
     public_key: YOUR_ROQ_PUBLIC_KEY  # FIXME
@@ -30,9 +17,7 @@ roq:
       loop_sleep: 500ns
     gateway:
       auth_keys_file: '{{ user_config.config_dir }}/shared/keys.json'
-      cache_all_reference_data: true
       cache_dir: '{{ user_config.cache_dir }}'
-      cache_mbp_checksum: false
       download_trades_lookback: 5m
       download_trades_lookback_on_restart: 24h
       enable_portfolio: true

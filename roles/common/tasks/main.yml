@@ -2,7 +2,7 @@
 - name: Common
   tags:
     - common
-  become: '{{ systemd_config.scope == "system" }}'
+  become: '{{ config_systemd.scope == "system" }}'
   block:
     - name: Create required directories (default access)
       ansible.builtin.file:
@@ -10,16 +10,16 @@
         state: directory
         mode: 0755
       with_items:
-        - '{{ user_config.conda_dir }}'
-      # XXX FIXME TODO when roq_config.services non-empty
+        - '{{ config_user.conda_dir }}'
+      # XXX FIXME TODO when config_roq.services non-empty
     - name: Create required directories (default access)
       ansible.builtin.file:
         path: '{{ item }}'
         state: directory
         mode: 0755
       with_items:
-        - '{{ user_config.systemd_unit_dir }}'
-      when: systemd_config.scope == "user"
+        - '{{ config_user.systemd_unit_dir }}'
+      when: config_systemd.scope == "user"
     - name: Create required directories (user access)
       ansible.builtin.file:
         path: '{{ item }}'
@@ -28,27 +28,27 @@
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
       with_items:
-        - '{{ user_config.run_dir }}/client'
-        - '{{ user_config.run_dir }}/service'
-        - '{{ user_config.config_dir }}'
-        - '{{ user_config.config_dir }}/shared'
-        - '{{ user_config.cache_dir }}'
-        - '{{ user_config.data_dir }}'
-      # XXX FIXME TODO when roq_config.services non-empty
+        - '{{ config_user.run_dir }}/client'
+        - '{{ config_user.run_dir }}/service'
+        - '{{ config_user.config_dir }}'
+        - '{{ config_user.config_dir }}/shared'
+        - '{{ config_user.cache_dir }}'
+        - '{{ config_user.data_dir }}'
+      # XXX FIXME TODO when config_roq.services non-empty
     - name: Create auth-keys file (user access)
       ansible.builtin.template:
         src: templates/keys.json
-        dest: '{{ user_config.config_dir }}/shared/keys.json'
+        dest: '{{ config_user.config_dir }}/shared/keys.json'
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
-      # XXX FIXME TODO when roq_config.services non-empty
+      # XXX FIXME TODO when config_roq.services non-empty
     - name: Create shared flags
       ansible.builtin.template:
         src: templates/flags.cfg
-        dest: '{{ user_config.config_dir }}/shared/{{ item.key }}.cfg'
+        dest: '{{ config_user.config_dir }}/shared/{{ item.key }}.cfg'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
-      with_items: '{{ roq_config.flags | dict2items }}'
-      # XXX FIXME TODO when roq_config.services non-empty
+        owner: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+        group: '{{ "root" if config_systemd.scope == "system" else ansible_user }}'
+      with_items: '{{ config_roq.flags | dict2items }}'
+      # XXX FIXME TODO when config_roq.services non-empty

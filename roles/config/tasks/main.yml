@@ -6,62 +6,65 @@
     ###
     # debug
     ###
-    #- name: Debug
-    #  debug:
-    #    var: ansible_facts
     - name: Debug
       ansible.builtin.debug:
-        var: ansible_env
+        var: ansible_facts
+    - name: Debug
+      ansible.builtin.debug:
+        var: ansible_facts.env
     ###
     # systemd
     ###
     - name: Create systemd config
       ansible.builtin.set_fact:
-        systemd_config: >
+        config_systemd: >
           {{ systemd_defaults | combine(systemd | default({}), recursive=True) }}
         cacheable: true
-    - name: debug
+    - name: Debug
       ansible.builtin.debug:
-        var: systemd_config
+        var: config_systemd
     ###
     # container
     ###
     - name: Create container config
       ansible.builtin.set_fact:
-        container_config: >
+        config_container: >
           {{ container_defaults | combine(container | default({}), recursive=True) }}
         cacheable: true
     - name: Debug
       ansible.builtin.debug:
-        var: container_config
+        var: config_container
+    - name: Initialize container services
+      ansible.builtin.set_fact:
+        config_container_services: []
     - name: Find list of container services
       ansible.builtin.set_fact:
-        container_services: '{{ (container_services | default([])) + [item, ] }}'
-      loop: '{{ container_config.services.keys() }}'
+        config_container_services: '{{ config_container_services + [item, ] }}'
+      loop: '{{ config_container.services.keys() }}'
     ###
     # passwd database
     ###
     - name: Get passwd
       ansible.builtin.getent:
         database: passwd
-      when: systemd_config.scope == "user"
+      when: config_systemd.scope == "user"
     ###
     # location (directories)
     ###
     - name: Create user config (systemd scope is user)
       ansible.builtin.set_fact:
-        user_config:
-          config_dir: '{{ ansible_env.HOME }}/.config/roq'
-          cache_dir: '{{ ansible_env.HOME }}/.local/state/roq'
-          data_dir: '{{ ansible_env.HOME }}/.local/share/roq'
-          conda_dir: '{{ ansible_env.HOME }}/.local/share/conda'
-          run_dir: /run/user/{{ getent_passwd[ansible_user].1 }}/roq
-          systemd_unit_dir: '{{ ansible_env.HOME }}/.config/systemd/user'
+        config_user:
+          config_dir: '{{ ansible_facts.env.HOME }}/.config/roq'
+          cache_dir: '{{ ansible_facts.env.HOME }}/.local/state/roq'
+          data_dir: '{{ ansible_facts.env.HOME }}/.local/share/roq'
+          conda_dir: '{{ ansible_facts.env.HOME }}/.local/share/conda'
+          run_dir: '/run/user/{{ ansible_facts.getent_passwd[ansible_facts.env.USER].1 }}/roq'
+          systemd_unit_dir: '{{ ansible_facts.env.HOME }}/.config/systemd/user'
         cacheable: true
-      when: systemd_config.scope == "user"
+      when: config_systemd.scope == "user"
     - name: Create user config (systemd scope is system)
       ansible.builtin.set_fact:
-        user_config:
+        config_user:
           config_dir: /usr/local/etc/roq
           cache_dir: /var/lib/roq/cache
           data_dir: /var/lib/roq/data
@@ -69,16 +72,16 @@
           run_dir: /run/roq
           systemd_unit_dir: /etc/systemd/system
         cacheable: true
-      when: systemd_config.scope == "system"
+      when: config_systemd.scope == "system"
     - name: Debug
-      debug:
-        var: user_config
+      ansible.builtin.debug:
+        var: config_user
     ###
     # roq
     ###
     - name: Create roq config
       ansible.builtin.set_fact:
-        roq_config: >
+        config_roq: >
           {{ roq_defaults | combine(roq | default({}), recursive=True) }}
         cacheable: true
     ###
@@ -86,38 +89,47 @@
     ###
     - name: Create conda config
       ansible.builtin.set_fact:
-        conda_config: >
+        config_conda: >
           {{ conda_defaults | combine(conda | default({}), recursive=True) }}
         cacheable: true
     - name: Debug
       ansible.builtin.debug:
-        var: conda_config
+        var: config_conda
+    - name: Initialize list of user services
+      ansible.builtin.set_fact:
+        config_conda_user_services: []
     - name: Find list of user services
       ansible.builtin.set_fact:
-        conda_user_services: '{{ (conda_user_services | default([])) + [item, ] }}'
-      loop: '{{ conda_config.services.keys() }}'
-      when: conda_config.services[item].conda.package != 'roq-service-manager'
+        config_conda_user_services: '{{ config_conda_user_services + [item, ] }}'
+      loop: '{{ config_conda.services.keys() }}'
+      when: config_conda.services[item].conda.package != 'roq-service-manager'
     - name: Debug
       ansible.builtin.debug:
-        var: conda_user_services
+        var: config_conda_user_services
+    - name: Initialize list of service-manager services
+      ansible.builtin.set_fact:
+        config_conda_service_manager_services: []
     - name: Find list of service-manager services
       ansible.builtin.set_fact:
-        conda_service_manager_services: '{{ (conda_service_manager_services | default([])) + [item, ] }}'
-      loop: '{{ conda_config.services.keys() }}'
-      when: conda_config.services[item].conda.package == 'roq-service-manager'
+        config_conda_service_manager_services: '{{ config_conda_service_manager_services + [item, ] }}'
+      loop: '{{ config_conda.services.keys() }}'
+      when: config_conda.services[item].conda.package == 'roq-service-manager'
     - name: Debug
       ansible.builtin.debug:
-        var: conda_service_manager_services
+        var: config_conda_service_manager_services
     - name: Find list of all services
       ansible.builtin.set_fact:
-        conda_all_services: '{{ conda_user_services + conda_service_manager_services }}'
+        config_conda_all_services: '{{ config_conda_user_services + config_conda_service_manager_services }}'
     - name: Debug
       ansible.builtin.debug:
-        var: conda_all_services
+        var: config_conda_all_services
+    - name: Initialize conda packages per environment
+      ansible.builtin.set_fact:
+        config_packages: {}
     - name: Find conda packages per environment
       ansible.builtin.set_fact:
-        packages: '{{ ( packages | default({}) ) | combine({ conda_config.services[item].conda.env: [conda_config.services[item].conda.package] }, recursive=true, list_merge="append") }}'
-      loop: '{{ conda_all_services }}'
+        config_packages: '{{ config_packages | combine({config_conda.services[item].conda.env: [config_conda.services[item].conda.package]}, recursive=true, list_merge="append") }}'
+      loop: '{{ config_conda_all_services }}'
     - name: Debug
       ansible.builtin.debug:
-        var: packages
+        var: config_packages
