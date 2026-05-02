@@ -1,23 +1,27 @@
 ---
-- block:
-    - name: create required directories (default access)
-      file:
+- name: Common
+  tags:
+    - common
+  become: '{{ systemd_config.scope == "system" }}'
+  block:
+    - name: Create required directories (default access)
+      ansible.builtin.file:
         path: '{{ item }}'
         state: directory
         mode: 0755
       with_items:
         - '{{ user_config.conda_dir }}'
       # XXX FIXME TODO when roq_config.services non-empty
-    - name: create required directories (default access)
-      file:
+    - name: Create required directories (default access)
+      ansible.builtin.file:
         path: '{{ item }}'
         state: directory
         mode: 0755
       with_items:
         - '{{ user_config.systemd_unit_dir }}'
       when: systemd_config.scope == "user"
-    - name: create required directories (user access)
-      file:
+    - name: Create required directories (user access)
+      ansible.builtin.file:
         path: '{{ item }}'
         state: directory
         mode: 0755
@@ -31,23 +35,20 @@
         - '{{ user_config.cache_dir }}'
         - '{{ user_config.data_dir }}'
       # XXX FIXME TODO when roq_config.services non-empty
-    - name: create auth-keys file (user access)
-      template:
+    - name: Create auth-keys file (user access)
+      ansible.builtin.template:
         src: templates/keys.json
         dest: '{{ user_config.config_dir }}/shared/keys.json'
         mode: 0644
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
       # XXX FIXME TODO when roq_config.services non-empty
-    - name: create shared flags
-      template:
+    - name: Create shared flags
+      ansible.builtin.template:
         src: templates/flags.cfg
         dest: '{{ user_config.config_dir }}/shared/{{ item.key }}.cfg'
         mode: 0644
-        owner: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
-        group: '{{ "root" if systemd_config.scope =="system" else ansible_user }}'
+        owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
+        group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
       with_items: '{{ roq_config.flags | dict2items }}'
       # XXX FIXME TODO when roq_config.services non-empty
-  become: '{{ systemd_config.scope == "system" }}'
-  tags:
-    - common

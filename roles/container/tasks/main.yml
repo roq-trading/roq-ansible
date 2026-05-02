@@ -1,20 +1,21 @@
 ---
-- block:
-    - name: create systemd service files
-      template:
+- name: Container
+  tags:
+    - container
+  become: '{{ systemd_config.scope == "system" }}'
+  block:
+    - name: Create systemd service files
+      ansible.builtin.template:
         src: templates/systemd.service
         dest: '{{ user_config.systemd_unit_dir }}/{{ item }}.service'
         mode: 0644
         owner: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
         group: '{{ "root" if systemd_config.scope == "system" else ansible_user }}'
       with_items: '{{ container_services }}'
-    - name: enable/disable systemd services
-      systemd:
+    - name: Enable/disable systemd services
+      ansible.builtin.systemd:
         name: '{{ item }}.service'
         scope: '{{ systemd_config.scope }}'
         enabled: '{{ systemd_config.profiles[container_config.services[item].systemd.profile].enabled }}'
         daemon_reload: true
       with_items: '{{ container_services }}'
-  become: '{{ systemd_config.scope == "system" }}'
-  tags:
-    - container
