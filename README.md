@@ -86,7 +86,7 @@ Ansible requires an inventory file (name is not important, we will name it "exam
 In the following examples we use `server` to identify the target host.
 This could be a remote host or simply `localhost` if you want to test with your user account (no root access required).
 
-```
+```yaml
 ungrouped:
   hosts:
     server:
@@ -101,7 +101,7 @@ ungrouped:
 
 Alternatively
 
-```
+```yaml
 [example]
 ungrouped:
   hosts:
