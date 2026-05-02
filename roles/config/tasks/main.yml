@@ -58,7 +58,7 @@
           cache_dir: '{{ ansible_facts.env.HOME }}/.local/state/roq'
           data_dir: '{{ ansible_facts.env.HOME }}/.local/share/roq'
           conda_dir: '{{ ansible_facts.env.HOME }}/.local/share/conda'
-          run_dir: '/run/user/{{ ansible_facts.getent_passwd[ansible_facts.env.USER].1 }}/roq'
+          run_dir: /run/user/{{ ansible_facts.getent_passwd[ansible_facts.env.USER].1 }}/roq
           systemd_unit_dir: '{{ ansible_facts.env.HOME }}/.config/systemd/user'
         cacheable: true
       when: config_systemd.scope == "user"

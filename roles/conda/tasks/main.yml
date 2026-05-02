@@ -24,7 +24,8 @@
         creates: '{{ config_user.conda_dir }}/envs/{{ item.key }}'
       loop: '{{ config_packages | dict2items }}'
     - name: Install conda packages
-      ansible.builtin.shell: '{{ config_user.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ config_conda.envs[item.key] | join(" -c ") }} {{ item.value | unique | join(" ") }}'
+      ansible.builtin.shell: '{{ config_user.conda_dir }}/bin/conda install --freeze-installed -y -n {{ item.key }} -c {{ config_conda.envs[item.key] | join(" -c ") }}
+        {{ item.value | unique | join(" ") }}'
       loop: '{{ config_packages | dict2items }}'
     # all services
     - name: Create systemd service files
