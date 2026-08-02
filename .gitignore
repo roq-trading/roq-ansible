@@ -1,2 +1,29 @@
-*.swp
-__pycache__
+# vim
+*.sw[po]
+
+# cmake
+*.[ao]
+*.cmake
+*.so
+*.dylib
+CMake*.in
+CMakeCache.txt
+CMakeFiles/
+DartConfiguration.tcl
+Makefile
+Testing/
+build/
+compile_commands.json*
+install_manifest.txt
+lib/
+external/
+external-prefix/
+
+# cpack
+_CPack_Packages/
+
+# debian
+*.deb
+
+# conda
+opt/
